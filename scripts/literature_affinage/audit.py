@@ -29,10 +29,16 @@ COMPARTMENTS = {"", "19S proteasome", "20S proteasome", "40S ribosome", "60S rib
                 "residual body", "cyst wall"}
 
 
+def findings_files(work: Path) -> list:
+    """The findings of the first pass (batch_NNN) and of the supplement pass (supp_NNN)."""
+    return sorted(f for pat in ("batch_[0-9][0-9][0-9].jsonl", "supp_[0-9][0-9][0-9].jsonl")
+                  for f in (work / "findings").glob(pat))
+
+
 def audit(work: Path) -> pd.DataFrame:
     """One row per finding with the rules it fails."""
     rows = []
-    for f in sorted((work / "findings").glob("batch_[0-9][0-9][0-9].jsonl")):
+    for f in findings_files(work):
         batch = {p["pmid"]: p for p in json.load(open(work / "batches" / f.name.replace(".jsonl", ".json")))}
         for i, line in enumerate(open(f)):
             if not line.strip():
@@ -45,7 +51,10 @@ def audit(work: Path) -> pd.DataFrame:
                 fails.append("A4")
             if r.get("gene_id") not in listed:
                 fails.append("A1")
-            if any(p not in listed for p in r.get("partner_gene_ids", []) or []):
+            # A supplement paper lists only the genes the first pass missed; its partners may be among
+            # the genes read before.
+            known = set(listed) | set((paper or {}).get("already_read", []))
+            if any(p not in known for p in r.get("partner_gene_ids", []) or []):
                 fails.append("A2")
             if (r.get("kind") not in KINDS or r.get("status") not in {"established", "refuted"}
                     or r.get("method_tier") not in (1, 2, 3) or r.get("compartment", "") not in COMPARTMENTS):
@@ -79,7 +88,7 @@ if __name__ == "__main__":
     for rule in ("A1", "A2", "A3", "A4", "A5", "A7"):
         print(rule, int(a.fails.str.contains(rule).sum()))
     print(a[a.fails != ""].head(12).to_string(max_colwidth=90))
-    for f in sorted((work / "findings").glob("batch_[0-9][0-9][0-9].jsonl")):
+    for f in findings_files(work):
         papers = [p["pmid"] for p in json.load(open(work / "batches" / f.name.replace(".jsonl", ".json")))]
         seen = {json.loads(l)["pmid"] for g in (f, f.with_suffix(".doubts.jsonl")) if g.exists()
                 for l in open(g) if l.strip()}

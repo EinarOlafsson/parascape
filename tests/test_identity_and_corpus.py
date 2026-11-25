@@ -176,6 +176,47 @@ def test_tokenisation_is_unicode_aware(tmp_path):
     assert list(ix.find("publié dans Santé publique")) == []
 
 
+def _gra_index(tmp_path):
+    rows = [{"gene_id": f"TGME49_2000{n:02d}", "gene_name": f"GRA{n}", "previous_ids": "", "product": ""}
+            for n in (1, 2, 3, 6, 8, 16, 18)]
+    rows += [{"gene_id": "TGME49_200090", "gene_name": "ApiAT6-1", "previous_ids": "", "product": ""},
+             {"gene_id": "TGME49_200091", "gene_name": "PROP1", "previous_ids": "", "product": ""},
+             {"gene_id": "TGME49_200092", "gene_name": "ROP1", "previous_ids": "", "product": ""},
+             {"gene_id": "TGME49_200093", "gene_name": "MIC2", "previous_ids": "", "product": ""},
+             {"gene_id": "TGME49_200094", "gene_name": "M2AP", "previous_ids": "", "product": ""}]
+    ix = _index(tmp_path, rows)
+    name = {r["gene_id"]: r["gene_name"] for r in rows}
+    return lambda text: sorted(name[g] for g, _ in ix.find(text))
+
+
+def test_a_range_names_its_members_not_the_joined_number(tmp_path):
+    """GRA1-8 is GRA1 to GRA8. Joined on the hyphen it read as GRA18, and GRA1-6 as GRA16; readers
+    of 977 papers flagged both (2026-11-24)."""
+    find = _gra_index(tmp_path)
+    assert find("the dense granule proteins (GRA1-8) were tagged") == ["GRA1", "GRA2", "GRA3", "GRA6", "GRA8"]
+    assert "GRA16" not in find("GRA1-6 are secreted")
+
+
+def test_a_symbol_written_with_a_digit_hyphen_digit_still_matches_whole(tmp_path):
+    find = _gra_index(tmp_path)
+    assert find("ApiAT6-1 transports lysine") == ["ApiAT6-1"]
+    assert find("TgApiAT6-1 transports lysine") == ["ApiAT6-1"]
+
+
+def test_a_construct_prefix_does_not_make_another_gene(tmp_path):
+    """pROP1 is a plasmid carrying ROP1, not the gene PROP1."""
+    find = _gra_index(tmp_path)
+    assert find("mice immunised with pROP1") == []
+    assert find("PROP1 binds PI3P") == ["PROP1"]
+
+
+def test_the_genes_inside_a_hyphenated_compound_are_found(tmp_path):
+    """"MIC2-M2AP" and "GRA2-deficient" are one token each and used to name nothing."""
+    find = _gra_index(tmp_path)
+    assert find("the MIC2-M2AP complex") == ["M2AP", "MIC2"]
+    assert find("GRA2-deficient parasites") == ["GRA2"]
+
+
 def test_finding_in_empty_text_returns_nothing(tmp_path):
     ix = _index(tmp_path, [{"gene_id": "TGME49_200010", "gene_name": "GRA16", "previous_ids": "",
                             "product": ""}])

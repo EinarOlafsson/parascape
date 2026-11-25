@@ -59,7 +59,7 @@ quantity were approximating on 2026-08-13.
 **B** partial (>=20%). **C** thin or indirect (<20%). **-** nothing fills it.
 
 
-**141 slots: 47 covered well, 22 partly, 16 thinly, 56 empty.**
+**142 slots: 47 covered well, 22 partly, 16 thinly, 57 empty.**
 
 `genes` is how many have an ANSWER; `of which yes` appears where that answer is a yes/no and most of them are no. A phosphorylation slot answered for every gene because the flag is completed False is not a phosphoproteome of every gene, and the atlas used to print only the first number.
 
@@ -246,6 +246,7 @@ quantity were approximating on 2026-08-13.
 | Pf_downloaded-study membership | BioID / IP-MS corpus coverage | **-** |  |  |  | `` | separate | — |
 | Pf_analysis-derived structural holes | coexpression + cofitness - literature | **-** |  |  |  | `` | one | — |
 | Pf_assay confidence and significance | target evidence metadata | **-** |  |  |  | `` | one | — |
+| Pf_literature findings | PubMed abstracts, read under fixed rules | **-** |  |  |  | `` | one | — |
 | Pf_literature attention | PubMed / PMC | **A** | 5720 |  | 100.0% | `n_publications, n_papers_focal, n_papers_substantive, attention_depth` | one | — |
 | Pf_gene identity and annotation | ToxoDB | **A** | 5720 |  | 100.0% | `gene_id, product, gene_type, chromosome, alphafold_accession` | one | — |
 

@@ -122,6 +122,7 @@ Slots are the leaves of three independent trees. A single tree would create fals
       - Tg_downloaded_study_membership
       - Tg_analysis_derived_structural_holes
       - Tg_assay_confidence_and_significance
+      - Tg_literature_findings
       - Tg_literature_attention
       - Tg_gene_identity_and_annotation
 - perturbational measurements
@@ -501,6 +502,7 @@ Slots are the leaves of three independent trees. A single tree would create fals
       - Tg_downloaded_study_membership
       - Tg_analysis_derived_structural_holes
       - Tg_assay_confidence_and_significance
+      - Tg_literature_findings
       - Tg_literature_attention
       - Tg_gene_identity_and_annotation
 - metabolism
@@ -628,6 +630,7 @@ Slots are the leaves of three independent trees. A single tree would create fals
           - Tg_downloaded_study_membership
           - Tg_analysis_derived_structural_holes
           - Tg_assay_confidence_and_significance
+          - Tg_literature_findings
           - Tg_literature_attention
           - Tg_gene_identity_and_annotation
         - host effect

@@ -43,3 +43,13 @@ def test_resolve_maps_old_ids_and_keeps_one_row_per_gene():
 def test_a_missing_table_leaves_the_columns_out(tmp_path):
     assert L.labels(log=lambda *_: None, root=str(tmp_path)).empty
     assert L.findings(root=str(tmp_path)).empty
+
+
+def test_each_label_carries_both_axes_of_confidence():
+    """Method tier (how strong the experiment) and papers (how much evidence), per label (Affinage)."""
+    t = pd.read_parquet(os.path.join(L.HERE, "literature_gene_labels.parquet"))
+    placed = t[t["lit_compartment"] != ""]
+    assert placed["lit_compartment_tier"].isin([1, 2]).all(), "a place rests on imaging or stronger"
+    assert (placed["lit_compartment_papers"] >= 1).all()
+    hf = t[t["lit_host_facing"]]
+    assert hf["lit_host_facing_tier"].notna().all() and (hf["lit_host_facing_papers"] >= 1).all()

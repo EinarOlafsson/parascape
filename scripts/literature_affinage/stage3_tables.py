@@ -35,20 +35,28 @@ sys.path.insert(0, str(Path(__file__).parent))
 import audit as A  # noqa: E402
 
 SOURCE_GROUP = "literature_affinage"
+#: Kinds of finding that show where a protein is: imaging or fractionation, and secretion to the PV,
+#: the PVM or the host cell.
+PLACE_KINDS = ("localisation", "host_facing")
 
 
 def load(work: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Admitted findings and all doubts."""
     papers = {}
-    for b in sorted((work / "batches").glob("batch_*.json")):
+    # A paper read in both passes keeps the union of its gene lists.
+    for b in sorted((work / "batches").glob("batch_*.json")) + sorted((work / "batches").glob("supp_*.json")):
         for p in json.load(open(b)):
-            papers[p["pmid"]] = p
+            if p["pmid"] in papers:
+                have = {g["gene_id"] for g in papers[p["pmid"]]["genes"]}
+                papers[p["pmid"]]["genes"] += [g for g in p["genes"] if g["gene_id"] not in have]
+            else:
+                papers[p["pmid"]] = {**p, "genes": list(p["genes"])}
     checks = A.audit(work)
     excl = pd.read_csv(work / "exclusions.tsv", sep="\t", dtype=str) if (work / "exclusions.tsv").exists() \
         else pd.DataFrame(columns=["pmid", "gene_id"])
     excluded = set(zip(excl.pmid, excl.gene_id))
     rows, doubts = [], []
-    for f in sorted((work / "findings").glob("batch_[0-9][0-9][0-9].jsonl")):
+    for f in A.findings_files(work):
         fails = checks[checks.batch == f.stem].set_index("line").fails.to_dict()
         for i, line in enumerate(open(f)):
             if not line.strip():
@@ -76,7 +84,11 @@ def gene_labels(F: pd.DataFrame) -> pd.DataFrame:
     est = F[(F.status == "established") & F.named_in_abstract]
     out = []
     for gene, g in est.groupby("gene_id"):
-        comp = Counter(c for c, t in zip(g.compartment, g.method_tier) if c and t <= 2)
+        # A place comes only from a finding that shows a place. Readers also wrote a compartment
+        # beside knockout phenotypes and enzyme assays (CRK2 "cytosol" from a tet-off growth defect),
+        # and the first version took those as localisation evidence (fixed 2026-11-24).
+        shown = g[g.kind.isin(PLACE_KINDS)]
+        comp = Counter(c for c, t in zip(shown.compartment, shown.method_tier) if c and t <= 2)
         top = max(comp.values()) if comp else 0
         row = {"gene_id": gene,
                "lit_compartment": " | ".join(sorted(c for c, n in comp.items() if n == top)),
@@ -85,6 +97,14 @@ def gene_labels(F: pd.DataFrame) -> pd.DataFrame:
                "lit_first_year": g.year.min(), "lit_last_year": g.year.max()}
         for k in A.KINDS:
             row[f"lit_n_{k}"] = int((g.kind == k).sum())
+        # Two-axis confidence (DESIGN.md, Affinage benchmark changes): the strongest kind of
+        # experiment behind a label (method tier, 1 strongest) and how many papers support it.
+        place = shown[shown.compartment.isin(row["lit_compartment"].split(" | ")) & (shown.method_tier <= 2)]
+        row["lit_compartment_tier"] = int(place.method_tier.min()) if len(place) else None
+        row["lit_compartment_papers"] = int(place.pmid.nunique())
+        hf = g[g.kind == "host_facing"]
+        row["lit_host_facing_tier"] = int(hf.method_tier.min()) if len(hf) else None
+        row["lit_host_facing_papers"] = int(hf.pmid.nunique())
         out.append(row)
     return pd.DataFrame(out)
 

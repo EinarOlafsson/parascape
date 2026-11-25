@@ -59,6 +59,16 @@ PF_ACC_RX = re.compile(r"\b(?:PF3D7_(\d{6,7})|PF[A-Z]\d{4}[wc]|PF\d{2}_\d{4}|MAL
 # and handed 23 abstracts to TGME49_321440, whose symbol is SANT.
 TOKEN_RX = re.compile(r"[^\W\d_][\w-]{2,}", re.UNICODE)
 
+# "GRA1-8" is a RANGE (GRA1 to GRA8), not GRA18: joining it on the hyphen handed GRA1-8 and GRA1-6
+# papers to GRA18 and GRA16 (readers flagged both, 2026-11-24). A symbol that is itself written with a
+# digit-hyphen-digit (ApiAT5-2) is registered in `GeneIndex.hyphenated` and still matches whole.
+RANGE_RX = re.compile(r"(.*[^\W\d_])(\d+)-(\d+)", re.UNICODE)
+MAX_RANGE = 12
+
+# "pROP1" is a plasmid and "rAd5" a recombinant adenovirus: a lower-case p or r before a capital is the
+# lab prefix for a construct, and joined to a symbol it reads as another gene (PROP1, RAD5).
+CONSTRUCT_RX = re.compile(r"[pr][A-Z]")
+
 
 def norm(s: str) -> str:
     """Normalize a candidate string to a lookup key: upper case, no hyphens/spaces/underscores."""
@@ -96,6 +106,7 @@ class GeneIndex:
     ambiguous: dict = field(default_factory=dict)       # key -> {gene_id, ...}
     suffix: dict = field(default_factory=dict)          # accession numeric suffix -> gene_id
     strict: set = field(default_factory=set)            # keys that only match an upper-case surface form
+    hyphenated: set = field(default_factory=set)        # keys of symbols written with digit-hyphen-digit
     # What an accession LOOKS like, and what a current one starts with. Fields rather than module
     # constants because the second parasite's literature spells them differently -- and an index that
     # hard-codes one organism's pattern silently finds nothing in the other's papers, which reads
@@ -169,17 +180,47 @@ class GeneIndex:
             # in the corpus also scored a mention of TGME49_214320, whose symbol is "GT1".
             if any(s <= m.start() < e for s, e in spans):
                 continue
-            key = norm(m.group(0))
-            hit = self.lookup.get(key)
-            if hit is None:
-                continue
-            # Digit-free symbols are ordinary English words as often as they are genes -- HOOK, CLAMP,
-            # CLIP, SPARK, REMIND are all real Toxoplasma symbols and all real words. A paper writing the
-            # gene capitalises it, so those keys require an upper-case surface form; symbols carrying a
-            # digit ("GRA16") cannot collide with prose and stay case-insensitive.
-            if key in self.strict and not m.group(0).isupper():
-                continue
+            yield from self._token_hits(m.group(0))
+
+    def _symbol_hit(self, surface: str):
+        """The (gene_id, kind) one written token names, or None."""
+        if CONSTRUCT_RX.match(surface):
+            return None
+        key = norm(surface)
+        hit = self.lookup.get(key)
+        if hit is None:
+            return None
+        # Digit-free symbols are ordinary English words as often as they are genes -- HOOK, CLAMP,
+        # CLIP, SPARK, REMIND are all real Toxoplasma symbols and all real words. A paper writing the
+        # gene capitalises it, so those keys require an upper-case surface form; symbols carrying a
+        # digit ("GRA16") cannot collide with prose and stay case-insensitive.
+        if key in self.strict and not surface.isupper():
+            return None
+        return hit
+
+    def _token_hits(self, tok: str):
+        """Genes named by one token: a symbol, a range of symbols, or the symbols in a hyphenated compound."""
+        r = RANGE_RX.fullmatch(tok)
+        if r and norm(tok) not in self.hyphenated:
+            pre, lo, hi = r.group(1), int(r.group(2)), int(r.group(3))
+            members = range(lo, hi + 1) if 0 < hi - lo <= MAX_RANGE else (lo, hi)
+            for n in members:
+                hit = self._symbol_hit(f"{pre}{n}")
+                if hit is not None:
+                    yield hit
+            return
+        hit = self._symbol_hit(tok)
+        if hit is not None:
             yield hit
+            return
+        # "ROP18-deficient", "MIC2-M2AP", "TgAMA1-RON2": the whole compound is no key, so it used to name
+        # nothing. Its parts are read the same way as separate tokens.
+        if "-" in tok:
+            for part in tok.split("-"):
+                if len(part) >= 3 and part[0].isalpha():
+                    hit = self._symbol_hit(part)
+                    if hit is not None:
+                        yield hit
 
 
 def build_index(node_ids, identity_tsv: str, log=print, accession_rx=ACC_RX,
@@ -233,6 +274,8 @@ def build_index(node_ids, identity_tsv: str, log=print, accession_rx=ACC_RX,
                 n_prev += 1
         sym = str(row.gene_name).strip()
         if matchable_symbol(sym):
+            if RANGE_RX.fullmatch(sym):
+                ix.hyphenated.update({norm(sym), norm(ix.symbol_prefix + sym)})
             ix._add(sym, gid, "symbol", strict=not any(c.isdigit() for c in sym))
             n_sym += 1
             # The Tg- prefix convention: papers write TgGRA16 as often as GRA16. The prefixed form is

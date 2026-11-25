@@ -1621,6 +1621,12 @@ SLOTS = [
     ("strain variation", "sequence", "population", "gene", ["snp_"], "one",
      [("", "ToxoDB HTS SNPs", "SNPs per gene across every sequenced strain")]),
 
+    # ---------------------------------------------------------------- observed in papers
+    # What single-gene papers show by direct experiment (literature_affinage, 2026-11-24): observed
+    # LABELS, never features -- the same papers give co-mention and attention depth.
+    ("literature findings", "NEVER a feature", "PubMed abstracts, read under fixed rules", "gene",
+     ["lit_compartment", "lit_host_facing", "lit_n_"], "one", []),
+
     # ---------------------------------------------------------------- not a feature
     ("literature attention", "NEVER a feature", "PubMed / PMC", "gene",
      ["n_publications", "n_fulltext", "n_papers_", "attention_depth", "lit_tier"], "one", []),
@@ -1960,6 +1966,10 @@ SLOT_OVERRIDES = {
         "evidence_path": ["metadata and derived outputs", "derived target labels", "life-cycle stage"],
         "target_family": "life-cycle stage",
         "target_columns": ["stage_enriched_derived", "stage_margin_derived"], "role": "target",
+    },
+    "literature findings": {
+        "target_family": "literature findings",
+        "target_columns": ["lit_compartment", "lit_host_facing"], "role": "target",
     },
     "literature attention": {
         "target_family": "literature attention",
@@ -2327,6 +2337,19 @@ def evidence(nodes, cols) -> int:
 from parascape.source_refusals import REFUSED_CANDIDATES
 
 BLOCKED = {
+    # --- Built, registered and joined by build_graph, but the committed node table is rewritten
+    # only at a data release: frozen functional benchmarks are bound to its bytes (2026-11-25).
+    "Tg_literature findings": (
+        "unreachable",
+        "The columns are built by parascape/literature_findings.py from 2,508 findings in 1,058 "
+        "single-gene papers and are joined by build_graph; they reach the shipped node table at "
+        "the next data release, when the frozen benchmarks bound to its bytes are re-frozen.",
+        "The next data release (0.0.14.0)."),
+    "Pf_literature findings": (
+        "missing",
+        "The free reading of single-gene papers (scripts/literature_affinage) has been run on the "
+        "Toxoplasma literature only (2026-11-24).",
+        "The same reading run over the Plasmodium papers of the release corpus."),
     # --- Plasmodium, swept 2026-08-19 through GEO, PRIDE and PubMed with the axis's assay terms.
     # The sweep is recorded per slot because of what it returned: the SAME six chromatin and RNA-seq
     # series for `thermal stability` and for `protein turnover`, which is a search saying the assay

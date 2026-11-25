@@ -154,6 +154,7 @@
             "Tg_downloaded_study_membership": {},
             "Tg_analysis_derived_structural_holes": {},
             "Tg_assay_confidence_and_significance": {},
+            "Tg_literature_findings": {},
             "Tg_literature_attention": {},
             "Tg_gene_identity_and_annotation": {}
           }
@@ -670,6 +671,7 @@
             "Tg_downloaded_study_membership": {},
             "Tg_analysis_derived_structural_holes": {},
             "Tg_assay_confidence_and_significance": {},
+            "Tg_literature_findings": {},
             "Tg_literature_attention": {},
             "Tg_gene_identity_and_annotation": {}
           }
@@ -835,6 +837,7 @@
                 "Tg_downloaded_study_membership": {},
                 "Tg_analysis_derived_structural_holes": {},
                 "Tg_assay_confidence_and_significance": {},
+                "Tg_literature_findings": {},
                 "Tg_literature_attention": {},
                 "Tg_gene_identity_and_annotation": {}
               },
@@ -1254,6 +1257,7 @@
             "Pf_downloaded_study_membership": {},
             "Pf_analysis_derived_structural_holes": {},
             "Pf_assay_confidence_and_significance": {},
+            "Pf_literature_findings": {},
             "Pf_literature_attention": {},
             "Pf_gene_identity_and_annotation": {}
           }
@@ -1742,6 +1746,7 @@
             "Pf_downloaded_study_membership": {},
             "Pf_analysis_derived_structural_holes": {},
             "Pf_assay_confidence_and_significance": {},
+            "Pf_literature_findings": {},
             "Pf_literature_attention": {},
             "Pf_gene_identity_and_annotation": {}
           }
@@ -1920,6 +1925,7 @@
                 "Pf_downloaded_study_membership": {},
                 "Pf_analysis_derived_structural_holes": {},
                 "Pf_assay_confidence_and_significance": {},
+                "Pf_literature_findings": {},
                 "Pf_literature_attention": {},
                 "Pf_gene_identity_and_annotation": {}
               },

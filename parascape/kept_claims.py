@@ -12,7 +12,7 @@ The rules this module enforces, each because the alternative turns a guess into 
 * **Reproducible or not kept.** Every claim records the value, its probability, the method and its
   version, the question, the score it was accepted at, whether it cleared the frozen-test bar, the
   data release it was computed against, and when.
-* **Shown as kept, never as fact**: the Gene module lists kept claims under "What can be inferred".
+* **Shown as kept, never as fact**: the Gene module lists kept claims under "What is predicted".
 * **Reverted individually, or every claim of one method version at once.**
 * **Superseded loudly.** When a later release MEASURES a kept cell, `check_against` says so and whether
   the measurement agreed -- a kept guess that happens to be right must not become indistinguishable

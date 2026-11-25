@@ -4755,6 +4755,43 @@
   },
   {
     "organism": "Tg",
+    "name": "literature findings",
+    "axis": "NEVER a feature",
+    "context": "PubMed abstracts, read under fixed rules",
+    "unit": "gene",
+    "patterns": [
+      "lit_compartment",
+      "lit_host_facing",
+      "lit_n_"
+    ],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "metadata and derived outputs",
+      "excluded from embeddings",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "provenance and analysis metadata",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "NEVER a feature"
+    ],
+    "target_family": "literature findings",
+    "target_columns": [
+      "lit_compartment",
+      "lit_host_facing"
+    ],
+    "role": "target"
+  },
+  {
+    "organism": "Tg",
     "name": "literature attention",
     "axis": "NEVER a feature",
     "context": "PubMed / PMC",
@@ -10318,6 +10355,39 @@
   },
   {
     "organism": "Pf",
+    "name": "literature findings",
+    "axis": "NEVER a feature",
+    "context": "PubMed abstracts, read under fixed rules",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "metadata and derived outputs",
+      "excluded from embeddings",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "provenance and analysis metadata",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "NEVER a feature"
+    ],
+    "target_family": "literature findings",
+    "target_columns": [
+      "lit_compartment",
+      "lit_host_facing"
+    ],
+    "role": "target"
+  },
+  {
+    "organism": "Pf",
     "name": "literature attention",
     "axis": "NEVER a feature",
     "context": "PubMed / PMC",
@@ -14973,6 +15043,39 @@
     "target_family": "strain_variation",
     "target_columns": [],
     "role": "feature"
+  },
+  {
+    "organism": "Cp",
+    "name": "literature findings",
+    "axis": "NEVER a feature",
+    "context": "PubMed abstracts, read under fixed rules",
+    "unit": "gene",
+    "patterns": [],
+    "policy": "one",
+    "candidates": [],
+    "evidence_path": [
+      "metadata and derived outputs",
+      "excluded from embeddings",
+      "stage-unspecified"
+    ],
+    "biology_path": [
+      "provenance and analysis metadata",
+      "stage-unspecified",
+      "unperturbed"
+    ],
+    "context_path": [
+      "in vitro or assay-defined",
+      "no host",
+      "tissue-unspecified",
+      "stage-unspecified",
+      "NEVER a feature"
+    ],
+    "target_family": "literature findings",
+    "target_columns": [
+      "lit_compartment",
+      "lit_host_facing"
+    ],
+    "role": "target"
   },
   {
     "organism": "Cp",

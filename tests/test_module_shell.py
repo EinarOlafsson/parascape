@@ -250,7 +250,7 @@ def test_the_gene_module_opens_and_reads_a_typed_gene(window, qtbot):
     assert gid in module.known.toHtml()
     sections = list(shell.sections)
     for part in ("Your gene", "What to read", "Advanced", "What is known", "The evidence",
-                 "What is not known, and what can be inferred", "Actions",
+                 "What is predicted, and how often such calls are right", "What is still open", "Actions",
                  "Console and AI chat"):
         assert part in sections, part
     assert sections.index("What is known") < sections.index("The evidence")
@@ -273,8 +273,10 @@ def test_the_gene_card_is_laid_out_in_the_order_the_mould_asks_for(window):
     assert sections.index("What to read") < sections.index("Advanced") < sections.index("Save")
     assert sections.index("Where it is in the parasite") < sections.index("What is known")
     assert sections.index("What is known") \
-        < sections.index("What is not known, and what can be inferred")
-    assert sections.index("What is not known, and what can be inferred") \
+        < sections.index("What is predicted, and how often such calls are right")
+    assert sections.index("What is predicted, and how often such calls are right") \
+        < sections.index("What is still open")
+    assert sections.index("What is still open") \
         < sections.index("What you can do with this gene next")
     assert sections.index("What you can do with this gene next") < sections.index("Actions")
     assert not shell.sections["Advanced"].is_expanded()

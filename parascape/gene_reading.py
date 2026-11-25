@@ -433,9 +433,11 @@ def prospective_lines(gene: str) -> list:
 _AGREEMENT_CACHE: dict = {}
 
 
-def consensus_lines(gene: str, organism: str = organisms.TOXOPLASMA) -> list:
+def consensus_lines(gene: str, organism: str = organisms.TOXOPLASMA, with_target: bool = False) -> list:
     """Per label, how many methods agreed on this gene (held out), and how often that much agreement
-    was right on this label across all genes -- measured, never a confidence made from a count (64.33)."""
+    was right on this label across all genes -- measured, never a confidence made from a count (64.33).
+
+    With `with_target`, each item is (sentence, label), so a caller can set it against chance."""
     from . import track_record as T
     ledger = T.shipped(organism)
     mine = ledger[(ledger["gene_id"].astype(str) == str(gene)) & (ledger["mode"].astype(str) == "together")]
@@ -464,10 +466,11 @@ def consensus_lines(gene: str, organism: str = organisms.TOXOPLASMA) -> list:
         fams = sorted({family(k) for k in agreed["strategy"].astype(str)} - {""})
         against = ", ".join(f"{k} ({p})" for k, p in zip(others["strategy"].astype(str),
                                                          others["prediction"].astype(str)))
-        out.append(f"<b>{escape(target.replace('_', ' '))}</b>: {n} of {len(spoke)} methods said "
-                   f"<b>{escape(calls.index[0])}</b> ({len(g) - len(spoke)} abstained); {rate}. "
-                   f"Agreeing families: {escape(', '.join(fams) or 'unrecorded')}."
-                   + (f" Disagreeing: {escape(against)}." if against else ""))
+        line = (f"<b>{escape(target.replace('_', ' '))}</b>: {n} of {len(spoke)} methods said "
+                f"<b>{escape(calls.index[0])}</b> ({len(g) - len(spoke)} abstained); {rate}. "
+                f"Agreeing families: {escape(', '.join(fams) or 'unrecorded')}."
+                + (f" Disagreeing: {escape(against)}." if against else ""))
+        out.append((line, target) if with_target else line)
     return out
 
 

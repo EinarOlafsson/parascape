@@ -37,6 +37,8 @@ Keep a finding ONLY if THIS paper reports a direct experiment establishing it fo
 
 **Ectopic expression.** Expressing a parasite protein in host or cancer cells, rather than having the parasite deliver it, does NOT establish host_facing. Do not write it.
 
+**Supplement batches (`supp_NNN.json`).** A paper there was read before for the genes in `already_read`; its `genes` list holds only the genes that the first pass left out. Write findings ONLY for the genes in `genes`. A partner may be one of the `already_read` genes: give its id in `partner_gene_ids`. Do not repeat findings for the `already_read` genes.
+
 **Doubts file.** Write one line per doubt to `findings/<batch>.doubts.jsonl`:
 ```
 {"pmid": "...", "gene_id": "... or \"\"", "doubt": "wrong_gene_match|unlisted_protein|ambiguous_match|other", "note": "one sentence"}

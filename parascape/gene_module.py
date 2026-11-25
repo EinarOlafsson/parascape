@@ -4,7 +4,12 @@ Built with the parascape-module mould (instruction 96); Einar chose "synthesis f
 (2026-11-06). The module lets you take a gene -- or step through a list -- and read what is
 known about it in sentences (where it is, what it binds, how much the parasite needs it, when
 it is made...) each with its sources, then the evidence itself grouped the same way, then what
-is NOT known and what can be inferred, with how often such a call is right.
+is predicted, with how often such a call is right, and what is still open.
+
+THREE LAYERS (Einar, 2026-11-24, after Di Bernardo and Cheeseman 2026): a sentence is observed
+(measured, or shown by experiment in a paper: "Shown in papers" under "What is known"), predicted
+(with how often such a call is right against a guess of the commonest answer), or still open
+(nothing measures it, or a paper says it is unknown). `gene_layers` writes all three.
 
 The facts come from the published information map (`information_map.PublishedMap`, loaded by
 the information-map panel) and the window's own gene table; `gene_reading` turns them into the
@@ -171,8 +176,8 @@ class GeneModule(QtCore.QObject):
         al.setContentsMargins(6, 2, 6, 6)
         self.show_predicted = QtWidgets.QCheckBox("Show predicted values (never mixed with facts)")
         self.show_predicted.setChecked(True)
-        self.show_predicted.setToolTip(TH.tip("Predictions appear only under 'What can be "
-                                              "inferred', with their certainty."))
+        self.show_predicted.setToolTip(TH.tip("Predictions appear only under 'What is "
+                                              "predicted', with how often such calls are right."))
         self.show_predicted.toggled.connect(lambda *_: self.render())
         al.addWidget(self.show_predicted)
         shell.add_setting("Advanced", advanced, expanded=False)
@@ -263,10 +268,17 @@ class GeneModule(QtCore.QObject):
         shell.link_style(self.inferred)
         self.inferred.setOpenLinks(False)
         self.inferred.anchorClicked.connect(self._inferred_link)
-        self.inferred.setToolTip("What is not known about the gene, and what the data suggest, "
-                                 "each with how often such a call is right.")
-        shell.add_section("What is not known, and what can be inferred", self.inferred,
+        self.inferred.setToolTip("What methods predict about the gene, each with how often such a "
+                                 "call is right, against what a guess of the commonest answer gets. "
+                                 "A prediction is never a measurement.")
+        shell.add_section("What is predicted, and how often such calls are right", self.inferred,
                           extent=170, stretch=1)
+
+        self.still_open = _browser()
+        shell.link_style(self.still_open)
+        self.still_open.setToolTip("What nothing measures yet about the gene, and what papers about "
+                                   "it say is still unknown.")
+        shell.add_section("What is still open", self.still_open, extent=130, stretch=1)
 
         self.methods = _browser()
         shell.link_style(self.methods)
@@ -662,7 +674,7 @@ class GeneModule(QtCore.QObject):
                 if r.product else f"<h2>{escape(r.gene)}</h2>")
         body = "".join(f"<p>{s}</p>" for _c, s in sentences) or \
             "<p>Nothing recorded about this gene in the kinds of knowledge chosen.</p>"
-        self.known.setHtml(head + body)
+        self.known.setHtml(head + body + self._papers_html(r.gene))
         self._render_parasite()
         self.next_steps.set_subject(r.gene, available=self._reasons(), without="gene")
         self._render_unusual(r)
@@ -864,15 +876,47 @@ class GeneModule(QtCore.QObject):
         if self.reading is not None:
             self._render_links(self.reading)
 
+    def _papers_html(self, gene: str) -> str:
+        """The observed layer from papers: what single-gene papers show by direct experiment."""
+        from . import gene_layers as GL
+        try:
+            lines = GL.observed_lines(gene)
+        except Exception as error:                   # a missing table must not blank the card
+            return f"<p style='color:#999'>The paper findings could not be read: {escape(str(error))}</p>"
+        if not lines:
+            return ""
+        return (f"<h3>Shown in papers</h3><p style='color:#999'>{GL.observed_summary(gene)}</p>"
+                + "".join(f"<p>{line}</p>" for line in lines))
+
+    def _consensus_with_chance(self, gene: str) -> tuple:
+        """Held-out agreement sentences with their labels, and the chance rate of each label."""
+        from . import gene_layers as GL
+        from . import track_record as T
+        try:
+            pairs = GR.consensus_lines(gene, with_target=True)
+            ledger = T.shipped(organisms.TOXOPLASMA)
+        except Exception:
+            return [], {}
+        return pairs, {t: GL.chance_rate(ledger, t) for _line, t in pairs}
+
     def _render_inferences(self, r) -> None:
-        lines = [s for s in GR.inferences(r)
-                 if self.show_predicted.isChecked() or not s.startswith("Predicted")]
+        from . import gene_layers as GL
+        lines = []
+        if self.show_predicted.isChecked():
+            pairs, chance = self._consensus_with_chance(r.gene)
+            lines = GL.predicted_lines(r, pairs, chance)
         suggestion = self._map_suggestion(r.gene)
         if suggestion:
             lines.append(suggestion + " <a href='keep:map'>keep this</a>")
         lines.extend(self._kept_lines(r.gene))
         self.inferred.setHtml("".join(f"<p>{s}</p>" for s in lines)
-                              or "<p>Every key trait of this gene is measured.</p>")
+                              or "<p>No method makes a prediction for this gene.</p>")
+        try:
+            still = GL.open_lines(r, r.gene)
+        except Exception:
+            still = GL.open_lines(r, r.gene, findings=pd.DataFrame())
+        self.still_open.setHtml("".join(f"<p>{s}</p>" for s in still)
+                                or "<p>Every key trait of this gene is measured.</p>")
 
     def _kept_lines(self, gene: str) -> list:
         """The user's own kept claims for this gene -- shown as kept, never as facts -- and any

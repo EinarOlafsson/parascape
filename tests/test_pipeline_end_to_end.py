@@ -152,6 +152,10 @@ def test_every_registered_dataset_contributes_at_least_one_column(nodes):
     for d in datasets.REGISTRY:
         if not d.columns or d.key in HELD_OUT_OF_NODES:
             continue
+        # Joined by build_graph and shipped at the next release (datasets.JOINED_AT_NEXT_RELEASE);
+        # `test_a_dataset_joined_at_the_next_release_is_built_by_the_graph_join` holds them.
+        if d.key in datasets.JOINED_AT_NEXT_RELEASE:
+            continue
         # An entry whose columns are `edge:<layer>` contributes an EDGE LAYER and never a node
         # column, so it is checked against the graph. Reading it as a missing column was the first
         # thing that broke when the co-translation layer was registered.
@@ -389,3 +393,16 @@ def test_the_two_species_caches_do_not_answer_each_other(nodes):
     assert slots.coverage("Tg", pf_nodes, pf_graph)["filled"] == 0
     # The tables must also be disjoint: one gene cannot be in both organisms.
     assert not set(nodes["gene_id"]) & set(pf_nodes["gene_id"])
+
+
+def test_a_dataset_joined_at_the_next_release_is_built_by_the_graph_join():
+    """The exemption above is only honest while the join really produces the columns."""
+    import inspect
+    from parascape import build_graph, literature_findings
+    source = inspect.getsource(build_graph.load_nodes)
+    assert "literature_findings.labels" in source
+    built = literature_findings.labels(log=lambda *a: None)
+    for key in datasets.JOINED_AT_NEXT_RELEASE:
+        d = next(x for x in datasets.REGISTRY if x.key == key)
+        assert set(d.columns) <= set(built.columns), key
+        assert len(built) > 100, key
