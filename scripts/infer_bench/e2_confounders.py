@@ -143,6 +143,8 @@ def main(argv=None) -> int:
     ap.add_argument("--out", required=True)
     ap.add_argument("--seeds", type=int, default=SEEDS)
     ap.add_argument("--max-pairs", type=int, default=0, help="a quick check: the first N pairs only")
+    ap.add_argument("--part", default="", help="i/n: score only pairs at positions i, i+n, ... (parallel parts)")
+    ap.add_argument("--merge", action="store_true", help="join the part checkpoints and write the outputs")
     args = ap.parse_args(argv)
     os.makedirs(args.out, exist_ok=True)
     t0 = time.time()
@@ -157,9 +159,27 @@ def main(argv=None) -> int:
     C = confounders(nodes)
     dep = {(lab, c): dependence(conf, L[lab][0], L[lab][1], fam)
            for lab in pairs["label"].unique() for c, conf in C.items()}
-    part = os.path.join(args.out, "confounders.partial.parquet")
-    rows = pd.read_parquet(part).to_dict("records") if os.path.exists(part) else []
+    seed_part = os.path.join(args.out, "confounders.partial.parquet")
+    if args.merge:
+        import glob as _g
+        files = sorted(_g.glob(os.path.join(args.out, "*.partial.parquet")))
+        t = pd.concat([pd.read_parquet(f) for f in files]).drop_duplicates(["label", "feature", "confounder", "method"])
+        have = set(map(tuple, t[["label", "feature"]].drop_duplicates().to_numpy()))
+        want = set(map(tuple, pairs[["label", "feature"]].to_numpy()))
+        if want - have:
+            raise SystemExit(f"merge: {len(want - have)} of {len(want)} pairs missing; parts not finished")
+        rows = t.to_dict("records")
+        args.part = ""
+    part = seed_part
+    if args.part:
+        i_, n_p = (int(x) for x in args.part.split("/"))
+        pairs = pairs.iloc[i_::n_p]
+        part = os.path.join(args.out, f"part_{i_}_of_{n_p}.partial.parquet")
+    if not args.merge:
+        rows = pd.read_parquet(part).to_dict("records") if os.path.exists(part) else []
     done = {(d["label"], d["feature"]) for d in rows}
+    if os.path.exists(seed_part) and part != seed_part:
+        done |= set(map(tuple, pd.read_parquet(seed_part)[["label", "feature"]].drop_duplicates().to_numpy()))
     if done:
         log(f"resuming: {len(done)} pairs already scored in {part}")
     for n_, r in enumerate(pairs.itertuples(index=False)):
@@ -178,6 +198,10 @@ def main(argv=None) -> int:
         if n_ % 25 == 0:
             pd.DataFrame(rows).to_parquet(part, index=False)
             log(f"{n_ + 1} of {len(pairs)} pairs (checkpoint saved)")
+    pd.DataFrame(rows).to_parquet(part, index=False) if rows and not args.merge else None
+    if args.part:
+        log(f"part {args.part} done: {len(rows)} rows in {part}")
+        return 0
     t = pd.DataFrame(rows)
     raw = t[t["method"] == "raw"].set_index(["label", "feature", "confounder"])["score"]
     t["change_from_raw"] = t["score"] - t.set_index(["label", "feature", "confounder"]).index.map(raw)
@@ -190,9 +214,7 @@ def main(argv=None) -> int:
                "labels_depending_on_a_confounder": sorted({f"{a} ~ {b}" for (a, b), v in dep.items()
                                                           if np.isfinite(v) and v > DEPENDS})}
     json.dump(summary, open(os.path.join(args.out, "summary.json"), "w"), indent=1, default=str)
-    if os.path.exists(part):
-        os.remove(part)
-    log(f"wrote {args.out}")
+    log(f"wrote {args.out} (part checkpoints kept)")
     return 0
 
 
