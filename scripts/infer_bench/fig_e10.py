@@ -89,7 +89,7 @@ def main(argv=None) -> int:
     cell = F.SLOT_IN * 25.4
     pw, ph, labw, gapx, gapy = cell * len(order), 30.0, 22.0, 14.0, 6.0
     W = labw + len(ks) * (pw + gapx) + 2
-    Hh = 8 + len(rows) * (ph + gapy) + 44
+    Hh = 8 + len(rows) * (ph + gapy) + 36
     fig = plt.figure(figsize=(W * MM, Hh * MM))
     colour = {"better": F.ACCENT, "worse": F.MAGENTA, "same": F.ACCENT_LIGHT}
     for ri, (col, ylab, met) in enumerate(rows):
@@ -112,8 +112,9 @@ def main(argv=None) -> int:
                 ax.bar(i, np.nanmean(v), width=F.BAR_FRACTION, color=c, alpha=F.ALPHA,
                        hatch="////" if a.startswith("shuffled") else None, edgecolor=F.INK if a.startswith("shuffled") else None,
                        lw=0)
-                ax.scatter(np.full(len(v), i) + np.linspace(-0.12, 0.12, len(v)), v, s=4, c=F.INK, alpha=F.ALPHA,
-                           lw=0, zorder=3)
+                if col != "largest_share":          # sizes were measured on seed 0 only: no seed points
+                    ax.scatter(np.full(len(v), i) + np.linspace(-0.12, 0.12, len(v)), v, s=4, c=F.INK,
+                               alpha=F.ALPHA, lw=0, zorder=3)
             b = T[(T["arm"] == "baseline") & (T["k"] == k)][col].mean()
             ax.axhline(100 * b if pct else b, color=F.INK, lw=0.6, ls=":", alpha=0.6)
             ax.axhline(0, color=F.INK, lw=0.6)
