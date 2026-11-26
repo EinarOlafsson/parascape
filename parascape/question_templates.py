@@ -793,7 +793,7 @@ def build_model(nodes: pd.DataFrame, template: QuestionTemplate, closure: Closur
         positions = np.arange(len(nodes))[kept] if kept is not None else np.arange(len(nodes))
         fit = methods.propagation(layer, positions, truth, len(nodes), seed=template.seed)
     elif template.method == "benchmarked":
-        fit = methods.benchmarked(np.asarray(X), seed=template.seed)
+        fit = methods.benchmarked(np.asarray(X), seed=template.seed, truth=truth)
     elif template.method == "boosted":
         fit = methods.boosted(np.asarray(X), truth, seed=template.seed)
     else:

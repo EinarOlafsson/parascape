@@ -851,3 +851,16 @@ def test_the_benchmarked_method_answers_a_template_with_cohesion_on_every_named_
     if len(res.inference):
         assert {"group_cohesion", "gene_confidence"} <= set(res.inference.columns)
         assert res.inference["gene_confidence"].between(0, 1).all()
+
+
+def test_the_benchmarked_method_chooses_its_group_count_from_the_question():
+    """No group count is right for every label (Infer benchmark E10/E11), so the count is chosen per question by
+    cross-validated naming F1: a label of 20 planted classes gets a coarse partition, not 300 groups."""
+    from parascape import methods
+    rng = np.random.default_rng(3)
+    truth_codes = np.repeat(np.arange(20), 40)
+    X = rng.normal(size=(800, 40)) + 4.0 * rng.normal(size=(20, 40))[truth_codes]
+    truth = pd.Series(np.where(rng.random(800) < 0.5, truth_codes.astype(str), None))
+    fit = methods.benchmarked(X, seed=1, seeds=3, truth=truth, k_grid=(300, 100, 40, 20))
+    assert fit["settings"]["k_target"] <= 40, fit["settings"]["k_tried"]
+    assert set(fit["settings"]["k_tried"]) == {300, 100, 40, 20}

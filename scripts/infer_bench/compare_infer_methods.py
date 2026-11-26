@@ -27,14 +27,20 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("out")
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--part", default="", help="i/n: only questions i, i+n, ... (parallel parts)")
     args = ap.parse_args(argv)
     os.makedirs(args.out, exist_ok=True)
     nodes = H.load()[0]
     qs = Q.load()
     if args.limit:
         qs = qs[: args.limit]
+    tag = ""
+    if args.part:
+        i_, n_ = (int(x) for x in args.part.split("/"))
+        qs = qs[i_::n_]
+        tag = f"_part{i_}of{n_}"
     rows = []
-    path = os.path.join(args.out, "compare_methods.csv")
+    path = os.path.join(args.out, f"compare_methods{tag}.csv")
     for q in qs:
         t = Q.as_template(q)
         for method in ("umap+hdbscan", "benchmarked"):

@@ -557,8 +557,54 @@ def _louvain(graph, resolution: float, seed: int, n: int) -> np.ndarray:
     return out
 
 
+def naming_f1(partition: np.ndarray, truth, folds: int = 3, seed: int = 42) -> float:
+    """Cross-validated F1 of naming genes from their group: groups enriched (hypergeometric, BH q < 0.05) for a
+    class among the training genes name that class; macro F1 over classes on the held-out labelled genes.
+
+    The partition is built without labels, so only the CALLS are cross-validated -- which is exactly what the
+    choice of group count needs: how well a partition at this granularity names genes it was not told about.
+    """
+    from scipy.stats import hypergeom
+    y = pd.Series(truth).astype("object").where(pd.Series(truth).notna(), None).to_numpy()
+    lab = np.flatnonzero(np.array([v is not None for v in y]) & (partition >= 0))
+    if len(lab) < 30:
+        return float("nan")
+    fold = np.random.default_rng(seed).permutation(len(lab)) % folds
+    scores = []
+    for f in range(folds):
+        tr, va = lab[fold != f], lab[fold == f]
+        counts = pd.Series(y[tr]).value_counts()
+        classes = [c for c, n in counts.items() if n >= 5]
+        keys, ps = [], []
+        for g in np.unique(partition[tr]):
+            m = tr[partition[tr] == g]
+            for c in classes:
+                x = int((y[m] == c).sum())
+                if x:
+                    keys.append((g, c)); ps.append(hypergeom.sf(x - 1, len(tr), int(counts[c]), len(m)))
+        if not ps:
+            scores.append(0.0); continue
+        order = np.argsort(ps); q = np.empty(len(ps)); ranked = np.array(ps)[order] * len(ps) / (np.arange(len(ps)) + 1)
+        q[order] = np.minimum.accumulate(ranked[::-1])[::-1]
+        enriched: dict = {}
+        for (g, c), qq in zip(keys, q):
+            if qq < 0.05:
+                enriched.setdefault(c, set()).add(g)
+        f1s = []
+        for c in classes:
+            truth_c = y[va] == c
+            pred_c = np.isin(partition[va], list(enriched.get(c, set())))
+            tp = int((truth_c & pred_c).sum())
+            p_ = tp / pred_c.sum() if pred_c.sum() else 0.0
+            r_ = tp / truth_c.sum() if truth_c.sum() else np.nan
+            if np.isfinite(r_):
+                f1s.append(2 * p_ * r_ / (p_ + r_) if (p_ + r_) else 0.0)
+        scores.append(float(np.mean(f1s)) if f1s else 0.0)
+    return float(np.mean(scores))
+
+
 def benchmarked(X: np.ndarray, seed: int = 42, k_target: int = BENCH_K, seeds: int = BENCH_SEEDS,
-                knn: int = BENCH_KNN) -> dict:
+                knn: int = BENCH_KNN, truth=None, k_grid=None) -> dict:
     """The benchmarked partition, with how firmly each group and each gene holds together.
 
     The consensus is not only a better partition; it is also its own quality measure, and a free one. Across
@@ -588,28 +634,46 @@ def benchmarked(X: np.ndarray, seed: int = 42, k_target: int = BENCH_K, seeds: i
     G = nx.Graph()
     G.add_nodes_from(range(n))
     G.add_edges_from((i, int(j)) for i, row in enumerate(ind) for j in row[1:])
-    target = int(min(k_target, max(2, n // 10)))
-    lo, hi, best = np.log(0.05), np.log(200.0), None
-    for _ in range(16):                        # resolution bisected (log scale) to the target group count
-        mid = (lo + hi) / 2
-        lab = _louvain(G, float(np.exp(mid)), seed, n)
-        g = len(np.unique(lab))
-        if best is None or abs(g - target) < abs(best[1] - target):
-            best = (float(np.exp(mid)), g)
-        if abs(g - target) <= 0.05 * target:
-            break
-        lo, hi = (mid, hi) if g < target else (lo, mid)
-    resolution = best[0]
-    runs = [_louvain(G, resolution, seed + 97 * b, n) for b in range(seeds)]
-    C = np.zeros((n, n), dtype=np.float32)
-    for lab in runs:
-        C += lab[:, None] == lab[None, :]
-    C /= len(runs)
-    D = 1.0 - C
-    np.fill_diagonal(D, 0.0)
-    groups = int(np.median([len(np.unique(lab)) for lab in runs]))
-    part = fcluster(linkage(squareform(D, checks=False), method="average"), t=max(groups, 2),
-                    criterion="maxclust") - 1
+    def consensus(k_want):
+        target = int(min(k_want, max(2, n // 10)))
+        lo, hi, best = np.log(0.05), np.log(200.0), None
+        for _ in range(16):                    # resolution bisected (log scale) to the target group count
+            mid = (lo + hi) / 2
+            lab = _louvain(G, float(np.exp(mid)), seed, n)
+            g = len(np.unique(lab))
+            if best is None or abs(g - target) < abs(best[1] - target):
+                best = (float(np.exp(mid)), g)
+            if abs(g - target) <= 0.05 * target:
+                break
+            lo, hi = (mid, hi) if g < target else (lo, mid)
+        runs = [_louvain(G, best[0], seed + 97 * b, n) for b in range(seeds)]
+        C = np.zeros((n, n), dtype=np.float32)
+        for lab in runs:
+            C += lab[:, None] == lab[None, :]
+        C /= len(runs)
+        D = 1.0 - C
+        np.fill_diagonal(D, 0.0)
+        groups = int(np.median([len(np.unique(lab)) for lab in runs]))
+        part = fcluster(linkage(squareform(D, checks=False), method="average"), t=max(groups, 2),
+                        criterion="maxclust") - 1
+        return part, C, best[0]
+
+    if truth is not None:
+        # The group count is chosen per question, from the data: the benchmark found no count right for every
+        # label (300 suits complexes; a label of a few classes wants far fewer groups). Each candidate is scored
+        # by cross-validated naming F1 on the labelled genes; the partitions themselves never see a label.
+        n_classes = int(pd.Series(truth).dropna().nunique())
+        grid = sorted(set(k_grid or (BENCH_K, 100, 30, max(2 * n_classes, 10))), reverse=True)
+        tried = {}
+        for k_want in grid:
+            part_k, C_k, res_k = consensus(k_want)
+            tried[k_want] = (naming_f1(part_k, truth, seed=seed), part_k, C_k, res_k)
+        k_best = max(tried, key=lambda k: (np.nan_to_num(tried[k][0], nan=-1), k))
+        _f, part, C, resolution = tried[k_best]
+        settings["k_tried"] = {int(k): round(float(v[0]), 4) for k, v in tried.items()}
+        settings["k_target"] = int(k_best)
+    else:
+        part, C, resolution = consensus(k_target)
     cohesion, confidence = {}, np.full(n, np.nan)
     for c in np.unique(part):
         m = np.flatnonzero(part == c)
