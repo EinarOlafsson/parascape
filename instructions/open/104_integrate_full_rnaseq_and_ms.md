@@ -19,6 +19,17 @@
       Toxoplasma gene x raw-file table (q <= 0.01, peptides unique to one parasite gene, Top3, log2,
       median-centred) and `prepared_ms_genes/summary.csv`.
 
+## Result of the first MS build (2026-11-26, sched 5053, 3 min 46 s)
+
+- 163 project/instrument folders (155 projects); Toxoplasma genes quantified: >= 100 in 101, >= 500 in 74,
+  >= 1,000 in 35, >= 2,000 in 10 (top: PXD044081 3,042 genes, PXD014133 2,736 over 72 files). 1,458 raw files in
+  the 101 usable folders; 11 folders are isobaric (iTRAQ/TMT; values per raw file). Median parasite share of
+  confident peptides 0.64.
+- Positive control: per-gene mean abundance against the proteome already in the app (`proteome_log2_normalized*`):
+  median Spearman 0.38 (IQR 0.31-0.53, max 0.81) over the 74 projects with >= 500 genes; against tachyzoite RNA
+  median 0.37 (the usual protein-mRNA level). Near 0 only for PXD004426, PXD031649, PXD044091, PXD049694, which
+  are candidates for enrichment / pull-down designs rather than whole proteomes - check before admission.
+
 ## To do
 
 - [ ] Verify the new snapshot validated and replaced `current`; release it to the app (release build).
