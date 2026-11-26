@@ -2749,8 +2749,11 @@ class AnalysisPanel(QtWidgets.QWidget):
             self.question_report.setHtml(f"<b>no answer</b><br>{result.stopped_because}")
             self.status.emit(result.stopped_because)
             return
+        two_rates = None
         if len(result.inference):
-            self._fill(self.question_table, result.inference)
+            from . import niche_rates as NR
+            shown, two_rates = NR.add_two_rates(result.inference, self.nodes, "predicted", "cluster_precision")
+            self._fill(self.question_table, shown)
         agreed = int(result.inference["control_agrees"].fillna(False).sum()) \
             if "control_agrees" in result.inference else 0
         quality = result.quality
@@ -2771,6 +2774,9 @@ class AnalysisPanel(QtWidgets.QWidget):
                 lines.append(f"<br><b>how firmly groups hold</b>: median cohesion {coh.median():.2f} "
                              f"(share of runs that keep a group's genes together; 1 = every run agrees), "
                              f"{int((coh >= 0.75).sum())} of {len(coh)} groups at 0.75 or more")
+        if two_rates is not None:
+            from . import niche_rates as NR
+            lines.append(NR.report(two_rates))
         if result.inference_note:
             lines.append(f"<br><b>{result.inference_note}</b>")
         if len(result.inference) and not agreed:

@@ -248,9 +248,12 @@ class InferModule(QtCore.QObject):
             panel.question_report.setHtml(f"<b>no answer</b><br>{escape(result['refusal'])}")
             return
         grades, calls = result["grades"], result["calls"]
+        from . import niche_rates as NR
+        two_rates = None
         if len(calls):
             best = calls.sort_values("probability", ascending=False).drop_duplicates("gene_id")
-            panel._fill(panel.question_table, best.head(500).round({"probability": 3}))
+            best, two_rates = NR.add_two_rates(best, panel.nodes, "answer", "probability")
+            panel._fill(panel.question_table, best.head(500).round(3))
         rows = "".join(
             f"<tr><td>{escape(str(g.label))}</td><td align=right>{g.labelled:,}</td>"
             f"<td align=right>{g.frozen_auc:.2f}</td><td align=right>{g.average_precision:.2f}</td>"
@@ -261,7 +264,8 @@ class InferModule(QtCore.QObject):
             f"<b>{escape(HA.METHODS.get(self.method(), self.method()))}</b>, graded on genes it never saw "
             f"(0.5 is chance). {fills} of {len(grades)} answers may fill the map; the others rank genes only."
             "<table cellspacing=4><tr><th align=left>answer</th><th>labelled</th><th>held-out AUC</th>"
-            "<th>average precision</th><th>share of yes</th><th>may fill</th></tr>" + rows + "</table>")
+            "<th>average precision</th><th>share of yes</th><th>may fill</th></tr>" + rows + "</table>"
+            + NR.report(two_rates))
         self.answer_note.setText(f"{calls['gene_id'].nunique() if len(calls) else 0:,} unlabelled genes ranked; "
                                  "each shows its most likely answer. Double-click a gene to read it.")
 
