@@ -329,6 +329,8 @@ def main(argv=None) -> int:
     ap.add_argument("--shuffled", action="store_true")
     ap.add_argument("--planted", action="store_true", help="the label is 20 planted modules at 8 column SD")
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--split-seed", type=int, default=None,
+                    help="a different untouched set: one fifth of gene families drawn with this seed (replication)")
     ap.add_argument("--quick", action="store_true", help="code check: 6 trials, 2 finalists, 2 redraws")
     args = ap.parse_args(argv)
     os.makedirs(args.out, exist_ok=True)
@@ -346,7 +348,7 @@ def main(argv=None) -> int:
     if kind == "continuous":
         raise SystemExit("continuous labels have no classes to cluster")
     fam = H.families(nodes)
-    fin = E7.final_split(fam)
+    fin = E7.final_split(fam) if args.split_seed is None else (H.family_folds(fam, 5, args.split_seed) == 0)
     dev = ~fin
     y_search = y.copy()
     if args.shuffled:                                      # negative control: labels permuted inside development
