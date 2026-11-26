@@ -88,8 +88,10 @@ class InferModule(QtCore.QObject):
         self.method_choice.setToolTip(TH.tip(
             "How the question is answered. Map groups build the map from what the question may use and name "
             "genes in groups that are mostly one label. Tested groups do the same with the clustering the "
-            "Infer benchmark chose (whitened profile, a consensus of several runs, about 300 groups), and "
-            "every named gene carries how often the runs agree on its group. Every other method answers each "
+            "Infer benchmark chose (whitened profile, a consensus of several runs; the number of groups is "
+            "chosen for each question), and every named gene carries how often the runs agree on its group. "
+            "Tested groups match how a label is organised far better; Map groups name held-out genes more "
+            "often and more precisely, so use Map groups to name genes. Every other method answers each "
             "yes/no form of the label, is graded on genes it never saw (a frozen test, touched once), then "
             "ranks the genes with no label; a ranking whose grade does not reach the fill bar is never "
             "written as fact."))
