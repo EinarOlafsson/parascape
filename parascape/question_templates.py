@@ -792,6 +792,8 @@ def build_model(nodes: pd.DataFrame, template: QuestionTemplate, closure: Closur
                 f"that table, so a subset would walk between the wrong genes."))
         positions = np.arange(len(nodes))[kept] if kept is not None else np.arange(len(nodes))
         fit = methods.propagation(layer, positions, truth, len(nodes), seed=template.seed)
+    elif template.method == "benchmarked":
+        fit = methods.benchmarked(np.asarray(X), seed=template.seed)
     elif template.method == "boosted":
         fit = methods.boosted(np.asarray(X), truth, seed=template.seed)
     else:
@@ -824,6 +826,15 @@ def build_model(nodes: pd.DataFrame, template: QuestionTemplate, closure: Closur
             labels, truth, np.asarray(sub["gene_id"]), fit["classes"], result.recovery,
             min_precision=template.min_precision, min_enrichment=template.min_enrichment)
     result.per_cluster = recovery_by_cluster(labels, truth)
+    if "cohesion" in fit:
+        # The consensus says how firmly each group holds together; it goes on the group's row and on every
+        # gene named from it, where it qualifies the claim, rather than in a separate table.
+        result.per_cluster["cohesion"] = result.per_cluster["cluster"].map(fit["cohesion"])
+        if len(result.inference):
+            pos = {g: i for i, g in enumerate(np.asarray(sub["gene_id"]))}
+            result.inference["group_cohesion"] = result.inference["cluster"].map(fit["cohesion"])
+            result.inference["gene_confidence"] = [float(fit["confidence"][pos[g]]) if g in pos else np.nan
+                                                   for g in result.inference["gene_id"]]
     if len(result.inference) and len(fit["classes"]):
         # The partition's ids are class codes, so the class each one MEANS goes on the row. A table
         # saying "group 3" where the model said "dense granules" would be unreadable. An unsupervised

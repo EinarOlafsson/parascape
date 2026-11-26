@@ -81,13 +81,18 @@ class InferModule(QtCore.QObject):
         from . import harness_answer as HA
         self.method_choice = QtWidgets.QComboBox()
         self.method_choice.addItem("Map groups (name genes in groups mostly one label)", "map")
+        self.method_choice.addItem("Tested groups (the benchmark's clustering; each group says how firmly it holds)",
+                                   "benchmarked")
         for key, name in HA.METHODS.items():
             self.method_choice.addItem(f"{name}, graded on held-out genes", key)
         self.method_choice.setToolTip(TH.tip(
             "How the question is answered. Map groups build the map from what the question may use and name "
-            "genes in groups that are mostly one label. Every other method answers each yes/no form of the "
-            "label, is graded on genes it never saw (a frozen test, touched once), then ranks the genes with "
-            "no label; a ranking whose grade does not reach the fill bar is never written as fact."))
+            "genes in groups that are mostly one label. Tested groups do the same with the clustering the "
+            "Infer benchmark chose (whitened profile, a consensus of several runs, about 300 groups), and "
+            "every named gene carries how often the runs agree on its group. Every other method answers each "
+            "yes/no form of the label, is graded on genes it never saw (a frozen test, touched once), then "
+            "ranks the genes with no label; a ranking whose grade does not reach the fill bar is never "
+            "written as fact."))
         solid_dropdown(self.method_choice)
         hl.addWidget(self.method_choice)
         hl.addWidget(_muted("Same question, same evidence; only the method changes."))
@@ -212,8 +217,8 @@ class InferModule(QtCore.QObject):
 
     def answer_question(self) -> None:
         """Answer the selected question with the chosen method (instruction 74, Infer step 3)."""
-        if self.method() == "map":
-            self.panel.run_question()
+        if self.method() in ("map", "benchmarked"):
+            self.panel.run_question(method=None if self.method() == "map" else self.method())
             return
         panel = self.panel
         q = panel.current_question()

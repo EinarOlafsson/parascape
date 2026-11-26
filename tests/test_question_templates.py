@@ -819,3 +819,35 @@ def test_a_label_from_an_import_holds_out_the_rest_of_that_import():
         assert R.same_import(nodes, "other") == {}
     finally:
         R.IMPORT_GROUPS.clear()
+
+
+# --------------------------------------------------------------------------- the benchmarked recipe
+def test_the_benchmarked_recipe_recovers_planted_groups_and_says_how_firmly_they_hold():
+    """Positive and negative control for the recipe the Infer benchmark chose (E10): planted groups come
+    back, and their cohesion is far higher than that of groups cut out of pure noise."""
+    from sklearn.metrics import adjusted_rand_score
+    from parascape import methods
+    rng = np.random.default_rng(0)
+    truth = np.repeat(np.arange(20), 25)
+    X = rng.normal(size=(500, 40)) + 4.0 * rng.normal(size=(20, 40))[truth]
+    fit = methods.benchmarked(X, seed=1, k_target=20, seeds=3)
+    assert fit["unsupervised"] and len(fit["partition"]) == 500
+    assert adjusted_rand_score(truth, fit["partition"]) > 0.8
+    planted = np.nanmedian(list(fit["cohesion"].values()))
+    noise = methods.benchmarked(rng.normal(size=(500, 40)), seed=1, k_target=20, seeds=3)
+    assert planted > 0.8
+    assert planted > np.nanmedian(list(noise["cohesion"].values())) + 0.2
+    assert fit["settings"]["largest_group_share"] < 0.2
+
+
+def test_the_benchmarked_method_answers_a_template_with_cohesion_on_every_named_gene(nodes):
+    """Same closure, same scoring and same control as every other method; the consensus adds how firmly
+    each group holds to the group rows and to each named gene."""
+    res = R.run(nodes, R.QuestionTemplate(question="q", inputs=[FITNESS], holdout="compartment",
+                                          method="benchmarked"), tune=False, log=lambda *a: None)
+    assert res.ok, res.stopped_because
+    assert res.settings["method"] == "benchmarked"
+    assert "cohesion" in res.per_cluster.columns
+    if len(res.inference):
+        assert {"group_cohesion", "gene_confidence"} <= set(res.inference.columns)
+        assert res.inference["gene_confidence"].between(0, 1).all()

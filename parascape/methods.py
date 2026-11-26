@@ -535,3 +535,94 @@ def classification_candidates(codes, truth, gene_ids, classes, validation,
                              enrichment=lift, base_rate=prior, n_labelled_in_cluster=int(row.n_label),
                              evidence_status="model_prediction_with_class_level_cv_support"))
     return pd.DataFrame(rows, columns=columns)
+
+
+# --------------------------------------------------------------------------- the benchmarked recipe
+#: The clustering default chosen by the Infer benchmark (parascape-paper `infer_benchmark/LOG.md`, E10,
+#: 2026-11-25): z-scored columns with no per-view reduction, PCA whitening to 99 % of the variance, a cosine
+#: 15-nearest-neighbour graph, and Louvain consensus over several seeds cut at about 300 groups. Against the
+#: previous map it kept more held-out CORUM complexes together (+0.07 excess), raised STRING precision and F1,
+#: recovered every planted module, and did not make giant clusters. It is a fine-k recipe: at about 100 groups
+#: the same chain was worse, so the target is fixed rather than tuned per question.
+BENCH_K = 300
+BENCH_SEEDS = 5
+BENCH_KNN = 15
+
+
+def _louvain(graph, resolution: float, seed: int, n: int) -> np.ndarray:
+    import networkx as nx
+    out = np.empty(n, int)
+    for i, members in enumerate(nx.community.louvain_communities(graph, resolution=resolution, seed=seed)):
+        out[list(members)] = i
+    return out
+
+
+def benchmarked(X: np.ndarray, seed: int = 42, k_target: int = BENCH_K, seeds: int = BENCH_SEEDS,
+                knn: int = BENCH_KNN) -> dict:
+    """The benchmarked partition, with how firmly each group and each gene holds together.
+
+    The consensus is not only a better partition; it is also its own quality measure, and a free one. Across
+    the seeds, the share of runs in which two genes land together is their co-association. A group's
+    COHESION is the mean co-association of its members (1 = every seed agrees on it), and a gene's
+    CONFIDENCE is its mean co-association with the rest of its group. Both ride on every named gene, so a
+    call from a group the seeds keep redrawing reads differently from one they all agree on.
+    """
+    import networkx as nx
+    from scipy.cluster.hierarchy import fcluster, linkage
+    from scipy.spatial.distance import squareform
+    from sklearn.decomposition import PCA
+    from sklearn.neighbors import NearestNeighbors
+    X = np.nan_to_num(np.asarray(X, dtype=float))
+    n = len(X)
+    sd = X.std(axis=0)
+    X = (X[:, sd > 0] - X[:, sd > 0].mean(axis=0)) / sd[sd > 0]
+    settings = {"method": "benchmarked", "k_target": int(k_target), "seeds": int(seeds), "knn": int(knn),
+                "source": "Infer benchmark E10 (parascape-paper infer_benchmark/LOG.md, 2026-11-25)"}
+    if n < 3 * knn or X.shape[1] < 2:
+        return {"partition": np.full(n, -1), "classes": [], "model": None, "unsupervised": True,
+                "settings": {**settings, "refused": "too few genes or columns"}, "cohesion": {},
+                "confidence": np.full(n, np.nan)}
+    Z = PCA(n_components=0.99, whiten=True, random_state=seed).fit_transform(X)
+    k = min(knn, n - 1)
+    _, ind = NearestNeighbors(n_neighbors=k + 1, metric="cosine").fit(Z).kneighbors(Z)
+    G = nx.Graph()
+    G.add_nodes_from(range(n))
+    G.add_edges_from((i, int(j)) for i, row in enumerate(ind) for j in row[1:])
+    target = int(min(k_target, max(2, n // 10)))
+    lo, hi, best = np.log(0.05), np.log(200.0), None
+    for _ in range(16):                        # resolution bisected (log scale) to the target group count
+        mid = (lo + hi) / 2
+        lab = _louvain(G, float(np.exp(mid)), seed, n)
+        g = len(np.unique(lab))
+        if best is None or abs(g - target) < abs(best[1] - target):
+            best = (float(np.exp(mid)), g)
+        if abs(g - target) <= 0.05 * target:
+            break
+        lo, hi = (mid, hi) if g < target else (lo, mid)
+    resolution = best[0]
+    runs = [_louvain(G, resolution, seed + 97 * b, n) for b in range(seeds)]
+    C = np.zeros((n, n), dtype=np.float32)
+    for lab in runs:
+        C += lab[:, None] == lab[None, :]
+    C /= len(runs)
+    D = 1.0 - C
+    np.fill_diagonal(D, 0.0)
+    groups = int(np.median([len(np.unique(lab)) for lab in runs]))
+    part = fcluster(linkage(squareform(D, checks=False), method="average"), t=max(groups, 2),
+                    criterion="maxclust") - 1
+    cohesion, confidence = {}, np.full(n, np.nan)
+    for c in np.unique(part):
+        m = np.flatnonzero(part == c)
+        if len(m) < 2:
+            cohesion[int(c)] = np.nan
+            continue
+        block = C[np.ix_(m, m)]
+        per_gene = (block.sum(axis=1) - 1.0) / (len(m) - 1)
+        confidence[m] = per_gene
+        cohesion[int(c)] = float(per_gene.mean())
+    sizes = np.bincount(part)
+    settings.update({"resolution": round(resolution, 3), "groups": int(len(sizes)),
+                     "whitened_components": int(Z.shape[1]),
+                     "largest_group_share": round(float(sizes.max() / n), 4)})
+    return {"partition": part, "classes": [], "model": None, "unsupervised": True, "settings": settings,
+            "cohesion": cohesion, "confidence": confidence}

@@ -2710,14 +2710,20 @@ class AnalysisPanel(QtWidgets.QWidget):
 
         self._run(job, done, name="methods text")
 
-    def run_question(self):
-        """Answer the selected question, and put the control's verdict beside the answer."""
+    def run_question(self, method: str | None = None):
+        """Answer the selected question, and put the control's verdict beside the answer.
+
+        `method` overrides how the map is grouped (for example "benchmarked"); None keeps the
+        question's own method."""
         q = self.current_question()
         if q is None or self.nodes is None:
             return
+        from dataclasses import replace
         from .questions import as_template
         from .question_templates import run as run_template
         template = self._question_template(q)
+        if method:
+            template = replace(template, method=method)
         self._start_table(self.question_table, [])
         self.question_report.setPlainText("")
         self._question_result = None
@@ -2759,6 +2765,12 @@ class AnalysisPanel(QtWidgets.QWidget):
             f"{result.summary.get('best_f1', float('nan')):.3f} "
             f"({result.summary.get('best_label', '')})",
         ]
+        if "cohesion" in getattr(result, "per_cluster", pd.DataFrame()):
+            coh = result.per_cluster.drop_duplicates("cluster")["cohesion"].dropna()
+            if len(coh):
+                lines.append(f"<br><b>how firmly groups hold</b>: median cohesion {coh.median():.2f} "
+                             f"(share of runs that keep a group's genes together; 1 = every run agrees), "
+                             f"{int((coh >= 0.75).sum())} of {len(coh)} groups at 0.75 or more")
         if result.inference_note:
             lines.append(f"<br><b>{result.inference_note}</b>")
         if len(result.inference) and not agreed:
