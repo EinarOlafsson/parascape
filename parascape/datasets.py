@@ -201,8 +201,20 @@ OOCYST_ITRAQ_COLUMNS = (
 #: next data release. Rewriting `parascape/data/nodes.parquet` between releases broke the frozen
 #: functional benchmarks bound to its bytes and its column manifest (2026-11-25), so the table is
 #: rebuilt at a release and nowhere else. Key -> the release that ships the columns.
-JOINED_AT_NEXT_RELEASE = {"literature_affinage": "0.0.14.0", "string_tgon_measured": "0.0.14.0",
+JOINED_AT_NEXT_RELEASE = {"literature_affinage": "0.0.14.0", "ms_uniform_research": "0.0.14.0",
+                          "string_tgon_measured": "0.0.14.0",
                           "string_tgon_transferred": "0.0.14.0", "corum_human_by_orthology": "0.0.14.0"}
+
+def _ms_uniform_columns() -> tuple:
+    """The admitted uniform-MS project columns, read from the shipped project list (instruction 104)."""
+    import csv
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "ms_uniform",
+                        "ms_project_abundance_projects.tsv")
+    if not os.path.exists(path):
+        return ()
+    with open(path, newline="") as fh:
+        return tuple(r["column"] for r in csv.DictReader(fh, delimiter="\t") if r["admitted"] == "True")
+
 
 REGISTRY = [
     Dataset("esm2_protein", "Frozen ESM-2 protein representations", "reference", "computed sequence features",
@@ -1380,6 +1392,22 @@ REGISTRY = [
                  "`vs_host` column is COMPUTED here, sample-centred so it compares proportion "
                  "rather than amount; the archive's own EV-minus-cell column is not used because "
                  "its transform could not be reproduced to better than 3 log units.", organism=organisms.TOXOPLASMA),
+    Dataset("ms_uniform_research", "Uniform re-search of Toxoplasma PRIDE projects (protein abundance)",
+            "post_translation", "proteomics",
+            "Per gene and admitted PRIDE project: mean log2 Top3 protein abundance (median-centred per raw file) "
+            "from one uniform Sage search of every project's raw files",
+            _ms_uniform_columns(), "93 PRIDE project folders, 5,422 genes",
+            accession="PRIDE (ProteomeXchange); per-project list in parascape/data/ms_uniform/",
+            url="https://ftp.pride.ebi.ac.uk/pride/data/archive/",
+            path="parascape/data/ms_uniform/ms_project_abundance.parquet",
+            note="RE-SEARCHED, not deposited: raw files streamed from PRIDE, converted (ThermoRawFileParser), searched "
+                 "with Sage against ME49 + human + mouse + contaminants with reversed decoys "
+                 "(scripts/ms_uniform_search.py); peptides at q <= 0.01 unique to one Toxoplasma gene, Top3 "
+                 "(Silva et al. 2006), log2, median-centred per file (parascape/ms_genes.py). Admitted: >= 100 genes "
+                 "and Spearman >= 0.15 with the existing proteome; the reason for every folder left out is in "
+                 "ms_project_abundance_projects.tsv. Isobaric projects are per raw file (channels summed). "
+                 "Per-condition values follow when sample designs are curated (instruction 104).",
+            organism=organisms.TOXOPLASMA),
     Dataset("string_tgon_measured", "STRING v12.0, T. gondii VEG, organism's own evidence",
             "reference", "interaction",
             "Modules (Louvain communities of 10 or more genes) of STRING pairs with Toxoplasma's own experimental "

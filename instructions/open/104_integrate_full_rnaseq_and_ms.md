@@ -33,6 +33,10 @@
 ## To do
 
 - [ ] Verify the new snapshot validated and replaced `current`; release it to the app (release build).
-- [ ] MS admission: per-sample design (PRIDE designs pipeline) for the raw files, an admission rule (e.g. >= 100
-      genes quantified, parasite share of peptides), then a node/expression-style pack for the app.
+- [x] MS admission, per project (Einar 2026-11-26: "per-project now, designs later"): 93 of 158 folders admitted
+      (>= 100 genes and Spearman >= 0.15 with the existing proteome; 57 too few genes, 8 enrichment-like), 5,422
+      genes. `parascape/data/ms_uniform/` (table + per-folder reasons), registry entry `ms_uniform_research`
+      (JOINED_AT_NEXT_RELEASE 0.0.14.0), joined in `build_graph.load_nodes` as `msu_<project>` columns.
+- [ ] Per-condition values for the 31 usable projects with an SDRF design
+      (processing_audit/pride_sample_designs), then curated designs for the other 68 (Sonnet agents).
 - [ ] Retry PXD000297 at 48 GB; re-download the corrupt PXD052656 file.

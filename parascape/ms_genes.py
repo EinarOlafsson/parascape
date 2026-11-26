@@ -73,3 +73,38 @@ def summary(project: str, lfq: pd.DataFrame, G: pd.DataFrame, labelled: bool) ->
             "genes_quantified": int(G.notna().any(axis=1).sum()),
             "genes_in_every_file": int(G.notna().all(axis=1).sum()) if G.shape[1] else 0,
             "labelled": bool(labelled)}
+
+
+#: Admission into the gene table (Einar 2026-11-26: per project now, designs later).
+MIN_GENES = 100
+MIN_RHO_PROTEOME = 0.15     # below this a project tracks enrichment (pull-down), not abundance
+TABLE_DIR = "ms_uniform"
+TABLE = "ms_project_abundance.parquet"
+PROJECTS_TSV = TABLE.replace(".parquet", "_projects.tsv")
+
+
+def project_abundance(G: pd.DataFrame) -> pd.Series:
+    """One value per gene for a project: the mean of its median-centred log2 Top3 over the files that measured it."""
+    return G.mean(axis=1, skipna=True)
+
+
+def column_name(project: str, instrument: str, n_instruments: int) -> str:
+    """Node column for one project (and instrument, when a project was searched in more than one)."""
+    suffix = "" if n_instruments == 1 else "_" + instrument.replace("sage_", "").lower()
+    return f"msu_{project}{suffix}"
+
+
+def labels(base: str = "", log=print, resolve=None, root: str | None = None) -> pd.DataFrame:
+    """Per-gene node columns (one per admitted project), indexed by gene id; joined by build_graph.load_nodes."""
+    import os
+    root = root or os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", TABLE_DIR)
+    path = os.path.join(root, TABLE)
+    if not os.path.exists(path):
+        log(f"uniform MS re-search: no table at {root}; columns left out")
+        return pd.DataFrame()
+    t = pd.read_parquet(path).set_index("gene_id")
+    if resolve is not None:
+        t.index = pd.Index([resolve(g) or g for g in t.index], name="gene_id")
+        t = t[~t.index.duplicated()]
+    log(f"uniform MS re-search: {t.shape[1]} projects, {int(t.notna().any(axis=1).sum()):,} genes quantified")
+    return t

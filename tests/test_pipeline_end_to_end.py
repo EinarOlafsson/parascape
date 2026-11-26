@@ -398,11 +398,12 @@ def test_the_two_species_caches_do_not_answer_each_other(nodes):
 def test_a_dataset_joined_at_the_next_release_is_built_by_the_graph_join():
     """The exemption above is only honest while the join really produces the columns."""
     import inspect
-    from parascape import build_graph, interaction_labels, literature_findings
+    from parascape import build_graph, interaction_labels, literature_findings, ms_genes
     source = inspect.getsource(build_graph.load_nodes)
-    assert "literature_findings.labels" in source and "interaction_labels.labels" in source
+    assert all(f"{m}.labels" in source for m in ("literature_findings", "interaction_labels", "ms_genes"))
     built = literature_findings.labels(log=lambda *a: None).join(
-        interaction_labels.labels(log=lambda *a: None), how="outer")
+        interaction_labels.labels(log=lambda *a: None), how="outer").join(
+        ms_genes.labels(log=lambda *a: None), how="outer")
     for key in datasets.JOINED_AT_NEXT_RELEASE:
         d = next(x for x in datasets.REGISTRY if x.key == key)
         assert set(d.columns) <= set(built.columns), key
