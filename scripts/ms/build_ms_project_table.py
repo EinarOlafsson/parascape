@@ -33,6 +33,11 @@ def main(argv=None) -> int:
     nodes = pd.read_parquet(args.nodes).set_index("gene_id")
     ref = nodes[[c for c in nodes.columns if c.startswith("proteome_log2_normalized")]].mean(axis=1)
     summary = pd.read_csv(os.path.join(args.omics, "prepared_ms_genes", "summary.csv"))
+    # Curated experiment types (instruction 104, Sonnet curation 2026-11-26): only abundance-meaningful projects
+    # (whole proteome, subcellular fraction, secretome) may enter an abundance column.
+    cur = pd.read_csv(os.path.join(ROOT, "parascape", "data", M.TABLE_DIR, "ms_curated_projects.tsv"), sep="\t")
+    curated = {r.project: {"experiment_type": r.experiment_type, "abundance_meaningful": bool(r.abundance_meaningful)}
+               for r in cur.itertuples()}
     per_project = summary.groupby("project")["instrument"].nunique()
     cols, meta = {}, []
     for f in sorted(glob.glob(os.path.join(args.omics, "prepared_ms_genes", "*", "sage_*", "genes.parquet"))):
@@ -42,11 +47,15 @@ def main(argv=None) -> int:
         both = pd.concat([a, ref], axis=1).dropna()
         rho = float(spearmanr(both.iloc[:, 0], both.iloc[:, 1])[0]) if len(both) > 50 else np.nan
         n = int(a.notna().sum())
-        why = ("" if n >= M.MIN_GENES and (np.isfinite(rho) and rho >= M.MIN_RHO_PROTEOME) else
+        kind = curated.get(project, {})
+        why = (f"curated as {kind.get('experiment_type')}: measures enrichment or identification, not abundance"
+               if kind and not kind.get("abundance_meaningful") else
+               "" if n >= M.MIN_GENES and (np.isfinite(rho) and rho >= M.MIN_RHO_PROTEOME) else
                f"{n} genes (< {M.MIN_GENES})" if n < M.MIN_GENES else
                f"Spearman {rho:.2f} with the existing proteome (< {M.MIN_RHO_PROTEOME}): enrichment-like")
         name = M.column_name(project, instrument, int(per_project.get(project, 1)))
         meta.append({"column": name, "project": project, "instrument": instrument, "files": G.shape[1],
+                     "experiment_type": kind.get("experiment_type", "not curated"),
                      "genes": n, "rho_existing_proteome": rho, "admitted": not why, "why_not": why})
         if not why:
             cols[name] = a

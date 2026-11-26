@@ -37,6 +37,14 @@
       (>= 100 genes and Spearman >= 0.15 with the existing proteome; 57 too few genes, 8 enrichment-like), 5,422
       genes. `parascape/data/ms_uniform/` (table + per-folder reasons), registry entry `ms_uniform_research`
       (JOINED_AT_NEXT_RELEASE 0.0.14.0), joined in `build_graph.load_nodes` as `msu_<project>` columns.
+- [x] CORRECTION (2026-11-26, after curation): the 91 admitted projects were curated by 4 Sonnet agents from
+      PRIDE descriptions, protocols and file names (`parascape/data/ms_uniform/ms_curated_projects.tsv`,
+      `ms_curated_files.tsv`; rules in mnt2/parascape/ms_design_curation/RULES.md; 40 low / 38 medium / 13 high
+      confidence). Only 6 measure abundance (2 whole proteome, 3 secretome, 1 subcellular fraction); 54 IP, 16
+      proximity labelling, 10 PTM enrichment, 2 crosslinking, 3 other. The abundance filter (Spearman >= 0.15) let
+      enrichment projects through, so admission now also requires the curated type: 6 folders, 2,626 genes.
+- [ ] The 80 enrichment projects as INTERACTION evidence: bait (from the curated design) x prey enrichment over the
+      project's controls, into the binding-partner benchmark (E12) and the network layers.
 - [ ] Per-condition values for the 31 usable projects with an SDRF design
       (processing_audit/pride_sample_designs), then curated designs for the other 68 (Sonnet agents).
 - [ ] Retry PXD000297 at 48 GB; re-download the corrupt PXD052656 file.

@@ -1396,15 +1396,17 @@ REGISTRY = [
             "post_translation", "proteomics",
             "Per gene and admitted PRIDE project: mean log2 Top3 protein abundance (median-centred per raw file) "
             "from one uniform Sage search of every project's raw files",
-            _ms_uniform_columns(), "93 PRIDE project folders, 5,422 genes",
+            _ms_uniform_columns(), "PRIDE projects curated as abundance-meaningful (see ms_curated_projects.tsv)",
             accession="PRIDE (ProteomeXchange); per-project list in parascape/data/ms_uniform/",
             url="https://ftp.pride.ebi.ac.uk/pride/data/archive/",
             path="parascape/data/ms_uniform/ms_project_abundance.parquet",
             note="RE-SEARCHED, not deposited: raw files streamed from PRIDE, converted (ThermoRawFileParser), searched "
                  "with Sage against ME49 + human + mouse + contaminants with reversed decoys "
                  "(scripts/ms_uniform_search.py); peptides at q <= 0.01 unique to one Toxoplasma gene, Top3 "
-                 "(Silva et al. 2006), log2, median-centred per file (parascape/ms_genes.py). Admitted: >= 100 genes "
-                 "and Spearman >= 0.15 with the existing proteome; the reason for every folder left out is in "
+                 "(Silva et al. 2006), log2, median-centred per file (parascape/ms_genes.py). Admitted: curated as "
+                 "abundance-meaningful (whole proteome, subcellular fraction or secretome; IP, proximity labelling, "
+                 "crosslinking and PTM enrichment measure enrichment, not abundance), >= 100 genes and Spearman >= "
+                 "0.15 with the existing proteome; the reason for every folder left out is in "
                  "ms_project_abundance_projects.tsv. Isobaric projects are per raw file (channels summed). "
                  "Per-condition values follow when sample designs are curated (instruction 104).",
             organism=organisms.TOXOPLASMA),

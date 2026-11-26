@@ -1,0 +1,1295 @@
+project	raw_file	condition	strain	life_stage	genotype	treatment	time	fraction	replicate
+PXD001042	T1	RH tachyzoite gel-band pools	RH	tachyzoite				T1	
+PXD001042	T2	RH tachyzoite gel-band pools	RH	tachyzoite				T2	
+PXD001042	T3	RH tachyzoite gel-band pools	RH	tachyzoite				T3	
+PXD001042	T4	RH tachyzoite gel-band pools	RH	tachyzoite				T4	
+PXD001042	T5	RH tachyzoite gel-band pools	RH	tachyzoite				T5	
+PXD001042	T6	RH tachyzoite gel-band pools	RH	tachyzoite				T6	
+PXD001042	T7	RH tachyzoite gel-band pools	RH	tachyzoite				T7	
+PXD001042	T8	RH tachyzoite gel-band pools	RH	tachyzoite				T8	
+PXD004083	012915_23256_HG_e	012915_HG							23256
+PXD004083	012915_23257_HG_e	012915_HG							23257
+PXD004083	012915_23258_HG_e	012915_HG							23258
+PXD004083	012915_23259_HG_e	012915_HG							23259
+PXD004083	012915_23260_HG_e	012915_HG							23260
+PXD004083	012915_23261_HG_e	012915_HG							23261
+PXD004083	012915_23262_HG_e	012915_HG							23262
+PXD004083	012915_23263_HG_e	012915_HG							23263
+PXD004083	012915_23264_HG_e	012915_HG							23264
+PXD004083	012915_23265_HG_e	012915_HG							23265
+PXD004083	102214_22773_CF_e	102214_CF							22773
+PXD004083	102214_22774_CF_e	102214_CF							22774
+PXD004895	20141031_PM_MvToxo1_1	EV from purified T. gondii	T. gondii	tachyzoite		EV from purified T. gondii		extracellular vesicles	bio1_tech1
+PXD004895	20141031_PM_MvToxo1_2	EV from purified T. gondii	T. gondii	tachyzoite		EV from purified T. gondii		extracellular vesicles	bio1_tech2
+PXD004895	20141031_PM_MvToxo1_3	EV from purified T. gondii	T. gondii	tachyzoite		EV from purified T. gondii		extracellular vesicles	bio1_tech3
+PXD004895	20141031_PM_MvToxo2_1	EV from purified T. gondii	T. gondii	tachyzoite		EV from purified T. gondii		extracellular vesicles	bio2_tech1
+PXD004895	20141031_PM_MvToxo2_2	EV from purified T. gondii	T. gondii	tachyzoite		EV from purified T. gondii		extracellular vesicles	bio2_tech2
+PXD004895	20141031_PM_MvToxo2_3	EV from purified T. gondii	T. gondii	tachyzoite		EV from purified T. gondii		extracellular vesicles	bio2_tech3
+PXD004895	20141031_PM_MvToxo3_1	EV from purified T. gondii	T. gondii	tachyzoite		EV from purified T. gondii		extracellular vesicles	bio3_tech1
+PXD004895	20141031_PM_MvToxo3_2	EV from purified T. gondii	T. gondii	tachyzoite		EV from purified T. gondii		extracellular vesicles	bio3_tech2
+PXD004895	20141031_PM_MvToxo3_3	EV from purified T. gondii	T. gondii	tachyzoite		EV from purified T. gondii		extracellular vesicles	bio3_tech3
+PXD004895	20141120_PM_MvHFF1_1	EV from uninfected HFF				EV from uninfected HFF		extracellular vesicles	bio1_tech1
+PXD004895	20141120_PM_MvHFF1_2	EV from uninfected HFF				EV from uninfected HFF		extracellular vesicles	bio1_tech2
+PXD004895	20141120_PM_MvHFF1_3	EV from uninfected HFF				EV from uninfected HFF		extracellular vesicles	bio1_tech3
+PXD004895	20141120_PM_MvHFF2_1	EV from uninfected HFF				EV from uninfected HFF		extracellular vesicles	bio2_tech1
+PXD004895	20141120_PM_MvHFF2_2	EV from uninfected HFF				EV from uninfected HFF		extracellular vesicles	bio2_tech2
+PXD004895	20141120_PM_MvHFF2_3	EV from uninfected HFF				EV from uninfected HFF		extracellular vesicles	bio2_tech3
+PXD004895	20141120_PM_MvHFF3_1	EV from uninfected HFF				EV from uninfected HFF		extracellular vesicles	bio3_tech1
+PXD004895	20141120_PM_MvHFF3_2	EV from uninfected HFF				EV from uninfected HFF		extracellular vesicles	bio3_tech2
+PXD004895	20141120_PM_MvHFF3_3	EV from uninfected HFF				EV from uninfected HFF		extracellular vesicles	bio3_tech3
+PXD004895	20141120_PM_MvHT1_1	EV from T. gondii-infected HFF	T. gondii			EV from T. gondii-infected HFF		extracellular vesicles	bio1_tech1
+PXD004895	20141120_PM_MvHT1_2	EV from T. gondii-infected HFF	T. gondii			EV from T. gondii-infected HFF		extracellular vesicles	bio1_tech2
+PXD004895	20141120_PM_MvHT1_3	EV from T. gondii-infected HFF	T. gondii			EV from T. gondii-infected HFF		extracellular vesicles	bio1_tech3
+PXD004895	20141120_PM_MvHT2_1	EV from T. gondii-infected HFF	T. gondii			EV from T. gondii-infected HFF		extracellular vesicles	bio2_tech1
+PXD004895	20141120_PM_MvHT2_2	EV from T. gondii-infected HFF	T. gondii			EV from T. gondii-infected HFF		extracellular vesicles	bio2_tech2
+PXD004895	20141120_PM_MvHT2_3	EV from T. gondii-infected HFF	T. gondii			EV from T. gondii-infected HFF		extracellular vesicles	bio2_tech3
+PXD004895	20141120_PM_MvHT3_1	EV from T. gondii-infected HFF	T. gondii			EV from T. gondii-infected HFF		extracellular vesicles	bio3_tech1
+PXD004895	20141120_PM_MvHT3_2	EV from T. gondii-infected HFF	T. gondii			EV from T. gondii-infected HFF		extracellular vesicles	bio3_tech2
+PXD004895	20141120_PM_MvHT3_3	EV from T. gondii-infected HFF	T. gondii			EV from T. gondii-infected HFF		extracellular vesicles	bio3_tech3
+PXD006235	20160824_04_Asp3_TMT10TAILS_npo	Asp3 TMT10 TAILS npo	T. gondii			TMT10plex		pre-TAILS (no pullout)	04
+PXD006235	20160824_05_Asp3_TMT10TAILS_npo	Asp3 TMT10 TAILS npo	T. gondii			TMT10plex		pre-TAILS (no pullout)	05
+PXD006235	20160824_06_Asp3_TMT10TAILS_npo	Asp3 TMT10 TAILS npo	T. gondii			TMT10plex		pre-TAILS (no pullout)	06
+PXD006235	20160824_07_Asp3_TMT10TAILS_po	Asp3 TMT10 TAILS po	T. gondii			TMT10plex		TAILS N-terminal enriched (polymer pullout)	07
+PXD006235	20160824_08_Asp3_TMT10TAILS_po	Asp3 TMT10 TAILS po	T. gondii			TMT10plex		TAILS N-terminal enriched (polymer pullout)	08
+PXD006235	20160824_09_Asp3_TMT10TAILS_po	Asp3 TMT10 TAILS po	T. gondii			TMT10plex		TAILS N-terminal enriched (polymer pullout)	09
+PXD010622	02142017_SecPrtn_Trypsin	secretome_discovery						secreted	
+PXD010622	02272017_SecPrtnTryp_ETD_150msec_IT	secretome_discovery						secreted	
+PXD010622	03242017_Mic2_Targeted_ETD125msec15SA_OT	MIC2_targeted							
+PXD010622	06212018_TSR_15V	TSR_15V							
+PXD010622	06212018_TSR_27V	TSR_27V							
+PXD010622	11072017_120min_SecPrntsTry_OctSample_QE_1uL	secretome_discovery						secreted	
+PXD010622	12012017_PRM_SecPrtnTryp_Oct2017Sample	secretome_discovery						secreted	
+PXD011692	20171218_QE25CM_130_pl18001_MBrochet_GC	GC co-IP, cross-linked intracellular tachyzoites		tachyzoite		1% PFA cross-link, co-IP			1
+PXD012103	IP1_HCE1	HCE1-HA IP	RH		HCE1-HA				1
+PXD012103	IP1_RH	RH untagged control IP	RH		untagged parental RH				1
+PXD012103	IP2_HCE1	HCE1-HA IP	RH		HCE1-HA				2
+PXD012103	IP2_RH	RH untagged control IP	RH		untagged parental RH				2
+PXD014133	LP2o_ME49_1_rep1	ME49_LP2o_1	ME49	tachyzoite					1
+PXD014133	LP2o_ME49_1_rep2	ME49_LP2o_1	ME49	tachyzoite					2
+PXD014133	LP2o_ME49_1_rep3	ME49_LP2o_1	ME49	tachyzoite					3
+PXD014133	LP2o_ME49_2_rep1	ME49_LP2o_2	ME49	tachyzoite					1
+PXD014133	LP2o_ME49_2_rep2	ME49_LP2o_2	ME49	tachyzoite					2
+PXD014133	LP2o_ME49_2_rep3	ME49_LP2o_2	ME49	tachyzoite					3
+PXD014133	LP2o_ME49_3_rep1	ME49_LP2o_3	ME49	tachyzoite					1
+PXD014133	LP2o_ME49_3_rep2	ME49_LP2o_3	ME49	tachyzoite					2
+PXD014133	LP2o_ME49_3_rep3	ME49_LP2o_3	ME49	tachyzoite					3
+PXD014133	LP2o_ME49_4_rep1	ME49_LP2o_4	ME49	tachyzoite					1
+PXD014133	LP2o_ME49_4_rep2	ME49_LP2o_4	ME49	tachyzoite					2
+PXD014133	LP2o_ME49_4_rep3	ME49_LP2o_4	ME49	tachyzoite					3
+PXD014133	LP2o_RH1_rep1	RH_LP2o_1	RH	tachyzoite					1
+PXD014133	LP2o_RH1_rep2	RH_LP2o_1	RH	tachyzoite					2
+PXD014133	LP2o_RH1_rep3	RH_LP2o_1	RH	tachyzoite					3
+PXD014133	LP2o_RH2_rep1	RH_LP2o_2	RH	tachyzoite					1
+PXD014133	LP2o_RH2_rep2	RH_LP2o_2	RH	tachyzoite					2
+PXD014133	LP2o_RH2_rep3	RH_LP2o_2	RH	tachyzoite					3
+PXD014133	LP2o_RH3_rep1	RH_LP2o_3	RH	tachyzoite					1
+PXD014133	LP2o_RH3_rep2	RH_LP2o_3	RH	tachyzoite					2
+PXD014133	LP2o_RH3_rep3	RH_LP2o_3	RH	tachyzoite					3
+PXD014133	LP2o_RH4_rep1	RH_LP2o_4	RH	tachyzoite					1
+PXD014133	LP2o_RH4_rep2	RH_LP2o_4	RH	tachyzoite					2
+PXD014133	LP2o_RH4_rep3	RH_LP2o_4	RH	tachyzoite					3
+PXD014133	LPCr_ME49_1_rep1	ME49_LPCr_1	ME49	tachyzoite					1
+PXD014133	LPCr_ME49_1_rep2	ME49_LPCr_1	ME49	tachyzoite					2
+PXD014133	LPCr_ME49_1_rep3	ME49_LPCr_1	ME49	tachyzoite					3
+PXD014133	LPCr_ME49_2_rep1	ME49_LPCr_2	ME49	tachyzoite					1
+PXD014133	LPCr_ME49_2_rep2	ME49_LPCr_2	ME49	tachyzoite					2
+PXD014133	LPCr_ME49_2_rep3	ME49_LPCr_2	ME49	tachyzoite					3
+PXD014133	LPCr_ME49_3_rep1	ME49_LPCr_3	ME49	tachyzoite					1
+PXD014133	LPCr_ME49_3_rep2	ME49_LPCr_3	ME49	tachyzoite					2
+PXD014133	LPCr_ME49_3_rep3	ME49_LPCr_3	ME49	tachyzoite					3
+PXD014133	LPCr_ME49_4_rep1	ME49_LPCr_4	ME49	tachyzoite					1
+PXD014133	LPCr_ME49_4_rep2	ME49_LPCr_4	ME49	tachyzoite					2
+PXD014133	LPCr_ME49_4_rep3	ME49_LPCr_4	ME49	tachyzoite					3
+PXD014133	LPCr_RH1_rep1	RH_LPCr_1	RH	tachyzoite					1
+PXD014133	LPCr_RH1_rep2	RH_LPCr_1	RH	tachyzoite					2
+PXD014133	LPCr_RH1_rep3	RH_LPCr_1	RH	tachyzoite					3
+PXD014133	LPCr_RH2_rep1	RH_LPCr_2	RH	tachyzoite					1
+PXD014133	LPCr_RH2_rep2	RH_LPCr_2	RH	tachyzoite					2
+PXD014133	LPCr_RH2_rep3	RH_LPCr_2	RH	tachyzoite					3
+PXD014133	LPCr_RH3_rep1	RH_LPCr_3	RH	tachyzoite					1
+PXD014133	LPCr_RH3_rep2	RH_LPCr_3	RH	tachyzoite					2
+PXD014133	LPCr_RH3_rep3	RH_LPCr_3	RH	tachyzoite					3
+PXD014133	LPCr_RH4_rep1	RH_LPCr_4	RH	tachyzoite					1
+PXD014133	LPCr_RH4_rep2	RH_LPCr_4	RH	tachyzoite					2
+PXD014133	LPCr_RH4_rep3	RH_LPCr_4	RH	tachyzoite					3
+PXD014133	LQ_ME49_1_rep1	ME49_LQ_1	ME49	tachyzoite					1
+PXD014133	LQ_ME49_1_rep2	ME49_LQ_1	ME49	tachyzoite					2
+PXD014133	LQ_ME49_1_rep3	ME49_LQ_1	ME49	tachyzoite					3
+PXD014133	LQ_ME49_2_rep1	ME49_LQ_2	ME49	tachyzoite					1
+PXD014133	LQ_ME49_2_rep2	ME49_LQ_2	ME49	tachyzoite					2
+PXD014133	LQ_ME49_2_rep3	ME49_LQ_2	ME49	tachyzoite					3
+PXD014133	LQ_ME49_3_rep1	ME49_LQ_3	ME49	tachyzoite					1
+PXD014133	LQ_ME49_3_rep2	ME49_LQ_3	ME49	tachyzoite					2
+PXD014133	LQ_ME49_3_rep3	ME49_LQ_3	ME49	tachyzoite					3
+PXD014133	LQ_ME49_4_rep1	ME49_LQ_4	ME49	tachyzoite					1
+PXD014133	LQ_ME49_4_rep2	ME49_LQ_4	ME49	tachyzoite					2
+PXD014133	LQ_ME49_4_rep3	ME49_LQ_4	ME49	tachyzoite					3
+PXD014133	LQ_RH_1_rep1	RH_LQ_1	RH	tachyzoite					1
+PXD014133	LQ_RH_1_rep2	RH_LQ_1	RH	tachyzoite					2
+PXD014133	LQ_RH_1_rep3	RH_LQ_1	RH	tachyzoite					3
+PXD014133	LQ_RH_2_rep1	RH_LQ_2	RH	tachyzoite					1
+PXD014133	LQ_RH_2_rep2	RH_LQ_2	RH	tachyzoite					2
+PXD014133	LQ_RH_2_rep3	RH_LQ_2	RH	tachyzoite					3
+PXD014133	LQ_RH_3_rep1	RH_LQ_3	RH	tachyzoite					1
+PXD014133	LQ_RH_3_rep2	RH_LQ_3	RH	tachyzoite					2
+PXD014133	LQ_RH_3_rep3	RH_LQ_3	RH	tachyzoite					3
+PXD014133	LQ_RH_4_rep1	RH_LQ_4	RH	tachyzoite					1
+PXD014133	LQ_RH_4_rep2	RH_LQ_4	RH	tachyzoite					2
+PXD014133	LQ_RH_4_rep3	RH_LQ_4	RH	tachyzoite					3
+PXD015809	7464PIMa_1_exp1	RH tachyzoite anti-malonyl-K enrichment	RH	tachyzoite				PIMa_1 (unexplained)	exp1
+PXD015809	7464PIMa_1_exp2	RH tachyzoite anti-malonyl-K enrichment	RH	tachyzoite				PIMa_1 (unexplained)	exp2
+PXD015809	7464PIMa_1_exp3	RH tachyzoite anti-malonyl-K enrichment	RH	tachyzoite				PIMa_1 (unexplained)	exp3
+PXD015809	7464PIMa_2_exp1	RH tachyzoite anti-malonyl-K enrichment	RH	tachyzoite				PIMa_2 (unexplained)	exp1
+PXD015809	7464PIMa_2_exp2	RH tachyzoite anti-malonyl-K enrichment	RH	tachyzoite				PIMa_2 (unexplained)	exp2
+PXD015809	7464PIMa_2_exp3	RH tachyzoite anti-malonyl-K enrichment	RH	tachyzoite				PIMa_2 (unexplained)	exp3
+PXD015809	7464PIMa_3_exp1	RH tachyzoite anti-malonyl-K enrichment	RH	tachyzoite				PIMa_3 (unexplained)	exp1
+PXD015809	7464PIMa_3_exp2	RH tachyzoite anti-malonyl-K enrichment	RH	tachyzoite				PIMa_3 (unexplained)	exp2
+PXD015809	7464PIMa_3_exp3	RH tachyzoite anti-malonyl-K enrichment	RH	tachyzoite				PIMa_3 (unexplained)	exp3
+PXD015809	7464PIMa_4_exp1	RH tachyzoite anti-malonyl-K enrichment	RH	tachyzoite				PIMa_4 (unexplained)	exp1
+PXD015809	7464PIMa_4_exp2	RH tachyzoite anti-malonyl-K enrichment	RH	tachyzoite				PIMa_4 (unexplained)	exp2
+PXD015809	7464PIMa_4_exp3	RH tachyzoite anti-malonyl-K enrichment	RH	tachyzoite				PIMa_4 (unexplained)	exp3
+PXD016383	IP1_MYR1	MYR1-3xHA IP	RH		MYR1-3xHA	anti-HA IP			1
+PXD016383	IP1_RH	RH untagged control IP	RH		untagged	anti-HA IP			1
+PXD016383	IP2_MYR1	MYR1-3xHA IP	RH		MYR1-3xHA	anti-HA IP			2
+PXD016383	IP2_RH	RH untagged control IP	RH		untagged	anti-HA IP			2
+PXD016846	QEx2_001105	Pru MORC-HAFlag IP, gel bands	Pru		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 1105	
+PXD016846	QEx2_001107	Pru MORC-HAFlag IP, gel bands	Pru		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 1107	
+PXD016846	QEx2_001109	Pru MORC-HAFlag IP, gel bands	Pru		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 1109	
+PXD016846	QEx2_001111	Pru MORC-HAFlag IP, gel bands	Pru		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 1111	
+PXD016846	QEx2_001113	Pru MORC-HAFlag IP, gel bands	Pru		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 1113	
+PXD016846	QEx2_001115	Pru MORC-HAFlag IP, gel bands	Pru		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 1115	
+PXD016846	QEx2_001117	Pru MORC-HAFlag IP, gel bands	Pru		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 1117	
+PXD016846	QEx2_001118	Pru MORC-HAFlag IP, gel bands	Pru		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 1118	
+PXD016846	QEx2_001119	Pru MORC-HAFlag IP, gel bands	Pru		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 1119	
+PXD016846	QEx2_001120	Pru MORC-HAFlag IP, gel bands	Pru		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 1120	
+PXD016846	QEx2_001121	Pru MORC-HAFlag IP, gel bands	Pru		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 1121	
+PXD016846	QEx2_001122	Pru MORC-HAFlag IP, gel bands	Pru		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 1122	
+PXD016846	QEx2_001123	Pru MORC-HAFlag IP, gel bands	Pru		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 1123	
+PXD016846	QEx2_001124	Pru MORC-HAFlag IP, gel bands	Pru		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 1124	
+PXD016846	QEx2_001125	Pru MORC-HAFlag IP, gel bands	Pru		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 1125	
+PXD016846	QEx2_001126	Pru MORC-HAFlag IP, gel bands	Pru		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 1126	
+PXD016846	QEx2_001127	Pru MORC-HAFlag IP, gel bands	Pru		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 1127	
+PXD016846	QEx2_001128	Pru MORC-HAFlag IP, gel bands	Pru		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 1128	
+PXD016846	QEx2_001129	Pru MORC-HAFlag IP, gel bands	Pru		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 1129	
+PXD016846	VELOS9619	RH MORC-HAFlag IP, gel bands	RH		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 9619	
+PXD016846	VELOS9620	RH MORC-HAFlag IP, gel bands	RH		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 9620	
+PXD016846	VELOS9621	RH MORC-HAFlag IP, gel bands	RH		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 9621	
+PXD016846	VELOS9622	RH MORC-HAFlag IP, gel bands	RH		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 9622	
+PXD016846	VELOS9623	RH MORC-HAFlag IP, gel bands	RH		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 9623	
+PXD016846	VELOS9624	RH MORC-HAFlag IP, gel bands	RH		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 9624	
+PXD016846	VELOS9625	RH MORC-HAFlag IP, gel bands	RH		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 9625	
+PXD016846	VELOS9626	RH MORC-HAFlag IP, gel bands	RH		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 9626	
+PXD016846	VELOS9629	RH MORC-HAFlag IP, gel bands	RH		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 9629	
+PXD016846	VELOS9630	RH MORC-HAFlag IP, gel bands	RH		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 9630	
+PXD016846	VELOS9631	RH MORC-HAFlag IP, gel bands	RH		MORC-HAFlag	anti-FLAG IP + SEC		gel band/SEC fraction 9631	
+PXD018056	20190703_002_S199789_Cp_WT_PI_2_Group_2	RON13-KD complemented WT phospho-IP	RH deltaKu80 background	tachyzoite (extracellular)	RON13-KD + wild-type RON13			phosphopeptide-enriched	2
+PXD018056	20190703_003_S199782_Cp_D-A_input_1_Group_1	RON13-KD complemented D-A input	RH deltaKu80 background	tachyzoite (extracellular)	RON13-KD + catalytically dead RON13 (D to A)			input (unenriched)	1
+PXD018056	20190703_004_S199784_iKd_TAILS8_input_2_Group_1	RON13-KD input	RH deltaKu80 background	tachyzoite (extracellular)	RON13 knock-down (tet-repressible promoter)			input (unenriched)	2
+PXD018056	20190703_005_S199795_deltaKu80_PI_3_Group_2	deltaKu80 phospho-IP	RH deltaKu80 background	tachyzoite (extracellular)	parental deltaKu80			phosphopeptide-enriched	3
+PXD018056	20190703_006_S199807_Cp_D-A_PI_4_Group_2	RON13-KD complemented D-A phospho-IP	RH deltaKu80 background	tachyzoite (extracellular)	RON13-KD + catalytically dead RON13 (D to A)			phosphopeptide-enriched	4
+PXD018056	20190703_007_S199792_iKd_TAILS8_input_3_Group_1	RON13-KD input	RH deltaKu80 background	tachyzoite (extracellular)	RON13 knock-down (tet-repressible promoter)			input (unenriched)	3
+PXD018056	20190703_008_S199801_iKd_TAILS8_IP_4_Group_2	RON13-KD phospho-IP	RH deltaKu80 background	tachyzoite (extracellular)	RON13 knock-down (tet-repressible promoter)			phosphopeptide-enriched	4
+PXD018056	20190703_009_S199804_Cp_WT_input_4_Group_1	RON13-KD complemented WT input	RH deltaKu80 background	tachyzoite (extracellular)	RON13-KD + wild-type RON13			input (unenriched)	4
+PXD018056	20190703_010_S199797_Cp_WT_PI_3_Group_2	RON13-KD complemented WT phospho-IP	RH deltaKu80 background	tachyzoite (extracellular)	RON13-KD + wild-type RON13			phosphopeptide-enriched	3
+PXD018056	20190703_011_S199780_Cp_WT_input_1_Group_1	RON13-KD complemented WT input	RH deltaKu80 background	tachyzoite (extracellular)	RON13-KD + wild-type RON13			input (unenriched)	1
+PXD018056	20190703_013_S199776_iKd_TAILS8_input_1_Group_1	RON13-KD input	RH deltaKu80 background	tachyzoite (extracellular)	RON13 knock-down (tet-repressible promoter)			input (unenriched)	1
+PXD018056	20190703_014_S199803_deltaKu80_PI_4_Group_2	deltaKu80 phospho-IP	RH deltaKu80 background	tachyzoite (extracellular)	parental deltaKu80			phosphopeptide-enriched	4
+PXD018056	20190703_015_S199794_deltaKu80_input_3_Group_1	deltaKu80 input	RH deltaKu80 background	tachyzoite (extracellular)	parental deltaKu80			input (unenriched)	3
+PXD018056	20190703_016_S199785_iKd_TAILS8_IP_2_Group_2	RON13-KD phospho-IP	RH deltaKu80 background	tachyzoite (extracellular)	RON13 knock-down (tet-repressible promoter)			phosphopeptide-enriched	2
+PXD018056	20190703_017_S199788_Cp_WT_input_2_Group_1	RON13-KD complemented WT input	RH deltaKu80 background	tachyzoite (extracellular)	RON13-KD + wild-type RON13			input (unenriched)	2
+PXD018056	20190703_018_S199793_iKd_TAILS8_IP_3_Group_2	RON13-KD phospho-IP	RH deltaKu80 background	tachyzoite (extracellular)	RON13 knock-down (tet-repressible promoter)			phosphopeptide-enriched	3
+PXD018056	20190703_019_S199791_Cp_D-A_PI_2_Group_2	RON13-KD complemented D-A phospho-IP	RH deltaKu80 background	tachyzoite (extracellular)	RON13-KD + catalytically dead RON13 (D to A)			phosphopeptide-enriched	2
+PXD018056	20190703_020_S199778_deltaKu80_input_1_Group_1	deltaKu80 input	RH deltaKu80 background	tachyzoite (extracellular)	parental deltaKu80			input (unenriched)	1
+PXD018056	20190703_021_S199805_Cp_WT_PI_4_Group_2	RON13-KD complemented WT phospho-IP	RH deltaKu80 background	tachyzoite (extracellular)	RON13-KD + wild-type RON13			phosphopeptide-enriched	4
+PXD018056	20190703_022_S199802_deltaKu80_input_4_Group_1	deltaKu80 input	RH deltaKu80 background	tachyzoite (extracellular)	parental deltaKu80			input (unenriched)	4
+PXD018056	20190703_024_S199800_iKd_TAILS8_input_4_Group_1	RON13-KD input	RH deltaKu80 background	tachyzoite (extracellular)	RON13 knock-down (tet-repressible promoter)			input (unenriched)	4
+PXD018056	20190703_025_S199799_Cp_D-A_PI_3_Group_2	RON13-KD complemented D-A phospho-IP	RH deltaKu80 background	tachyzoite (extracellular)	RON13-KD + catalytically dead RON13 (D to A)			phosphopeptide-enriched	3
+PXD018056	20190703_026_S199798_Cp_D-A_input_3_Group_1	RON13-KD complemented D-A input	RH deltaKu80 background	tachyzoite (extracellular)	RON13-KD + catalytically dead RON13 (D to A)			input (unenriched)	3
+PXD018056	20190703_027_S199777_iKd_TAILS8_IP_1_Group_2	RON13-KD phospho-IP	RH deltaKu80 background	tachyzoite (extracellular)	RON13 knock-down (tet-repressible promoter)			phosphopeptide-enriched	1
+PXD018056	20190703_028_S199796_Cp_WT_input_3_Group_1	RON13-KD complemented WT input	RH deltaKu80 background	tachyzoite (extracellular)	RON13-KD + wild-type RON13			input (unenriched)	3
+PXD018056	20190703_029_S199787_deltaKu80_PI_2_Group_2	deltaKu80 phospho-IP	RH deltaKu80 background	tachyzoite (extracellular)	parental deltaKu80			phosphopeptide-enriched	2
+PXD018056	20190703_030_S199781_Cp_WT_PI_1_Group_2	RON13-KD complemented WT phospho-IP	RH deltaKu80 background	tachyzoite (extracellular)	RON13-KD + wild-type RON13			phosphopeptide-enriched	1
+PXD018056	20190703_031_S199790_Cp_D-A_input_2_Group_1	RON13-KD complemented D-A input	RH deltaKu80 background	tachyzoite (extracellular)	RON13-KD + catalytically dead RON13 (D to A)			input (unenriched)	2
+PXD018056	20190703_032_S199779_deltaKu80_PI_1_Group_2	deltaKu80 phospho-IP	RH deltaKu80 background	tachyzoite (extracellular)	parental deltaKu80			phosphopeptide-enriched	1
+PXD018056	20190703_033_S199786_deltaKu80_input_2_Group_1	deltaKu80 input	RH deltaKu80 background	tachyzoite (extracellular)	parental deltaKu80			input (unenriched)	2
+PXD018056	20190703_035_S199783_Cp_D-A_PI_1_Group_2	RON13-KD complemented D-A phospho-IP	RH deltaKu80 background	tachyzoite (extracellular)	RON13-KD + catalytically dead RON13 (D to A)			phosphopeptide-enriched	1
+PXD018056	20190703_036_S199806_Cp_D-A_input_4_Group_1	RON13-KD complemented D-A input	RH deltaKu80 background	tachyzoite (extracellular)	RON13-KD + catalytically dead RON13 (D to A)			input (unenriched)	4
+PXD018781	cox2a-tev-ha-1-SENS	COX2a-TEV-HA IP, SENS			COX2a-TEV-HA	anti-HA IP			1
+PXD018781	cox2a-tev-ha-1-pAGC	COX2a-TEV-HA IP, pAGC			COX2a-TEV-HA	anti-HA IP			1
+PXD018781	cox2a-tev-ha-2-SENS	COX2a-TEV-HA IP, SENS			COX2a-TEV-HA	anti-HA IP			2
+PXD018781	cox2a-tev-ha-2-pAGC	COX2a-TEV-HA IP, pAGC			COX2a-TEV-HA	anti-HA IP			2
+PXD018781	cox2a-tev-ha-3-SENS	COX2a-TEV-HA IP, SENS			COX2a-TEV-HA	anti-HA IP			3
+PXD018781	cox2a-tev-ha-3-pAGC	COX2a-TEV-HA IP, pAGC			COX2a-TEV-HA	anti-HA IP			3
+PXD018781	mppa-tev-ha-1-SENS	MPPa-TEV-HA IP, SENS			MPPa-TEV-HA	anti-HA IP			1
+PXD018781	mppa-tev-ha-1-pAGC	MPPa-TEV-HA IP, pAGC			MPPa-TEV-HA	anti-HA IP			1
+PXD018781	mppa-tev-ha-2-SENS	MPPa-TEV-HA IP, SENS			MPPa-TEV-HA	anti-HA IP			2
+PXD018781	mppa-tev-ha-2-pAGC	MPPa-TEV-HA IP, pAGC			MPPa-TEV-HA	anti-HA IP			2
+PXD018781	mppa-tev-ha-3-SENS	MPPa-TEV-HA IP, SENS			MPPa-TEV-HA	anti-HA IP			3
+PXD018781	mppa-tev-ha-3-pAGC	MPPa-TEV-HA IP, pAGC			MPPa-TEV-HA	anti-HA IP			3
+PXD021516	20190625_QE25CM37_pl19056_BMukherjee_02	gel band 02	T. gondii						
+PXD021516	20190625_QE25CM39_pl19056_BMukherjee_01	gel band 01	T. gondii						
+PXD021516	20190625_QE25CM41_pl19056_BMukherjee_04	gel band 04	T. gondii						
+PXD021516	20190625_QE25CM43_pl19056_BMukherjee_03	gel band 03	T. gondii						
+PXD022700	K9184PILa01_1	RH tachyzoite Kla enrichment	RH	tachyzoite		lysine-lactylation (Kla) antibody enrichment		HPLC fraction/injection 1	1
+PXD022700	K9184PILa01_2	RH tachyzoite Kla enrichment	RH	tachyzoite		lysine-lactylation (Kla) antibody enrichment		HPLC fraction/injection 2	1
+PXD022700	K9184PILa01_3	RH tachyzoite Kla enrichment	RH	tachyzoite		lysine-lactylation (Kla) antibody enrichment		HPLC fraction/injection 3	1
+PXD022700	K9184PILa01_4	RH tachyzoite Kla enrichment	RH	tachyzoite		lysine-lactylation (Kla) antibody enrichment		HPLC fraction/injection 4	1
+PXD022700	K9184PILa02_1	RH tachyzoite Kla enrichment	RH	tachyzoite		lysine-lactylation (Kla) antibody enrichment		HPLC fraction/injection 1	2
+PXD022700	K9184PILa02_2	RH tachyzoite Kla enrichment	RH	tachyzoite		lysine-lactylation (Kla) antibody enrichment		HPLC fraction/injection 2	2
+PXD022700	K9184PILa02_3	RH tachyzoite Kla enrichment	RH	tachyzoite		lysine-lactylation (Kla) antibody enrichment		HPLC fraction/injection 3	2
+PXD022700	K9184PILa02_4	RH tachyzoite Kla enrichment	RH	tachyzoite		lysine-lactylation (Kla) antibody enrichment		HPLC fraction/injection 4	2
+PXD022700	K9184PILa03_1	RH tachyzoite Kla enrichment	RH	tachyzoite		lysine-lactylation (Kla) antibody enrichment		HPLC fraction/injection 1	3
+PXD022700	K9184PILa03_2	RH tachyzoite Kla enrichment	RH	tachyzoite		lysine-lactylation (Kla) antibody enrichment		HPLC fraction/injection 2	3
+PXD022700	K9184PILa03_3	RH tachyzoite Kla enrichment	RH	tachyzoite		lysine-lactylation (Kla) antibody enrichment		HPLC fraction/injection 3	3
+PXD022700	K9184PILa03_4	RH tachyzoite Kla enrichment	RH	tachyzoite		lysine-lactylation (Kla) antibody enrichment		HPLC fraction/injection 4	3
+PXD022713	SRHOPTRY_181207_HFX_C1	C							1
+PXD022713	SRHOPTRY_181207_HFX_C2	C							2
+PXD022713	SRHOPTRY_181207_HFX_N1	N							1
+PXD022713	SRHOPTRY_181207_HFX_N2	N							2
+PXD022713	SRHOPTRY_190306_HFX_C1	C							1
+PXD022713	SRHOPTRY_190306_HFX_C2	C							2
+PXD022713	SRHOPTRY_190306_HFX_ND9_1	ND9_							1
+PXD022713	SRHOPTRY_190306_HFX_ND9_2	ND9_							2
+PXD022713	SRHOPTRY_190410_HFX_A1	A							1
+PXD022713	SRHOPTRY_190410_HFX_A2	A							2
+PXD022713	SRHOPTRY_190410_HFX_B1	B							1
+PXD022713	SRHOPTRY_190410_HFX_B2	B							2
+PXD022725	SRHOPTRY_190321_HFX_A1	A							1
+PXD022725	SRHOPTRY_190321_HFX_A2	A							2
+PXD022725	SRHOPTRY_190321_HFX_D1	D							1
+PXD022725	SRHOPTRY_190321_HFX_D2	D							2
+PXD022785	P062_2_95	P062_2_95 (unresolved)	RH dKu80 TATi	tachyzoite	P062_2_95 (unresolved)	150 uM biotin			
+PXD022785	P062_2_M3	MORN3-BirA*	RH dKu80 TATi	tachyzoite	MORN3-BirA*	150 uM biotin			
+PXD022785	P062_2_R2	RNG2-BirA*	RH dKu80 TATi	tachyzoite	RNG2-BirA*	150 uM biotin			
+PXD022785	P062_2_WT	untagged parental control (RH dKu80 TATi)	RH dKu80 TATi	tachyzoite	untagged parental control (RH dKu80 TATi)	150 uM biotin			
+PXD023485	06_P107237_PIC3	PIC3							
+PXD023485	07_P107243_PIC3	PIC3							
+PXD023485	08_P107244_PIC4	PIC4							
+PXD023485	09_P107251_PIC4	PIC4							
+PXD023485	10_P107252_PIC5	PIC5							
+PXD023485	11_P107258_PIC5	PIC5							
+PXD023485	12_P107259_PIC6	PIC6							
+PXD023485	13_P107265_PIC6	PIC6							
+PXD023485	14_P107266_PIC6	PIC6							
+PXD023485	15_P107248_MB-03_1AR1	1AR							1
+PXD023485	16_P107264_MB-12_1AR2	1AR							2
+PXD023485	17_P107247_MB-15_1AR3	1AR							3
+PXD023485	18_P107254_MB-05_1AR4	1AR							4
+PXD023485	19_P107242_MB-21_1AR5	1AR							5
+PXD023485	20_P107239_MB-08_1AR6	1AR							6
+PXD023485	21_P107262_MB-16_1AR7	1AR							7
+PXD023485	22_P107238_MB-20_1BR1	1BR							1
+PXD023485	23_P107249_MB-10_1BR2	1BR							2
+PXD023485	24_P107245_MB-06_1BR3	1BR							3
+PXD023485	25_P107261_MB-02_1BR4	1BR							4
+PXD023485	26_P107240_MB-18_1BR5	1BR							5
+PXD023485	27_P107253_MB-07_1BR6	1BR							6
+PXD023485	28_P107256_MB-13_1BR7	1BR							7
+PXD023485	29_P107257_MB-19_MTR1	MTR							1
+PXD023485	30_P107260_MB-11_MTR2	MTR							2
+PXD023485	31_P107250_MB-09_MTR3	MTR							3
+PXD023485	32_P107246_MB-01_MTR4	MTR							4
+PXD023485	33_P107255_MB-17_MTR5	MTR							5
+PXD023485	34_P107241_MB-04_MTR6	MTR							6
+PXD023485	35_P107263_MB-14_MTR7	MTR							7
+PXD024210	DN_FER1_BioRep_1	dominant-negative FER1	RH	tachyzoite (extracellular, ethanol-triggered secretion)	FER1 dominant negative	restrictive (Shield-1) vs permissive, SILAC		secreted proteins	1
+PXD024210	DN_FER1_BioRep_2	dominant-negative FER1	RH	tachyzoite (extracellular, ethanol-triggered secretion)	FER1 dominant negative	restrictive (Shield-1) vs permissive, SILAC		secreted proteins	2
+PXD024210	RHKu80_BioRep_1	RHKu80 control	RH	tachyzoite (extracellular, ethanol-triggered secretion)	wild type (RHKu80)	restrictive/permissive control vs permissive, SILAC		secreted proteins	1
+PXD024210	RHKu80_BioRep_2	RHKu80 control	RH	tachyzoite (extracellular, ethanol-triggered secretion)	wild type (RHKu80)	restrictive/permissive control vs permissive, SILAC		secreted proteins	2
+PXD024210	cKD_FER2_BioRep_1	FER2 conditional knockdown	RH	tachyzoite (extracellular, ethanol-triggered secretion)	FER2 cKD	restrictive (ATc) vs permissive, SILAC		secreted proteins	1
+PXD024210	tsDOC2_BioRep_1	tsDOC2 temperature-sensitive	RH	tachyzoite (extracellular, ethanol-triggered secretion)	TgDOC2 temperature sensitive	restrictive (40C) vs permissive, SILAC		secreted proteins	1
+PXD024210	tsDOC2_BioRep_2	tsDOC2 temperature-sensitive	RH	tachyzoite (extracellular, ethanol-triggered secretion)	TgDOC2 temperature sensitive	restrictive (40C) vs permissive, SILAC		secreted proteins	2
+PXD024326	CPSF1-Band1	CPSF1 IP	RH deltaKu80	tachyzoite	CPSF1-HAFlag tagged	anti-FLAG affinity purification		gel band 1	
+PXD024326	CPSF1-Band2	CPSF1 IP	RH deltaKu80	tachyzoite	CPSF1-HAFlag tagged	anti-FLAG affinity purification		gel band 2	
+PXD024326	CPSF1-Band3	CPSF1 IP	RH deltaKu80	tachyzoite	CPSF1-HAFlag tagged	anti-FLAG affinity purification		gel band 3	
+PXD024326	CPSF1-Band4	CPSF1 IP	RH deltaKu80	tachyzoite	CPSF1-HAFlag tagged	anti-FLAG affinity purification		gel band 4	
+PXD024326	CPSF1-Band5	CPSF1 IP	RH deltaKu80	tachyzoite	CPSF1-HAFlag tagged	anti-FLAG affinity purification		gel band 5	
+PXD024326	CPSF1-Band6	CPSF1 IP	RH deltaKu80	tachyzoite	CPSF1-HAFlag tagged	anti-FLAG affinity purification		gel band 6	
+PXD024326	CPSF1-Band7	CPSF1 IP	RH deltaKu80	tachyzoite	CPSF1-HAFlag tagged	anti-FLAG affinity purification		gel band 7	
+PXD024326	CPSF1-Band8	CPSF1 IP	RH deltaKu80	tachyzoite	CPSF1-HAFlag tagged	anti-FLAG affinity purification		gel band 8	
+PXD024326	CPSF1-Band9	CPSF1 IP	RH deltaKu80	tachyzoite	CPSF1-HAFlag tagged	anti-FLAG affinity purification		gel band 9	
+PXD024326	FIP1-Band1	FIP1 IP	RH deltaKu80	tachyzoite	FIP1-HAFlag tagged	anti-FLAG affinity purification		gel band 1	
+PXD024326	FIP1-Band2	FIP1 IP	RH deltaKu80	tachyzoite	FIP1-HAFlag tagged	anti-FLAG affinity purification		gel band 2	
+PXD024326	FIP1-Band3	FIP1 IP	RH deltaKu80	tachyzoite	FIP1-HAFlag tagged	anti-FLAG affinity purification		gel band 3	
+PXD024326	FIP1-Band4	FIP1 IP	RH deltaKu80	tachyzoite	FIP1-HAFlag tagged	anti-FLAG affinity purification		gel band 4	
+PXD024326	FIP1-Band5	FIP1 IP	RH deltaKu80	tachyzoite	FIP1-HAFlag tagged	anti-FLAG affinity purification		gel band 5	
+PXD024326	FIP1-Band6	FIP1 IP	RH deltaKu80	tachyzoite	FIP1-HAFlag tagged	anti-FLAG affinity purification		gel band 6	
+PXD024326	FIP1-Band7	FIP1 IP	RH deltaKu80	tachyzoite	FIP1-HAFlag tagged	anti-FLAG affinity purification		gel band 7	
+PXD024326	METTL14-Band1	METTL14 IP	RH deltaKu80	tachyzoite	METTL14-HAFlag tagged	anti-FLAG affinity purification		gel band 1	
+PXD024326	METTL14-Band2	METTL14 IP	RH deltaKu80	tachyzoite	METTL14-HAFlag tagged	anti-FLAG affinity purification		gel band 2	
+PXD024326	METTL14-Band3	METTL14 IP	RH deltaKu80	tachyzoite	METTL14-HAFlag tagged	anti-FLAG affinity purification		gel band 3	
+PXD024326	METTL14-Band4	METTL14 IP	RH deltaKu80	tachyzoite	METTL14-HAFlag tagged	anti-FLAG affinity purification		gel band 4	
+PXD024326	METTL14-Band5	METTL14 IP	RH deltaKu80	tachyzoite	METTL14-HAFlag tagged	anti-FLAG affinity purification		gel band 5	
+PXD024326	METTL14-Band6	METTL14 IP	RH deltaKu80	tachyzoite	METTL14-HAFlag tagged	anti-FLAG affinity purification		gel band 6	
+PXD024326	METTL3-Band1	METTL3 IP	RH deltaKu80	tachyzoite	METTL3-HAFlag tagged	anti-FLAG affinity purification		gel band 1	
+PXD024326	METTL3-Band2	METTL3 IP	RH deltaKu80	tachyzoite	METTL3-HAFlag tagged	anti-FLAG affinity purification		gel band 2	
+PXD024326	METTL3-Band3	METTL3 IP	RH deltaKu80	tachyzoite	METTL3-HAFlag tagged	anti-FLAG affinity purification		gel band 3	
+PXD024326	METTL3-Band4	METTL3 IP	RH deltaKu80	tachyzoite	METTL3-HAFlag tagged	anti-FLAG affinity purification		gel band 4	
+PXD024326	METTL3-Band5	METTL3 IP	RH deltaKu80	tachyzoite	METTL3-HAFlag tagged	anti-FLAG affinity purification		gel band 5	
+PXD024326	METTL3-Band6	METTL3 IP	RH deltaKu80	tachyzoite	METTL3-HAFlag tagged	anti-FLAG affinity purification		gel band 6	
+PXD024326	METTL3-Band7	METTL3 IP	RH deltaKu80	tachyzoite	METTL3-HAFlag tagged	anti-FLAG affinity purification		gel band 7	
+PXD024326	PAP-Band1	PAP IP	RH deltaKu80	tachyzoite	PAP-HAFlag tagged	anti-FLAG affinity purification		gel band 1	
+PXD024326	PAP-Band2	PAP IP	RH deltaKu80	tachyzoite	PAP-HAFlag tagged	anti-FLAG affinity purification		gel band 2	
+PXD024326	PAP-Band3	PAP IP	RH deltaKu80	tachyzoite	PAP-HAFlag tagged	anti-FLAG affinity purification		gel band 3	
+PXD024326	PAP-Band4	PAP IP	RH deltaKu80	tachyzoite	PAP-HAFlag tagged	anti-FLAG affinity purification		gel band 4	
+PXD024326	PAP-Band5	PAP IP	RH deltaKu80	tachyzoite	PAP-HAFlag tagged	anti-FLAG affinity purification		gel band 5	
+PXD024326	PAP-Band6	PAP IP	RH deltaKu80	tachyzoite	PAP-HAFlag tagged	anti-FLAG affinity purification		gel band 6	
+PXD024326	PAP-Band7	PAP IP	RH deltaKu80	tachyzoite	PAP-HAFlag tagged	anti-FLAG affinity purification		gel band 7	
+PXD024326	PAP-Band8	PAP IP	RH deltaKu80	tachyzoite	PAP-HAFlag tagged	anti-FLAG affinity purification		gel band 8	
+PXD024326	WDR33-Band1	WDR33 IP	RH deltaKu80	tachyzoite	WDR33-HAFlag tagged	anti-FLAG affinity purification		gel band 1	
+PXD024326	WDR33-Band2	WDR33 IP	RH deltaKu80	tachyzoite	WDR33-HAFlag tagged	anti-FLAG affinity purification		gel band 2	
+PXD024326	WDR33-Band3	WDR33 IP	RH deltaKu80	tachyzoite	WDR33-HAFlag tagged	anti-FLAG affinity purification		gel band 3	
+PXD024326	WDR33-Band4	WDR33 IP	RH deltaKu80	tachyzoite	WDR33-HAFlag tagged	anti-FLAG affinity purification		gel band 4	
+PXD024326	WDR33-Band5	WDR33 IP	RH deltaKu80	tachyzoite	WDR33-HAFlag tagged	anti-FLAG affinity purification		gel band 5	
+PXD024326	WDR33-Band6	WDR33 IP	RH deltaKu80	tachyzoite	WDR33-HAFlag tagged	anti-FLAG affinity purification		gel band 6	
+PXD024326	WDR33-Band7	WDR33 IP	RH deltaKu80	tachyzoite	WDR33-HAFlag tagged	anti-FLAG affinity purification		gel band 7	
+PXD024326	WTAP-Band1	WTAP IP	RH deltaKu80	tachyzoite	WTAP-HAFlag tagged	anti-FLAG affinity purification		gel band 1	
+PXD024326	WTAP-Band10	WTAP IP	RH deltaKu80	tachyzoite	WTAP-HAFlag tagged	anti-FLAG affinity purification		gel band 10	
+PXD024326	WTAP-Band11	WTAP IP	RH deltaKu80	tachyzoite	WTAP-HAFlag tagged	anti-FLAG affinity purification		gel band 11	
+PXD024326	WTAP-Band12	WTAP IP	RH deltaKu80	tachyzoite	WTAP-HAFlag tagged	anti-FLAG affinity purification		gel band 12	
+PXD024326	WTAP-Band2	WTAP IP	RH deltaKu80	tachyzoite	WTAP-HAFlag tagged	anti-FLAG affinity purification		gel band 2	
+PXD024326	WTAP-Band3	WTAP IP	RH deltaKu80	tachyzoite	WTAP-HAFlag tagged	anti-FLAG affinity purification		gel band 3	
+PXD024326	WTAP-Band4	WTAP IP	RH deltaKu80	tachyzoite	WTAP-HAFlag tagged	anti-FLAG affinity purification		gel band 4	
+PXD024326	WTAP-Band5	WTAP IP	RH deltaKu80	tachyzoite	WTAP-HAFlag tagged	anti-FLAG affinity purification		gel band 5	
+PXD024326	WTAP-Band6	WTAP IP	RH deltaKu80	tachyzoite	WTAP-HAFlag tagged	anti-FLAG affinity purification		gel band 6	
+PXD024326	WTAP-Band7	WTAP IP	RH deltaKu80	tachyzoite	WTAP-HAFlag tagged	anti-FLAG affinity purification		gel band 7	
+PXD024326	WTAP-Band8	WTAP IP	RH deltaKu80	tachyzoite	WTAP-HAFlag tagged	anti-FLAG affinity purification		gel band 8	
+PXD024326	WTAP-Band9	WTAP IP	RH deltaKu80	tachyzoite	WTAP-HAFlag tagged	anti-FLAG affinity purification		gel band 9	
+PXD024656	QE_2018_0034-Sample1	0034-Sample1							
+PXD024656	QE_2018_0035_Sample2	Sample2							
+PXD024656	QE_2018_0036_Sample3	Sample3							
+PXD024656	QE_2018_0037_Sample4	Sample4							
+PXD024656	QE_2018_0038_Sample5	Sample5							
+PXD024656	QE_2018_0039_Sample6	Sample6							
+PXD024656	QE_2018_0040_Sample7	Sample7							
+PXD024656	QE_2018_0041_Sample8	Sample8							
+PXD024656	QE_2018_0042_Sample9	Sample9							
+PXD024656	QE_2018_0044_Sample10	Sample10							
+PXD024656	QE_2018_0045_Sample11	Sample11							
+PXD024656	QE_2018_0046_Sample12	Sample12							
+PXD024656	QE_2018_0047_Sample13	Sample13							
+PXD024656	QE_2018_0048_Sample14	Sample14							
+PXD024656	QE_2018_0049_Sample15	Sample15							
+PXD024656	QE_2018_0050_Sample16	Sample16							
+PXD024656	QE_2018_0051_Sample17	Sample17							
+PXD024656	QE_2018_0052_Sample18	Sample18							
+PXD024656	QE_2018_0053_Sample19	Sample19							
+PXD024656	QE_2018_0054_Sample20	Sample20							
+PXD024656	QE_2018_0055_Sample21	Sample21							
+PXD024656	QE_2018_0056_Sample22	Sample22							
+PXD024656	QE_2018_0057_Sample23	Sample23							
+PXD024656	QE_2018_0058_Sample24	Sample24							
+PXD024656	QE_2018_0059_Sample25	Sample25							
+PXD024656	QE_2018_0060_Sample26	Sample26							
+PXD024656	QE_2018_0061_Sample27	Sample27							
+PXD024656	QE_2018_0062_Sample28	Sample28							
+PXD024656	QE_2018_0063_Sample29	Sample29							
+PXD024656	QE_2018_0064_Sample30	Sample30							
+PXD024656	QE_2018_0065_Sample31	Sample31							
+PXD024656	QE_2018_0073_Sample32	Sample32							
+PXD024656	QE_2018_0074_Sample33	Sample33							
+PXD024656	QE_2018_0075_Sample34	Sample34							
+PXD024656	QE_2018_0076_Sample35	Sample35							
+PXD024656	QE_2018_0077_Sample36	Sample36							
+PXD024656	QE_2018_0078_Sample38	Sample38							
+PXD024656	QE_2018_0086_Sample41	Sample41							
+PXD024656	QE_2018_0087_Sample42	Sample42							
+PXD024656	QE_2018_0088_Sample43	Sample43							
+PXD024656	QE_2018_0089_Sample44	Sample44							
+PXD024656	QE_2018_0090_Sample45	Sample45							
+PXD024656	QE_2018_0091_Sample39	Sample39							
+PXD024656	QE_2018_0092_Sample40	Sample40							
+PXD024656	QE_2018_0093_Sample41	Sample41							
+PXD024656	QE_2018_0094_Sample42	Sample42							
+PXD024656	QE_2018_0112_Sample46	Sample46							
+PXD024656	QE_2018_0113_Sample47	Sample47							
+PXD024656	QE_2018_0114_Sample48	Sample48							
+PXD024656	QE_2018_0115_Sample49	Sample49							
+PXD024656	QE_2018_0116_Sample50	Sample50							
+PXD024656	QE_2018_0117_Sample51	Sample51							
+PXD024656	QE_2018_0118_Sample52	Sample52							
+PXD024656	QE_2018_0119_Sample53	Sample53							
+PXD024656	QE_2018_0120_Sample54	Sample54							
+PXD024656	QE_2018_0121_Sample55	Sample55							
+PXD024656	QE_2018_0122_Sample56	Sample56							
+PXD024656	QE_2018_0123_Sample57	Sample57							
+PXD024656	QE_2018_0124_Sample58	Sample58							
+PXD024656	QE_2018_0125_Sample59	Sample59							
+PXD024656	QE_2018_0126_Sample60	Sample60							
+PXD024656	QE_2018_0127_Sample61	Sample61							
+PXD024656	QE_2018_0130_Sample62	Sample62							
+PXD024656	QE_2018_0131_Sample63	Sample63							
+PXD024656	QE_2018_0133_Sample64	Sample64							
+PXD024656	QE_2018_0134_Sample66	Sample66							
+PXD024656	QE_2018_0135_Sample67	Sample67							
+PXD024656	QE_2018_0136_Sample68	Sample68							
+PXD024656	QE_2018_0141_Sample69	Sample69							
+PXD024656	QE_2018_0142_Sample70	Sample70							
+PXD024656	QE_2018_0143_Sample71	Sample71							
+PXD024656	QE_2018_0144_Sample72	Sample72							
+PXD024656	QE_2018_0145_Sample73	Sample73							
+PXD024656	QE_2018_0146_Sample74	Sample74							
+PXD024656	QE_2018_0147_Sample75	Sample75							
+PXD024656	QE_2018_0148_Sample76	Sample76							
+PXD024656	QE_2018_0149_Sample77	Sample77							
+PXD024656	QE_2018_0150_Sample78	Sample78							
+PXD024656	QE_2018_0151_Sample79	Sample79							
+PXD024656	QE_2018_0152_Sample80	Sample80							
+PXD024656	QE_2018_0154_Sample81	Sample81							
+PXD024656	QE_2018_0156_Sample82	Sample82							
+PXD028781	A1_Tg	FLAG-BirA-MOB1 BioID	RH	tachyzoite	FLAG-BirA-MOB1	150 uM biotin			1
+PXD028781	A2_Tg	FLAG-BirA-MOB1 BioID	RH	tachyzoite	FLAG-BirA-MOB1	150 uM biotin			2
+PXD028781	A3_Tg	FLAG-BirA-MOB1 BioID	RH	tachyzoite	FLAG-BirA-MOB1	150 uM biotin			3
+PXD028781	B1_Tg	FLAG-BirA control BioID	RH	tachyzoite	FLAG-BirA	150 uM biotin			1
+PXD028781	B2_Tg	FLAG-BirA control BioID	RH	tachyzoite	FLAG-BirA	150 uM biotin			2
+PXD028781	B3_Tg	FLAG-BirA control BioID	RH	tachyzoite	FLAG-BirA	150 uM biotin			3
+PXD029455	PRP4K-Band1	PRP4K-HAFlag IP			PRP4K-HAFlag			Band1	
+PXD029455	PRP4K-Band10	PRP4K-HAFlag IP			PRP4K-HAFlag			Band10	
+PXD029455	PRP4K-Band11	PRP4K-HAFlag IP			PRP4K-HAFlag			Band11	
+PXD029455	PRP4K-Band12	PRP4K-HAFlag IP			PRP4K-HAFlag			Band12	
+PXD029455	PRP4K-Band13	PRP4K-HAFlag IP			PRP4K-HAFlag			Band13	
+PXD029455	PRP4K-Band14	PRP4K-HAFlag IP			PRP4K-HAFlag			Band14	
+PXD029455	PRP4K-Band15	PRP4K-HAFlag IP			PRP4K-HAFlag			Band15	
+PXD029455	PRP4K-Band16	PRP4K-HAFlag IP			PRP4K-HAFlag			Band16	
+PXD029455	PRP4K-Band17	PRP4K-HAFlag IP			PRP4K-HAFlag			Band17	
+PXD029455	PRP4K-Band18	PRP4K-HAFlag IP			PRP4K-HAFlag			Band18	
+PXD029455	PRP4K-Band19	PRP4K-HAFlag IP			PRP4K-HAFlag			Band19	
+PXD029455	PRP4K-Band2	PRP4K-HAFlag IP			PRP4K-HAFlag			Band2	
+PXD029455	PRP4K-Band3	PRP4K-HAFlag IP			PRP4K-HAFlag			Band3	
+PXD029455	PRP4K-Band4	PRP4K-HAFlag IP			PRP4K-HAFlag			Band4	
+PXD029455	PRP4K-Band5	PRP4K-HAFlag IP			PRP4K-HAFlag			Band5	
+PXD029455	PRP4K-Band6	PRP4K-HAFlag IP			PRP4K-HAFlag			Band6	
+PXD029455	PRP4K-Band7	PRP4K-HAFlag IP			PRP4K-HAFlag			Band7	
+PXD029455	PRP4K-Band8	PRP4K-HAFlag IP			PRP4K-HAFlag			Band8	
+PXD029455	PRP4K-Band9	PRP4K-HAFlag IP			PRP4K-HAFlag			Band9	
+PXD029455	PRP8-Band1	PRP8-HAFlag IP			PRP8-HAFlag			Band1	
+PXD029455	PRP8-Band10	PRP8-HAFlag IP			PRP8-HAFlag			Band10	
+PXD029455	PRP8-Band11	PRP8-HAFlag IP			PRP8-HAFlag			Band11	
+PXD029455	PRP8-Band12	PRP8-HAFlag IP			PRP8-HAFlag			Band12	
+PXD029455	PRP8-Band13	PRP8-HAFlag IP			PRP8-HAFlag			Band13	
+PXD029455	PRP8-Band14	PRP8-HAFlag IP			PRP8-HAFlag			Band14	
+PXD029455	PRP8-Band15	PRP8-HAFlag IP			PRP8-HAFlag			Band15	
+PXD029455	PRP8-Band16	PRP8-HAFlag IP			PRP8-HAFlag			Band16	
+PXD029455	PRP8-Band17	PRP8-HAFlag IP			PRP8-HAFlag			Band17	
+PXD029455	PRP8-Band18	PRP8-HAFlag IP			PRP8-HAFlag			Band18	
+PXD029455	PRP8-Band19	PRP8-HAFlag IP			PRP8-HAFlag			Band19	
+PXD029455	PRP8-Band2	PRP8-HAFlag IP			PRP8-HAFlag			Band2	
+PXD029455	PRP8-Band20	PRP8-HAFlag IP			PRP8-HAFlag			Band20	
+PXD029455	PRP8-Band3	PRP8-HAFlag IP			PRP8-HAFlag			Band3	
+PXD029455	PRP8-Band4	PRP8-HAFlag IP			PRP8-HAFlag			Band4	
+PXD029455	PRP8-Band5	PRP8-HAFlag IP			PRP8-HAFlag			Band5	
+PXD029455	PRP8-Band6	PRP8-HAFlag IP			PRP8-HAFlag			Band6	
+PXD029455	PRP8-Band7	PRP8-HAFlag IP			PRP8-HAFlag			Band7	
+PXD029455	PRP8-Band8	PRP8-HAFlag IP			PRP8-HAFlag			Band8	
+PXD029455	PRP8-Band9	PRP8-HAFlag IP			PRP8-HAFlag			Band9	
+PXD030932	HF1_012540	HF1_012540		extracellular tachyzoite					
+PXD030932	HF1_012542	HF1_012542		extracellular tachyzoite					
+PXD030932	HF1_012544	HF1_012544		extracellular tachyzoite					
+PXD030932	HF1_012546	HF1_012546		extracellular tachyzoite					
+PXD030932	HF1_012548	HF1_012548		extracellular tachyzoite					
+PXD030932	HF1_012550	HF1_012550		extracellular tachyzoite					
+PXD030932	HF1_012554	HF1_012554		extracellular tachyzoite					
+PXD030932	HF1_012556	HF1_012556		extracellular tachyzoite					
+PXD030932	HF1_012558	HF1_012558		extracellular tachyzoite					
+PXD030932	HF1_012560	HF1_012560		extracellular tachyzoite					
+PXD031116	BCC1_A_nobiotin_01	BCC1 -biotin			BCC1-BioID2	no biotin		step 01	bio rep 1, run A
+PXD031116	BCC1_A_nobiotin_02	BCC1 -biotin			BCC1-BioID2	no biotin		step 02	bio rep 1, run A
+PXD031116	BCC1_A_nobiotin_03	BCC1 -biotin			BCC1-BioID2	no biotin		step 03	bio rep 1, run A
+PXD031116	BCC1_A_nobiotin_04	BCC1 -biotin			BCC1-BioID2	no biotin		step 04	bio rep 1, run A
+PXD031116	BCC1_A_nobiotin_05	BCC1 -biotin			BCC1-BioID2	no biotin		step 05	bio rep 1, run A
+PXD031116	BCC1_A_plus_Biotin_01	BCC1 +biotin			BCC1-BioID2	+150 uM biotin		step 01	bio rep 1, run A
+PXD031116	BCC1_A_plus_Biotin_02	BCC1 +biotin			BCC1-BioID2	+150 uM biotin		step 02	bio rep 1, run A
+PXD031116	BCC1_A_plus_Biotin_03	BCC1 +biotin			BCC1-BioID2	+150 uM biotin		step 03	bio rep 1, run A
+PXD031116	BCC1_A_plus_Biotin_04	BCC1 +biotin			BCC1-BioID2	+150 uM biotin		step 04	bio rep 1, run A
+PXD031116	BCC1_A_plus_Biotin_05	BCC1 +biotin			BCC1-BioID2	+150 uM biotin		step 05	bio rep 1, run A
+PXD031116	BCC1_B_noBiotin_01	BCC1 -biotin			BCC1-BioID2	no biotin		step 01	bio rep 1, run B
+PXD031116	BCC1_B_noBiotin_02	BCC1 -biotin			BCC1-BioID2	no biotin		step 02	bio rep 1, run B
+PXD031116	BCC1_B_noBiotin_03	BCC1 -biotin			BCC1-BioID2	no biotin		step 03	bio rep 1, run B
+PXD031116	BCC1_B_noBiotin_04	BCC1 -biotin			BCC1-BioID2	no biotin		step 04	bio rep 1, run B
+PXD031116	BCC1_B_noBiotin_05	BCC1 -biotin			BCC1-BioID2	no biotin		step 05	bio rep 1, run B
+PXD031116	BCC1_B_plus_Biotin_01	BCC1 +biotin			BCC1-BioID2	+150 uM biotin		step 01	bio rep 1, run B
+PXD031116	BCC1_B_plus_Biotin_02	BCC1 +biotin			BCC1-BioID2	+150 uM biotin		step 02	bio rep 1, run B
+PXD031116	BCC1_B_plus_Biotin_03	BCC1 +biotin			BCC1-BioID2	+150 uM biotin		step 03	bio rep 1, run B
+PXD031116	BCC1_B_plus_Biotin_04	BCC1 +biotin			BCC1-BioID2	+150 uM biotin		step 04	bio rep 1, run B
+PXD031116	BCC1_B_plus_Biotin_05	BCC1 +biotin			BCC1-BioID2	+150 uM biotin		step 05	bio rep 1, run B
+PXD031116	BCC1_C_plus_biotin_01	BCC1 +biotin			BCC1-BioID2	+150 uM biotin		step 01	bio rep 2, run C
+PXD031116	BCC1_C_plus_biotin_02	BCC1 +biotin			BCC1-BioID2	+150 uM biotin		step 02	bio rep 2, run C
+PXD031116	BCC1_C_plus_biotin_04	BCC1 +biotin			BCC1-BioID2	+150 uM biotin		step 04	bio rep 2, run C
+PXD031116	BCC1_C_plus_biotin_05	BCC1 +biotin			BCC1-BioID2	+150 uM biotin		step 05	bio rep 2, run C
+PXD031116	BCC2_A_nobiotin_01	BCC2 -biotin			BCC2-BioID2	no biotin		step 01	bio rep 1, run A
+PXD031116	BCC2_A_nobiotin_02	BCC2 -biotin			BCC2-BioID2	no biotin		step 02	bio rep 1, run A
+PXD031116	BCC2_A_nobiotin_03	BCC2 -biotin			BCC2-BioID2	no biotin		step 03	bio rep 1, run A
+PXD031116	BCC2_A_nobiotin_04	BCC2 -biotin			BCC2-BioID2	no biotin		step 04	bio rep 1, run A
+PXD031116	BCC2_A_nobiotin_05	BCC2 -biotin			BCC2-BioID2	no biotin		step 05	bio rep 1, run A
+PXD031116	BCC2_A_plus_Biotin_01	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 01	bio rep 1, run A
+PXD031116	BCC2_A_plus_Biotin_03	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 03	bio rep 1, run A
+PXD031116	BCC2_A_plus_Biotin_04	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 04	bio rep 1, run A
+PXD031116	BCC2_A_plus_Biotin_05	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 05	bio rep 1, run A
+PXD031116	BCC2_A_plus_biotin_02	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 02	bio rep 1, run A
+PXD031116	BCC2_B_nobiotin_01	BCC2 -biotin			BCC2-BioID2	no biotin		step 01	bio rep 1, run B
+PXD031116	BCC2_B_nobiotin_02	BCC2 -biotin			BCC2-BioID2	no biotin		step 02	bio rep 1, run B
+PXD031116	BCC2_B_nobiotin_03	BCC2 -biotin			BCC2-BioID2	no biotin		step 03	bio rep 1, run B
+PXD031116	BCC2_B_nobiotin_04	BCC2 -biotin			BCC2-BioID2	no biotin		step 04	bio rep 1, run B
+PXD031116	BCC2_B_nobiotin_05	BCC2 -biotin			BCC2-BioID2	no biotin		step 05	bio rep 1, run B
+PXD031116	BCC2_B_plus_Biotin_01	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 01	bio rep 1, run B
+PXD031116	BCC2_B_plus_Biotin_02	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 02	bio rep 1, run B
+PXD031116	BCC2_B_plus_Biotin_03	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 03	bio rep 1, run B
+PXD031116	BCC2_B_plus_Biotin_04	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 04	bio rep 1, run B
+PXD031116	BCC2_B_plus_Biotin_05	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 05	bio rep 1, run B
+PXD031116	BCC2_C_plus_Biotin_01	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 01	bio rep 2, run C
+PXD031116	BCC2_C_plus_Biotin_02	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 02	bio rep 2, run C
+PXD031116	BCC2_C_plus_Biotin_03	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 03	bio rep 2, run C
+PXD031116	BCC2_C_plus_Biotin_04	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 04	bio rep 2, run C
+PXD031116	BCC2_C_plus_Biotin_05	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 05	bio rep 2, run C
+PXD031116	BCC2_D_plus_biotin_01	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 01	bio rep 2, run D
+PXD031116	BCC2_D_plus_biotin_02	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 02	bio rep 2, run D
+PXD031116	BCC2_D_plus_biotin_03	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 03	bio rep 2, run D
+PXD031116	BCC2_D_plus_biotin_04	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 04	bio rep 2, run D
+PXD031116	BCC2_D_plus_biotin_05	BCC2 +biotin			BCC2-BioID2	+150 uM biotin		step 05	bio rep 2, run D
+PXD031116	Cen2_A_no_Biotin_01	Cen2 -biotin			Cen2-BioID2	no biotin		step 01	bio rep 1, run A
+PXD031116	Cen2_A_no_Biotin_02	Cen2 -biotin			Cen2-BioID2	no biotin		step 02	bio rep 1, run A
+PXD031116	Cen2_A_no_Biotin_03	Cen2 -biotin			Cen2-BioID2	no biotin		step 03	bio rep 1, run A
+PXD031116	Cen2_A_no_Biotin_04	Cen2 -biotin			Cen2-BioID2	no biotin		step 04	bio rep 1, run A
+PXD031116	Cen2_A_no_Biotin_05	Cen2 -biotin			Cen2-BioID2	no biotin		step 05	bio rep 1, run A
+PXD031116	Cen2_A_plus_biotin_01	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 01	bio rep 1, run A
+PXD031116	Cen2_A_plus_biotin_02	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 02	bio rep 1, run A
+PXD031116	Cen2_A_plus_biotin_03	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 03	bio rep 1, run A
+PXD031116	Cen2_A_plus_biotin_04	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 04	bio rep 1, run A
+PXD031116	Cen2_A_plus_biotin_05	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 05	bio rep 1, run A
+PXD031116	Cen2_B_no_Biotin_01	Cen2 -biotin			Cen2-BioID2	no biotin		step 01	bio rep 1, run B
+PXD031116	Cen2_B_no_Biotin_02	Cen2 -biotin			Cen2-BioID2	no biotin		step 02	bio rep 1, run B
+PXD031116	Cen2_B_no_Biotin_03	Cen2 -biotin			Cen2-BioID2	no biotin		step 03	bio rep 1, run B
+PXD031116	Cen2_B_no_Biotin_04	Cen2 -biotin			Cen2-BioID2	no biotin		step 04	bio rep 1, run B
+PXD031116	Cen2_B_no_Biotin_05	Cen2 -biotin			Cen2-BioID2	no biotin		step 05	bio rep 1, run B
+PXD031116	Cen2_B_plus_biotin_01	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 01	bio rep 1, run B
+PXD031116	Cen2_B_plus_biotin_02	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 02	bio rep 1, run B
+PXD031116	Cen2_B_plus_biotin_03	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 03	bio rep 1, run B
+PXD031116	Cen2_B_plus_biotin_04	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 04	bio rep 1, run B
+PXD031116	Cen2_B_plus_biotin_05	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 05	bio rep 1, run B
+PXD031116	Cen2_C_no_Biotin_01	Cen2 -biotin			Cen2-BioID2	no biotin		step 01	bio rep 2, run C
+PXD031116	Cen2_C_no_Biotin_02	Cen2 -biotin			Cen2-BioID2	no biotin		step 02	bio rep 2, run C
+PXD031116	Cen2_C_no_Biotin_03	Cen2 -biotin			Cen2-BioID2	no biotin		step 03	bio rep 2, run C
+PXD031116	Cen2_C_no_Biotin_04	Cen2 -biotin			Cen2-BioID2	no biotin		step 04	bio rep 2, run C
+PXD031116	Cen2_C_no_Biotin_05	Cen2 -biotin			Cen2-BioID2	no biotin		step 05	bio rep 2, run C
+PXD031116	Cen2_C_plus_biotin_01	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 01	bio rep 2, run C
+PXD031116	Cen2_C_plus_biotin_02	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 02	bio rep 2, run C
+PXD031116	Cen2_C_plus_biotin_03	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 03	bio rep 2, run C
+PXD031116	Cen2_C_plus_biotin_04	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 04	bio rep 2, run C
+PXD031116	Cen2_C_plus_biotin_05	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 05	bio rep 2, run C
+PXD031116	Cen2_D_no_Biotin_01	Cen2 -biotin			Cen2-BioID2	no biotin		step 01	bio rep 2, run D
+PXD031116	Cen2_D_no_Biotin_02	Cen2 -biotin			Cen2-BioID2	no biotin		step 02	bio rep 2, run D
+PXD031116	Cen2_D_no_Biotin_03	Cen2 -biotin			Cen2-BioID2	no biotin		step 03	bio rep 2, run D
+PXD031116	Cen2_D_no_Biotin_04	Cen2 -biotin			Cen2-BioID2	no biotin		step 04	bio rep 2, run D
+PXD031116	Cen2_D_no_Biotin_05	Cen2 -biotin			Cen2-BioID2	no biotin		step 05	bio rep 2, run D
+PXD031116	Cen2_D_plus_biotin_01	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 01	bio rep 2, run D
+PXD031116	Cen2_D_plus_biotin_02	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 02	bio rep 2, run D
+PXD031116	Cen2_D_plus_biotin_03	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 03	bio rep 2, run D
+PXD031116	Cen2_D_plus_biotin_04	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 04	bio rep 2, run D
+PXD031116	Cen2_D_plus_biotin_05	Cen2 +biotin			Cen2-BioID2	+150 uM biotin		step 05	bio rep 2, run D
+PXD031116	IMC8_A_nobiotin_01	IMC8 -biotin			IMC8-BioID2	no biotin		step 01	bio rep 1, run A
+PXD031116	IMC8_A_nobiotin_02	IMC8 -biotin			IMC8-BioID2	no biotin		step 02	bio rep 1, run A
+PXD031116	IMC8_A_nobiotin_03	IMC8 -biotin			IMC8-BioID2	no biotin		step 03	bio rep 1, run A
+PXD031116	IMC8_A_nobiotin_04	IMC8 -biotin			IMC8-BioID2	no biotin		step 04	bio rep 1, run A
+PXD031116	IMC8_A_nobiotin_05	IMC8 -biotin			IMC8-BioID2	no biotin		step 05	bio rep 1, run A
+PXD031116	IMC8_A_plus_biotin_01	IMC8 +biotin			IMC8-BioID2	+150 uM biotin		step 01	bio rep 1, run A
+PXD031116	IMC8_A_plus_biotin_02	IMC8 +biotin			IMC8-BioID2	+150 uM biotin		step 02	bio rep 1, run A
+PXD031116	IMC8_A_plus_biotin_03	IMC8 +biotin			IMC8-BioID2	+150 uM biotin		step 03	bio rep 1, run A
+PXD031116	IMC8_A_plus_biotin_04	IMC8 +biotin			IMC8-BioID2	+150 uM biotin		step 04	bio rep 1, run A
+PXD031116	IMC8_A_plus_biotin_05	IMC8 +biotin			IMC8-BioID2	+150 uM biotin		step 05	bio rep 1, run A
+PXD031116	IMC8_B_nobiotin_01	IMC8 -biotin			IMC8-BioID2	no biotin		step 01	bio rep 1, run B
+PXD031116	IMC8_B_nobiotin_02	IMC8 -biotin			IMC8-BioID2	no biotin		step 02	bio rep 1, run B
+PXD031116	IMC8_B_nobiotin_03	IMC8 -biotin			IMC8-BioID2	no biotin		step 03	bio rep 1, run B
+PXD031116	IMC8_B_nobiotin_04	IMC8 -biotin			IMC8-BioID2	no biotin		step 04	bio rep 1, run B
+PXD031116	IMC8_B_nobiotin_05	IMC8 -biotin			IMC8-BioID2	no biotin		step 05	bio rep 1, run B
+PXD031116	IMC8_B_plus_biotin_01	IMC8 +biotin			IMC8-BioID2	+150 uM biotin		step 01	bio rep 1, run B
+PXD031116	IMC8_B_plus_biotin_02	IMC8 +biotin			IMC8-BioID2	+150 uM biotin		step 02	bio rep 1, run B
+PXD031116	IMC8_B_plus_biotin_03	IMC8 +biotin			IMC8-BioID2	+150 uM biotin		step 03	bio rep 1, run B
+PXD031116	IMC8_B_plus_biotin_04	IMC8 +biotin			IMC8-BioID2	+150 uM biotin		step 04	bio rep 1, run B
+PXD031116	IMC8_B_plus_biotin_05	IMC8 +biotin			IMC8-BioID2	+150 uM biotin		step 05	bio rep 1, run B
+PXD031116	IMC8_C_plus_biotin_01	IMC8 +biotin			IMC8-BioID2	+150 uM biotin		step 01	bio rep 2, run C
+PXD031116	IMC8_C_plus_biotin_02	IMC8 +biotin			IMC8-BioID2	+150 uM biotin		step 02	bio rep 2, run C
+PXD031116	IMC8_C_plus_biotin_03	IMC8 +biotin			IMC8-BioID2	+150 uM biotin		step 03	bio rep 2, run C
+PXD031116	IMC8_C_plus_biotin_04	IMC8 +biotin			IMC8-BioID2	+150 uM biotin		step 04	bio rep 2, run C
+PXD031116	IMC8_C_plus_biotin_05	IMC8 +biotin			IMC8-BioID2	+150 uM biotin		step 05	bio rep 2, run C
+PXD031116	MORN1_A_no_Biotin_01	MORN1 -biotin			MORN1-BioID2	no biotin		step 01	bio rep 1, run A
+PXD031116	MORN1_A_no_Biotin_02	MORN1 -biotin			MORN1-BioID2	no biotin		step 02	bio rep 1, run A
+PXD031116	MORN1_A_no_Biotin_03	MORN1 -biotin			MORN1-BioID2	no biotin		step 03	bio rep 1, run A
+PXD031116	MORN1_A_no_Biotin_04	MORN1 -biotin			MORN1-BioID2	no biotin		step 04	bio rep 1, run A
+PXD031116	MORN1_A_no_Biotin_05	MORN1 -biotin			MORN1-BioID2	no biotin		step 05	bio rep 1, run A
+PXD031116	MORN1_A_plus_biotin_01	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 01	bio rep 1, run A
+PXD031116	MORN1_A_plus_biotin_02	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 02	bio rep 1, run A
+PXD031116	MORN1_A_plus_biotin_03	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 03	bio rep 1, run A
+PXD031116	MORN1_A_plus_biotin_04	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 04	bio rep 1, run A
+PXD031116	MORN1_A_plus_biotin_05	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 05	bio rep 1, run A
+PXD031116	MORN1_B_no_Biotin_01	MORN1 -biotin			MORN1-BioID2	no biotin		step 01	bio rep 1, run B
+PXD031116	MORN1_B_no_Biotin_02	MORN1 -biotin			MORN1-BioID2	no biotin		step 02	bio rep 1, run B
+PXD031116	MORN1_B_no_Biotin_03	MORN1 -biotin			MORN1-BioID2	no biotin		step 03	bio rep 1, run B
+PXD031116	MORN1_B_no_Biotin_04	MORN1 -biotin			MORN1-BioID2	no biotin		step 04	bio rep 1, run B
+PXD031116	MORN1_B_no_Biotin_05	MORN1 -biotin			MORN1-BioID2	no biotin		step 05	bio rep 1, run B
+PXD031116	MORN1_B_plus_biotin_01	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 01	bio rep 1, run B
+PXD031116	MORN1_B_plus_biotin_02	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 02	bio rep 1, run B
+PXD031116	MORN1_B_plus_biotin_03	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 03	bio rep 1, run B
+PXD031116	MORN1_B_plus_biotin_04	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 04	bio rep 1, run B
+PXD031116	MORN1_B_plus_biotin_05	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 05	bio rep 1, run B
+PXD031116	MORN1_C_nobiotin_01	MORN1 -biotin			MORN1-BioID2	no biotin		step 01	bio rep 2, run C
+PXD031116	MORN1_C_nobiotin_02	MORN1 -biotin			MORN1-BioID2	no biotin		step 02	bio rep 2, run C
+PXD031116	MORN1_C_nobiotin_03	MORN1 -biotin			MORN1-BioID2	no biotin		step 03	bio rep 2, run C
+PXD031116	MORN1_C_nobiotin_04	MORN1 -biotin			MORN1-BioID2	no biotin		step 04	bio rep 2, run C
+PXD031116	MORN1_C_nobiotin_05	MORN1 -biotin			MORN1-BioID2	no biotin		step 05	bio rep 2, run C
+PXD031116	MORN1_C_plus_Biotin_01	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 01	bio rep 2, run C
+PXD031116	MORN1_C_plus_Biotin_02	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 02	bio rep 2, run C
+PXD031116	MORN1_C_plus_Biotin_03	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 03	bio rep 2, run C
+PXD031116	MORN1_C_plus_Biotin_04	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 04	bio rep 2, run C
+PXD031116	MORN1_C_plus_Biotin_05	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 05	bio rep 2, run C
+PXD031116	MORN1_D_nobiotin_01	MORN1 -biotin			MORN1-BioID2	no biotin		step 01	bio rep 2, run D
+PXD031116	MORN1_D_nobiotin_02	MORN1 -biotin			MORN1-BioID2	no biotin		step 02	bio rep 2, run D
+PXD031116	MORN1_D_nobiotin_03	MORN1 -biotin			MORN1-BioID2	no biotin		step 03	bio rep 2, run D
+PXD031116	MORN1_D_nobiotin_04	MORN1 -biotin			MORN1-BioID2	no biotin		step 04	bio rep 2, run D
+PXD031116	MORN1_D_nobiotin_05	MORN1 -biotin			MORN1-BioID2	no biotin		step 05	bio rep 2, run D
+PXD031116	MORN1_D_plus_Biotin_01	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 01	bio rep 2, run D
+PXD031116	MORN1_D_plus_Biotin_02	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 02	bio rep 2, run D
+PXD031116	MORN1_D_plus_Biotin_03	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 03	bio rep 2, run D
+PXD031116	MORN1_D_plus_Biotin_04	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 04	bio rep 2, run D
+PXD031116	MORN1_D_plus_Biotin_05	MORN1 +biotin			MORN1-BioID2	+150 uM biotin		step 05	bio rep 2, run D
+PXD031116	MyoJ_A_noBiotin_01	MyoJ -biotin			MyoJ-BioID2	no biotin		step 01	bio rep 1, run A
+PXD031116	MyoJ_A_noBiotin_02	MyoJ -biotin			MyoJ-BioID2	no biotin		step 02	bio rep 1, run A
+PXD031116	MyoJ_A_noBiotin_03	MyoJ -biotin			MyoJ-BioID2	no biotin		step 03	bio rep 1, run A
+PXD031116	MyoJ_A_noBiotin_04	MyoJ -biotin			MyoJ-BioID2	no biotin		step 04	bio rep 1, run A
+PXD031116	MyoJ_A_noBiotin_05	MyoJ -biotin			MyoJ-BioID2	no biotin		step 05	bio rep 1, run A
+PXD031116	MyoJ_A_plus_biotin_01	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 01	bio rep 1, run A
+PXD031116	MyoJ_A_plus_biotin_02	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 02	bio rep 1, run A
+PXD031116	MyoJ_A_plus_biotin_03	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 03	bio rep 1, run A
+PXD031116	MyoJ_A_plus_biotin_04	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 04	bio rep 1, run A
+PXD031116	MyoJ_A_plus_biotin_05	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 05	bio rep 1, run A
+PXD031116	MyoJ_B_no_Biotin_01	MyoJ -biotin			MyoJ-BioID2	no biotin		step 01	bio rep 1, run B
+PXD031116	MyoJ_B_no_Biotin_02	MyoJ -biotin			MyoJ-BioID2	no biotin		step 02	bio rep 1, run B
+PXD031116	MyoJ_B_no_Biotin_03	MyoJ -biotin			MyoJ-BioID2	no biotin		step 03	bio rep 1, run B
+PXD031116	MyoJ_B_no_Biotin_04	MyoJ -biotin			MyoJ-BioID2	no biotin		step 04	bio rep 1, run B
+PXD031116	MyoJ_B_no_Biotin_05	MyoJ -biotin			MyoJ-BioID2	no biotin		step 05	bio rep 1, run B
+PXD031116	MyoJ_B_plus_biotin_01	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 01	bio rep 1, run B
+PXD031116	MyoJ_B_plus_biotin_02	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 02	bio rep 1, run B
+PXD031116	MyoJ_B_plus_biotin_03	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 03	bio rep 1, run B
+PXD031116	MyoJ_B_plus_biotin_04	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 04	bio rep 1, run B
+PXD031116	MyoJ_B_plus_biotin_05	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 05	bio rep 1, run B
+PXD031116	MyoJ_C_plus_biotin_01	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 01	bio rep 2, run C
+PXD031116	MyoJ_C_plus_biotin_02	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 02	bio rep 2, run C
+PXD031116	MyoJ_C_plus_biotin_03	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 03	bio rep 2, run C
+PXD031116	MyoJ_C_plus_biotin_04	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 04	bio rep 2, run C
+PXD031116	MyoJ_C_plus_biotin_05	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 05	bio rep 2, run C
+PXD031116	MyoJ_D_plus_biotin_01	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 01	bio rep 2, run D
+PXD031116	MyoJ_D_plus_biotin_02	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 02	bio rep 2, run D
+PXD031116	MyoJ_D_plus_biotin_03	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 03	bio rep 2, run D
+PXD031116	MyoJ_D_plus_biotin_04	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 04	bio rep 2, run D
+PXD031116	MyoJ_D_plus_biotin_05	MyoJ +biotin			MyoJ-BioID2	+150 uM biotin		step 05	bio rep 2, run D
+PXD031116	YFP_A_no_Biotin_01	YFP -biotin			YFP-BioID2 (cytosolic control)	no biotin		step 01	bio rep 1, run A
+PXD031116	YFP_A_no_Biotin_02	YFP -biotin			YFP-BioID2 (cytosolic control)	no biotin		step 02	bio rep 1, run A
+PXD031116	YFP_A_no_Biotin_03	YFP -biotin			YFP-BioID2 (cytosolic control)	no biotin		step 03	bio rep 1, run A
+PXD031116	YFP_A_no_Biotin_04	YFP -biotin			YFP-BioID2 (cytosolic control)	no biotin		step 04	bio rep 1, run A
+PXD031116	YFP_A_no_Biotin_05	YFP -biotin			YFP-BioID2 (cytosolic control)	no biotin		step 05	bio rep 1, run A
+PXD031116	YFP_A_plus_biotin_01	YFP +biotin			YFP-BioID2 (cytosolic control)	+150 uM biotin		step 01	bio rep 1, run A
+PXD031116	YFP_A_plus_biotin_02	YFP +biotin			YFP-BioID2 (cytosolic control)	+150 uM biotin		step 02	bio rep 1, run A
+PXD031116	YFP_A_plus_biotin_03	YFP +biotin			YFP-BioID2 (cytosolic control)	+150 uM biotin		step 03	bio rep 1, run A
+PXD031116	YFP_A_plus_biotin_04	YFP +biotin			YFP-BioID2 (cytosolic control)	+150 uM biotin		step 04	bio rep 1, run A
+PXD031116	YFP_A_plus_biotin_05	YFP +biotin			YFP-BioID2 (cytosolic control)	+150 uM biotin		step 05	bio rep 1, run A
+PXD031116	YFP_B_noBiotin_01	YFP -biotin			YFP-BioID2 (cytosolic control)	no biotin		step 01	bio rep 1, run B
+PXD031116	YFP_B_noBiotin_02	YFP -biotin			YFP-BioID2 (cytosolic control)	no biotin		step 02	bio rep 1, run B
+PXD031116	YFP_B_noBiotin_03	YFP -biotin			YFP-BioID2 (cytosolic control)	no biotin		step 03	bio rep 1, run B
+PXD031116	YFP_B_noBiotin_04	YFP -biotin			YFP-BioID2 (cytosolic control)	no biotin		step 04	bio rep 1, run B
+PXD031116	YFP_B_noBiotin_05	YFP -biotin			YFP-BioID2 (cytosolic control)	no biotin		step 05	bio rep 1, run B
+PXD031116	YFP_B_plus_biotin_01	YFP +biotin			YFP-BioID2 (cytosolic control)	+150 uM biotin		step 01	bio rep 1, run B
+PXD031116	YFP_B_plus_biotin_02	YFP +biotin			YFP-BioID2 (cytosolic control)	+150 uM biotin		step 02	bio rep 1, run B
+PXD031116	YFP_B_plus_biotin_03	YFP +biotin			YFP-BioID2 (cytosolic control)	+150 uM biotin		step 03	bio rep 1, run B
+PXD031116	YFP_B_plus_biotin_04	YFP +biotin			YFP-BioID2 (cytosolic control)	+150 uM biotin		step 04	bio rep 1, run B
+PXD031116	YFP_B_plus_biotin_05	YFP +biotin			YFP-BioID2 (cytosolic control)	+150 uM biotin		step 05	bio rep 1, run B
+PXD031161	SRHOPTRY_190212_HF_C1	control (C)		tachyzoite	control (C)				1 (190212)
+PXD031161	SRHOPTRY_190212_HF_C2	control (C)		tachyzoite	control (C)				2 (190212)
+PXD031161	SRHOPTRY_190212_HF_ND11_1	ND11		tachyzoite	ND11				1 (190212)
+PXD031161	SRHOPTRY_190212_HF_ND11_2	ND11		tachyzoite	ND11				2 (190212)
+PXD031161	SRHOPTRY_190306_HFX_C1	control (C)		tachyzoite	control (C)				1 (190306)
+PXD031161	SRHOPTRY_190306_HFX_C2	control (C)		tachyzoite	control (C)				2 (190306)
+PXD031161	SRHOPTRY_190306_HFX_ND11_1	ND11		tachyzoite	ND11				1 (190306)
+PXD031161	SRHOPTRY_190306_HFX_ND11_2	ND11		tachyzoite	ND11				2 (190306)
+PXD031161	SRHOPTRY_190321_HFX_A1	A		tachyzoite	A				1 (190321)
+PXD031161	SRHOPTRY_190321_HFX_A2	A		tachyzoite	A				2 (190321)
+PXD031161	SRHOPTRY_190321_HFX_B1	B		tachyzoite	B				1 (190321)
+PXD031161	SRHOPTRY_190321_HFX_B2	B		tachyzoite	B				2 (190321)
+PXD031164	SRHOPTRY_190212_HF_C1	C control (untagged)		tachyzoite	untagged	anti-HA IP			1
+PXD031164	SRHOPTRY_190212_HF_C2	C control (untagged)		tachyzoite	untagged	anti-HA IP			2
+PXD031164	SRHOPTRY_190212_HF_ND12_1	ND12 IP		tachyzoite	ND12	anti-HA IP			1
+PXD031164	SRHOPTRY_190212_HF_ND12_2	ND12 IP		tachyzoite	ND12	anti-HA IP			2
+PXD031164	SRHOPTRY_190306_HFX_C1	C control (untagged)		tachyzoite	untagged	anti-HA IP			1
+PXD031164	SRHOPTRY_190306_HFX_C2	C control (untagged)		tachyzoite	untagged	anti-HA IP			2
+PXD031164	SRHOPTRY_190306_HFX_ND12_1	ND12 IP		tachyzoite	ND12	anti-HA IP			1
+PXD031164	SRHOPTRY_190306_HFX_ND12_2	ND12 IP		tachyzoite	ND12	anti-HA IP			2
+PXD031164	SRHOPTRY_190321_HFX_A1	A IP		tachyzoite	A	anti-HA IP			1
+PXD031164	SRHOPTRY_190321_HFX_A2	A IP		tachyzoite	A	anti-HA IP			2
+PXD031164	SRHOPTRY_190321_HFX_C1	C control (untagged)		tachyzoite	untagged	anti-HA IP			1
+PXD031164	SRHOPTRY_190321_HFX_C2	C control (untagged)		tachyzoite	untagged	anti-HA IP			2
+PXD031649	Ref3590_MS_01_20201119	HA pulldown CRMPA-3HA	RH		CRMPA-3HA	anti-HA pulldown			1
+PXD031649	Ref3590_MS_02_20201119	HA pulldown CRMPA-3HA	RH		CRMPA-3HA	anti-HA pulldown			2
+PXD031649	Ref3590_MS_03_20201119	HA pulldown CRMPB-3HA	RH		CRMPB-3HA	anti-HA pulldown			3
+PXD031649	Ref3590_MS_04_20201119	HA pulldown CRMPB-3HA	RH		CRMPB-3HA	anti-HA pulldown			4
+PXD031649	Ref3590_MS_05_20201119	HA pulldown WT	RH		WT	anti-HA pulldown			5
+PXD031649	Ref3592_MS_01_20201119	TurboID extracellular WT	RH		WT	biotin, extracellular			1
+PXD031649	Ref3592_MS_02_20201119	TurboID extracellular WT	RH		WT	biotin, extracellular			2
+PXD031649	Ref3592_MS_04_20201119	TurboID extracellular CRMPB-TurboID	RH		CRMPB-TurboID	biotin, extracellular			4
+PXD031649	Ref3592_MS_05_20201119	TurboID extracellular CRMPB-TurboID	RH		CRMPB-TurboID	biotin, extracellular			5
+PXD031649	Ref6891_MS_S03_20211115	TurboID CRMPA invasion (R)	RH		CRMPA-TurboID	invasion			1
+PXD031649	Ref6891_MS_S04_20211115	TurboID CRMPA control (C)	RH		CRMPA-TurboID	invasion-blocking buffer control			1
+PXD031649	Ref6891_MS_S05_20211115	TurboID CRMPA invasion (R)	RH		CRMPA-TurboID	invasion			2
+PXD031649	Ref6891_MS_S06_20211115	TurboID CRMPA control (C)	RH		CRMPA-TurboID	invasion-blocking buffer control			2
+PXD031649	Ref6891_MS_S07_20211115	TurboID CRMPA invasion (R)	RH		CRMPA-TurboID	invasion			3
+PXD031649	Ref6891_MS_S08_20211115	TurboID CRMPA control (C)	RH		CRMPA-TurboID	invasion-blocking buffer control			3
+PXD031649	Ref6891_MS_S09_20211115	TurboID CRMPB invasion (R)	RH		CRMPB-TurboID	invasion			1
+PXD031649	Ref6891_MS_S10_20211115	TurboID CRMPB control (C)	RH		CRMPB-TurboID	invasion-blocking buffer control			1
+PXD031649	Ref6891_MS_S11_20211115	TurboID CRMPB invasion (R)	RH		CRMPB-TurboID	invasion			2
+PXD031649	Ref6891_MS_S12_20211115	TurboID CRMPB control (C)	RH		CRMPB-TurboID	invasion-blocking buffer control			2
+PXD031649	Ref6891_MS_S13_20211115	TurboID CRMPB invasion (R)	RH		CRMPB-TurboID	invasion			3
+PXD031649	Ref6891_MS_S14_20211115	TurboID CRMPB control (C)	RH		CRMPB-TurboID	invasion-blocking buffer control			3
+PXD032102	20180301_YS_BirA-1	CaM-BirA* set A (BirA-n)	RHΔhxgprt		CaM-BirA*				1
+PXD032102	20180301_YS_BirA-2	CaM-BirA* set A (BirA-n)	RHΔhxgprt		CaM-BirA*				2
+PXD032102	20180301_YS_BirA-3	CaM-BirA* set A (BirA-n)	RHΔhxgprt		CaM-BirA*				3
+PXD032102	20180301_YS_BirA-4	CaM-BirA* set A (BirA-n)	RHΔhxgprt		CaM-BirA*				4
+PXD032102	20180301_YS_BirA_1	CaM-BirA* set B (BirA_n)	RHΔhxgprt		CaM-BirA*				1
+PXD032102	20180301_YS_BirA_2	CaM-BirA* set B (BirA_n)	RHΔhxgprt		CaM-BirA*				2
+PXD032102	20180301_YS_BirA_3	CaM-BirA* set B (BirA_n)	RHΔhxgprt		CaM-BirA*				3
+PXD032102	20180301_YS_BirA_4	CaM-BirA* set B (BirA_n)	RHΔhxgprt		CaM-BirA*				4
+PXD032360	F14-19	GRA28 IP F14-19	RH deltaKu80 GRA28-HA-FLAG	tachyzoite	GRA28-HA-FLAG	anti-FLAG IP, size-exclusion		SEC fractions 14-19	
+PXD032360	F20-22	GRA28 IP F20-22	RH deltaKu80 GRA28-HA-FLAG	tachyzoite	GRA28-HA-FLAG	anti-FLAG IP, size-exclusion		SEC fractions 20-22	
+PXD032362	BCC7-R1	BCC7 IP	RHΔku80	tachyzoite	BCC7-tagged	affinity purification			1
+PXD032362	BCC7-R2	BCC7 IP	RHΔku80	tachyzoite	BCC7-tagged	affinity purification			2
+PXD032362	BCC7-R3	BCC7 IP	RHΔku80	tachyzoite	BCC7-tagged	affinity purification			3
+PXD032362	WT-R1	WT control IP	RHΔku80	tachyzoite	WT	affinity purification			1
+PXD032362	WT-R2	WT control IP	RHΔku80	tachyzoite	WT	affinity purification			2
+PXD032362	WT-R3	WT control IP	RHΔku80	tachyzoite	WT	affinity purification			3
+PXD033109	20191217_ES_Crk2_pH7-4	Crk2 IP pH7.4 (strain not in name)		tachyzoite (pH 7.4)		anti-HA/Myc IP of TgCrk2		IP eluate	
+PXD033109	20191217_ES_Crk2_pH8-2	Crk2 IP pH8.2 (strain not in name)		bradyzoite (pH 8.2 induced)		anti-HA/Myc IP of TgCrk2		IP eluate	
+PXD033109	20210202_ES_IP_Crk2_pH7-2	Crk2 IP pH7-2 (literal)				anti-HA/Myc IP of TgCrk2		IP eluate	
+PXD033109	20210202_ES_IP_RH-1	RH pH unspecified	RH	tachyzoite		anti-HA/Myc IP of TgCrk2		IP eluate	
+PXD033109	20210202_ES_IP_RH-2	RH pH unspecified	RH	tachyzoite		anti-HA/Myc IP of TgCrk2		IP eluate	
+PXD033109	20210402_ES_IP_Crk2-pH8-2	Crk2 IP pH8.2 (strain not in name)		bradyzoite (pH 8.2 induced)		anti-HA/Myc IP of TgCrk2		IP eluate	
+PXD033109	20210402_ES_IP_Me49-pH7-4_1	ME49 pH7.4	ME49	tachyzoite (pH 7.4)		anti-HA/Myc IP of TgCrk2		IP eluate	1
+PXD033109	20210402_ES_IP_Me49-pH7-4_2	ME49 pH7.4	ME49	tachyzoite (pH 7.4)		anti-HA/Myc IP of TgCrk2		IP eluate	2
+PXD033109	20210402_ES_IP_Me49-pH8-2_1	ME49 pH8.2	ME49	bradyzoite (pH 8.2 induced)		anti-HA/Myc IP of TgCrk2		IP eluate	1
+PXD033109	20210402_ES_IP_Me49-pH8-2_2	ME49 pH8.2	ME49	bradyzoite (pH 8.2 induced)		anti-HA/Myc IP of TgCrk2		IP eluate	2
+PXD033109	20210408_LS-2019_IP_Crk2-pH7-4	Crk2 IP pH7.4 (strain not in name)		tachyzoite (pH 7.4)		anti-HA/Myc IP of TgCrk2		IP eluate	
+PXD033109	20210408_LS-2019_IP_Crk2-pH8-2	Crk2 IP pH8.2 (strain not in name)		bradyzoite (pH 8.2 induced)		anti-HA/Myc IP of TgCrk2		IP eluate	
+PXD035106	kf200618_01	kf200618_01		tachyzoite					
+PXD035106	kf200618_02	kf200618_02		tachyzoite					
+PXD035106	kf200618_03	kf200618_03		tachyzoite					
+PXD035106	kf200618_04	kf200618_04		tachyzoite					
+PXD035106	kf200618_05	kf200618_05		tachyzoite					
+PXD035106	kf200618_06	kf200618_06		tachyzoite					
+PXD035654	Ref7712_MS_01_20220707	Ref7712_MS_01							
+PXD035654	Ref7712_MS_02_20220707	Ref7712_MS_02							
+PXD035654	Ref7712_MS_03_20220707	Ref7712_MS_03							
+PXD035654	Ref7712_MS_04_20220707	Ref7712_MS_04							
+PXD035654	Ref7712_MS_05_20220707	Ref7712_MS_05							
+PXD035654	Ref7712_MS_06_20220707	Ref7712_MS_06							
+PXD035654	Ref7712_MS_07_20220707	Ref7712_MS_07							
+PXD035654	Ref7712_MS_08_20220707	Ref7712_MS_08							
+PXD035654	Ref7712_MS_09_20220707	Ref7712_MS_09							
+PXD035654	Ref7712_MS_10_20220707	Ref7712_MS_10							
+PXD035654	Ref7712_MS_11_20220707	Ref7712_MS_11							
+PXD035654	Ref7712_MS_12_20220707	Ref7712_MS_12							
+PXD035654	Ref7712_MS_13_20220707	Ref7712_MS_13							
+PXD035654	Ref7712_MS_14_20220707	Ref7712_MS_14							
+PXD035654	Ref7712_MS_15_20220707	Ref7712_MS_15							
+PXD035654	Ref7712_MS_16_20220707	Ref7712_MS_16							
+PXD035654	Ref7712_MS_17_20220707	Ref7712_MS_17							
+PXD035654	Ref7712_MS_18_20220707	Ref7712_MS_18							
+PXD038158	Ferrel_Boothroyd_Control_1	control IP			control	anti-V5 nanobody IP			1
+PXD038158	Ferrel_Boothroyd_Control_2	control IP			control	anti-V5 nanobody IP			2
+PXD038158	Ferrel_Boothroyd_MOSPD2_1	MOSPD2 V5 IP			MOSPD2-V5	anti-V5 nanobody IP			1
+PXD038158	Ferrel_Boothroyd_MOSPD2_2	MOSPD2 V5 IP			MOSPD2-V5	anti-V5 nanobody IP			2
+PXD039431	20190506_Exp21_ThioP_SILAC_RHdKu80HeavyvsCDPK1MLight_5minThioP_eluate_20190519024550	5min ThioP SILAC rep1	RHdKu80 (CDPK1G, heavy) vs CDPK1M (light)	tachyzoite (extracellular)	CDPK1G vs CDPK1M	5 min thiophosphorylation, SILAC	5 min	eluate (thiophosphorylated enrichment)	1
+PXD039431	20190518_Exp21_ThioP_SILAC_RHdKu80HeavyvsCDPK1MLight_5minThioP_sup	5min ThioP SILAC rep1	RHdKu80 (CDPK1G, heavy) vs CDPK1M (light)	tachyzoite (extracellular)	CDPK1G vs CDPK1M	5 min thiophosphorylation, SILAC	5 min	supernatant (unbound)	1
+PXD039431	20190630_Exp24_ThioP_SILAC_RHdKu80HeavyvsCDPK1MLight_5minThioP_Rep2_elu	5min ThioP SILAC rep2	RHdKu80 (CDPK1G, heavy) vs CDPK1M (light)	tachyzoite (extracellular)	CDPK1G vs CDPK1M	5 min thiophosphorylation, SILAC	5 min	eluate (thiophosphorylated enrichment)	2
+PXD039431	20190630_Exp24_ThioP_SILAC_RHdKu80HeavyvsCDPK1MLight_5minThioP_Rep2_sup	5min ThioP SILAC rep2	RHdKu80 (CDPK1G, heavy) vs CDPK1M (light)	tachyzoite (extracellular)	CDPK1G vs CDPK1M	5 min thiophosphorylation, SILAC	5 min	supernatant (unbound)	2
+PXD039431	20190729_Exp26_ThioP_SILAC_RHdKu80HeavyvsCDPK1MLight_5minThioP_Rep3_elu	5min ThioP SILAC rep3	RHdKu80 (CDPK1G, heavy) vs CDPK1M (light)	tachyzoite (extracellular)	CDPK1G vs CDPK1M	5 min thiophosphorylation, SILAC	5 min	eluate (thiophosphorylated enrichment)	3
+PXD039431	20190916_Exp26_ThioP_SILAC_RHdKu80HeavyvsCDPK1MLight_5minThioP_Rep3_sup	5min ThioP SILAC rep3	RHdKu80 (CDPK1G, heavy) vs CDPK1M (light)	tachyzoite (extracellular)	CDPK1G vs CDPK1M	5 min thiophosphorylation, SILAC	5 min	supernatant (unbound)	3
+PXD039432	20220325_AWC_IP_TIR1_R1_DDA	TIR1			TIR1 parental				1
+PXD039432	20220325_AWC_IP_TIR1_R2_DDA	TIR1			TIR1 parental				2
+PXD039432	20220325_AWC_IP_TIR1_R3_DDA	TIR1			TIR1 parental				3
+PXD039432	20220325_AWC_IP_tgNH008_R1_DDA	tgNH008							1
+PXD039432	20220325_AWC_IP_tgNH008_R2_DDA	tgNH008							2
+PXD039432	20220325_AWC_IP_tgNH008_R3_DDA	tgNH008							3
+PXD039432	20220407_AWC_IP_CDPK1AID_R1_DDA	CDPK1AID			CDPK1-AID parental				1
+PXD039432	20220407_AWC_IP_CDPK1AID_R2_DDA	CDPK1AID			CDPK1-AID parental				2
+PXD039432	20220407_AWC_IP_CDPK1AID_R3_DDA	CDPK1AID			CDPK1-AID parental				3
+PXD039432	20220407_AWC_IP_tgAWC018_R1_DDA	tgAWC018							1
+PXD039432	20220407_AWC_IP_tgAWC018_R2_DDA	tgAWC018							2
+PXD039432	20220407_AWC_IP_tgAWC018_R3_DDA	tgAWC018							3
+PXD039434	20220420_tgAWC026_BIO_R1_DDA_20220420232553	tgAWC026 biotin		tachyzoite (extracellular)	tgAWC026 (FTS-TurboID or mNG-TurboID; mapping not stated)	500 uM biotin			1
+PXD039434	20220420_tgAWC026_BIO_R2_DDA	tgAWC026 biotin		tachyzoite (extracellular)	tgAWC026 (FTS-TurboID or mNG-TurboID; mapping not stated)	500 uM biotin			2
+PXD039434	20220420_tgAWC026_BIO_R3_DDA	tgAWC026 biotin		tachyzoite (extracellular)	tgAWC026 (FTS-TurboID or mNG-TurboID; mapping not stated)	500 uM biotin			3
+PXD039434	20220420_tgAWC026_VEH_R1_DDA	tgAWC026 DMSO vehicle		tachyzoite (extracellular)	tgAWC026 (FTS-TurboID or mNG-TurboID; mapping not stated)	DMSO vehicle			1
+PXD039434	20220420_tgAWC026_VEH_R2_DDA	tgAWC026 DMSO vehicle		tachyzoite (extracellular)	tgAWC026 (FTS-TurboID or mNG-TurboID; mapping not stated)	DMSO vehicle			2
+PXD039434	20220420_tgAWC026_VEH_R3_DDA	tgAWC026 DMSO vehicle		tachyzoite (extracellular)	tgAWC026 (FTS-TurboID or mNG-TurboID; mapping not stated)	DMSO vehicle			3
+PXD039434	20220421_tgALH184_BIO_R1_DDA	tgALH184 biotin		tachyzoite (extracellular)	tgALH184 (FTS-TurboID or mNG-TurboID; mapping not stated)	500 uM biotin			1
+PXD039434	20220421_tgALH184_BIO_R2_DDA	tgALH184 biotin		tachyzoite (extracellular)	tgALH184 (FTS-TurboID or mNG-TurboID; mapping not stated)	500 uM biotin			2
+PXD039434	20220421_tgALH184_BIO_R3_DDA	tgALH184 biotin		tachyzoite (extracellular)	tgALH184 (FTS-TurboID or mNG-TurboID; mapping not stated)	500 uM biotin			3
+PXD039434	20220421_tgALH184_VEH_R1_DDA	tgALH184 DMSO vehicle		tachyzoite (extracellular)	tgALH184 (FTS-TurboID or mNG-TurboID; mapping not stated)	DMSO vehicle			1
+PXD039434	20220421_tgALH184_VEH_R2_DDA	tgALH184 DMSO vehicle		tachyzoite (extracellular)	tgALH184 (FTS-TurboID or mNG-TurboID; mapping not stated)	DMSO vehicle			2
+PXD039434	20220421_tgALH184_VEH_R3_DDA	tgALH184 DMSO vehicle		tachyzoite (extracellular)	tgALH184 (FTS-TurboID or mNG-TurboID; mapping not stated)	DMSO vehicle			3
+PXD039896	20220817_PKAC3_DDA_R1	PKAC3 IP	Δku80Δhxgprt	tachyzoite (extracellular)	PKA C3-mNG-mAID	anti-mNeonGreen IP			1
+PXD039896	20220817_PKAC3_DDA_R2_20220817215729	PKAC3 IP	Δku80Δhxgprt	tachyzoite (extracellular)	PKA C3-mNG-mAID	anti-mNeonGreen IP			2
+PXD039896	20220817_TIR1_DDA_R1	TIR1 control IP	Δku80Δhxgprt	tachyzoite (extracellular)	control (TIR1 token; description says mNG-TurboID-Ty control)	anti-mNeonGreen IP			1
+PXD039896	20220817_TIR1_DDA_R2	TIR1 control IP	Δku80Δhxgprt	tachyzoite (extracellular)	control (TIR1 token; description says mNG-TurboID-Ty control)	anti-mNeonGreen IP			1
+PXD039919	20220116_SPARK_mNG_DDA_R1	SPARK-mNG		tachyzoite	SPARK-mNG				1
+PXD039919	20220116_SPARK_mNG_DDA_R2	SPARK-mNG		tachyzoite	SPARK-mNG				2
+PXD039919	20220116_dku80_DDA_R1	dku80 parental		tachyzoite	dku80 parental				1
+PXD039919	20220116_dku80_DDA_R2	dku80 parental		tachyzoite	dku80 parental				2
+PXD039922	20210929_TIR1_mNG_IP_ALH_DDA_4ul	TIR1 mNG IP control	RH		TIR1 parental control				ALH
+PXD039922	20210929_TIR1_mNG_IP_TS_DDA	TIR1 mNG IP control	RH		TIR1 parental control				TS
+PXD039922	20210929_tgTS013_mNG_IP_ALH_DDA_4ul_20210930154811	tgTS013 mNG IP	RH		tgTS013 (mNG-tagged line)				ALH
+PXD039922	20210929_tgTS013_mNG_IP_TS_DDA_4ul	tgTS013 mNG IP	RH		tgTS013 (mNG-tagged line)				TS
+PXD039979	20220314_TIR1_Ty_IP_DDA_real	TIR1 control Ty IP			TIR1 parental	anti-Ty IP			1
+PXD039979	20220314_tgALH273_308_Ty_IP_DDA_real	SPARKEL-mNG-Ty IP			SPARKEL-mNG-Ty	anti-Ty IP			1
+PXD039979	20220331_TIR1_Ty_IP_DDA_CV5065	TIR1 control Ty IP			TIR1 parental	anti-Ty IP			2
+PXD039979	20220331_tgALH273_Ty_IP_DDA_CV5065_R2	SPARKEL-mNG-Ty IP			SPARKEL-mNG-Ty	anti-Ty IP			2
+PXD039983	20220424_tgALH184_intracellular_DDA_20220424154404	tgALH184 TurboID intracellular		tachyzoite (intracellular)	tgALH184 (SPARK/SPARKEL/mNG-TurboID; mapping not stated)	500 uM biotin 30 min			20220424
+PXD039983	20220424_tgALH293_intracellular_DDA	tgALH293 TurboID intracellular		tachyzoite (intracellular)	tgALH293 (SPARK/SPARKEL/mNG-TurboID; mapping not stated)	500 uM biotin 30 min			20220424
+PXD039983	20220729_tgALH184_intracellular_DDA	tgALH184 TurboID intracellular		tachyzoite (intracellular)	tgALH184 (SPARK/SPARKEL/mNG-TurboID; mapping not stated)	500 uM biotin 30 min			20220729
+PXD039983	20220729_tgALH293_intracellular_DDA	tgALH293 TurboID intracellular		tachyzoite (intracellular)	tgALH293 (SPARK/SPARKEL/mNG-TurboID; mapping not stated)	500 uM biotin 30 min			20220729
+PXD039983	20220731_tgALH184_intracellular_DDA	tgALH184 TurboID intracellular		tachyzoite (intracellular)	tgALH184 (SPARK/SPARKEL/mNG-TurboID; mapping not stated)	500 uM biotin 30 min			20220731
+PXD039983	20220731_tgALH293_intracellular_DDA	tgALH293 TurboID intracellular		tachyzoite (intracellular)	tgALH293 (SPARK/SPARKEL/mNG-TurboID; mapping not stated)	500 uM biotin 30 min			20220731
+PXD039985	20220729_tgALH184_intracellular_DDA_90min	ALH184 TurboID		intracellular tachyzoite	ALH184	biotin 500 uM, 30 min; streptavidin proximity labelling	90 min gradient		20220729
+PXD039985	20220729_tgALH294_intracellular_DDA_90min	ALH294 TurboID		intracellular tachyzoite	ALH294	biotin 500 uM, 30 min; streptavidin proximity labelling	90 min gradient		20220729
+PXD039985	20220731_tgALH184_intracellular_DDA_90min	ALH184 TurboID		intracellular tachyzoite	ALH184	biotin 500 uM, 30 min; streptavidin proximity labelling	90 min gradient		20220731
+PXD039985	20220731_tgALH294_intracellular_DDA_90min	ALH294 TurboID		intracellular tachyzoite	ALH294	biotin 500 uM, 30 min; streptavidin proximity labelling	90 min gradient		20220731
+PXD039986	20221222_tgALH184_DDA_R1	tgALH184		tachyzoite					1
+PXD039986	20221222_tgALH184_DDA_R2	tgALH184		tachyzoite					2
+PXD039986	20221222_tgALH493_DDA_R1	tgALH493		tachyzoite					1
+PXD039986	20221222_tgALH493_DDA_R2	tgALH493		tachyzoite					2
+PXD041352	DZ2490_HA1	GRA57-HA IP, IFNg-primed HFF	RH		GRA57-HA	anti-HA IP; HFF IFNg 2.5 U/ml 6 h	24 h post-infection		1
+PXD041352	DZ2490_HA2	GRA57-HA IP, IFNg-primed HFF	RH		GRA57-HA	anti-HA IP; HFF IFNg 2.5 U/ml 6 h	24 h post-infection		2
+PXD041352	DZ2490_HA3	GRA57-HA IP, IFNg-primed HFF	RH		GRA57-HA	anti-HA IP; HFF IFNg 2.5 U/ml 6 h	24 h post-infection		3
+PXD041352	DZ2490_RH1	RHΔKu80 control IP, IFNg-primed HFF	RH		ΔKu80 parental	anti-HA IP; HFF IFNg 2.5 U/ml 6 h	24 h post-infection		1
+PXD041352	DZ2490_RH2	RHΔKu80 control IP, IFNg-primed HFF	RH		ΔKu80 parental	anti-HA IP; HFF IFNg 2.5 U/ml 6 h	24 h post-infection		2
+PXD041352	DZ2490_RH3	RHΔKu80 control IP, IFNg-primed HFF	RH		ΔKu80 parental	anti-HA IP; HFF IFNg 2.5 U/ml 6 h	24 h post-infection		3
+PXD041887	20230302_RH-KU80-HA_control-1	RH-KU80-HA control	RH		KU80-HA control				1
+PXD041887	20230302_RH-KU80-HA_control-2	RH-KU80-HA control	RH		KU80-HA control				2
+PXD041887	20230410_LS_080-Cog3_IP-rep1	Cog3 IP 080			Cog3 IP				1
+PXD041887	20230410_LS_080-Cog3_IP-rep2	Cog3 IP 080			Cog3 IP				2
+PXD041887	20230410_LS_120-Cog3_IP-rep1	Cog3 IP 120			Cog3 IP				1
+PXD041887	20230410_LS_IP-Cog3-120-rep2	Cog3 IP 120			Cog3 IP				2
+PXD042658	AP2XI-2_R1	AP2XI-2 HAFlag IP	RH dKu80		AP2XI-2-HAFlag				1
+PXD042658	AP2XI-2_R2	AP2XI-2 HAFlag IP	RH dKu80		AP2XI-2-HAFlag				2
+PXD042658	AP2XI-2_R3	AP2XI-2 HAFlag IP	RH dKu80		AP2XI-2-HAFlag				3
+PXD042658	AP2XII-1_R1	AP2XII-1 HAFlag IP	RH dKu80		AP2XII-1-HAFlag				1
+PXD042658	AP2XII-1_R2	AP2XII-1 HAFlag IP	RH dKu80		AP2XII-1-HAFlag				2
+PXD042658	AP2XII-1_R3	AP2XII-1 HAFlag IP	RH dKu80		AP2XII-1-HAFlag				3
+PXD042658	Mock_R1	Mock FLAG IP	RH dKu80		none (mock)				1
+PXD042658	Mock_R2	Mock FLAG IP	RH dKu80		none (mock)				2
+PXD042658	Mock_R3	Mock FLAG IP	RH dKu80		none (mock)				3
+PXD043808	22P20280001	22P20280001	Pru	tachyzoite (alkaline medium, 3 days)					
+PXD043808	22P20280002	22P20280002	Pru	tachyzoite (alkaline medium, 3 days)					
+PXD043808	22P20280003	22P20280003	Pru	tachyzoite (alkaline medium, 3 days)					
+PXD043808	22P20280004	22P20280004	Pru	tachyzoite (alkaline medium, 3 days)					
+PXD043808	22P20280005	22P20280005	Pru	tachyzoite (alkaline medium, 3 days)					
+PXD043808	22P20280006	22P20280006	Pru	tachyzoite (alkaline medium, 3 days)					
+PXD043924	20230302_RH-KU80-HA_control-1	RH-KU80-HA control IP	RH		RH-KU80-HA				1
+PXD043924	20230302_RH-KU80-HA_control-2	RH-KU80-HA control IP	RH		RH-KU80-HA				2
+PXD043924	20230516_LS_IP_Cdt1-1	Cdt1 IP	RH		Cdt1 (tagged; details not given)				1
+PXD043924	20230516_LS_IP_Cdt1-2	Cdt1 IP	RH		Cdt1 (tagged; details not given)				2
+PXD043994	20210202_RH-TIR-HA_control-1	RH-TIR-HA control IP	RH		TIR1-HA parental	anti-HA IP			1
+PXD043994	20210202_RH-TIR-HA_control-2	RH-TIR-HA control IP	RH		TIR1-HA parental	anti-HA IP			2
+PXD043994	20230201_LS_cyclin4-IP_a	Cyclin4 IP			Cyclin-4 tagged	IP			1
+PXD043994	20230201_LS_cyclin4-IP_b	Cyclin4 IP			Cyclin-4 tagged	IP			2
+PXD044080	20230416_AWC_IP_306920-HA	306920-HA IP	TGGT1_306920-3xHA	tachyzoite (extracellular)	TGGT1_306920-3xHA	anti-HA IP			1
+PXD044080	20230416_AWC_IP_TIR1_306_HA	TIR1 control IP	TIR1 parental	tachyzoite (extracellular)	untagged TIR1 parental	anti-HA IP			1
+PXD044080	20230421_AWC_IP_306920-HA	306920-HA IP	TGGT1_306920-3xHA	tachyzoite (extracellular)	TGGT1_306920-3xHA	anti-HA IP			2
+PXD044080	20230421_AWC_IP_TIR1_306_HA	TIR1 control IP	TIR1 parental	tachyzoite (extracellular)	untagged TIR1 parental	anti-HA IP			2
+PXD044081	20200508_KU80-MMTS_F1-2_90min	KU80-MMTS fractions (unexplained)						F1-2	
+PXD044081	20200508_KU80-MMTS_F15-16-17-18_90min	KU80-MMTS fractions (unexplained)						F15-16-17-18	
+PXD044081	20200508_KU80-MMTS_F3-9_90min	KU80-MMTS fractions (unexplained)						F3-9	
+PXD044081	20200508_KU80-MMTS_F4-10_90min	KU80-MMTS fractions (unexplained)						F4-10	
+PXD044081	20200508_KU80-MMTS_F5-10_90min	KU80-MMTS fractions (unexplained)						F5-10	
+PXD044081	20200508_KU80-MMTS_F6-12_90min	KU80-MMTS fractions (unexplained)						F6-12	
+PXD044081	20200508_KU80-MMTS_F7-13_90min	KU80-MMTS fractions (unexplained)						F7-13	
+PXD044081	20200508_KU80-MMTS_F8-14_90min	KU80-MMTS fractions (unexplained)						F8-14	
+PXD044081	20200802_AWC_CDPK1MyrIP_Exp15_B_MUT_DIA_50	cMut IP	TIR1 background	tachyzoite	CDPK1 mutant complement (cMut)	auxin + compound 1; anti-HA IP, DIA		FAIMS CV -50 V	Exp15_B
+PXD044081	20200802_AWC_CDPK1MyrIP_Exp15_B_MUT_DIA_65	cMut IP	TIR1 background	tachyzoite	CDPK1 mutant complement (cMut)	auxin + compound 1; anti-HA IP, DIA		FAIMS CV -65 V	Exp15_B
+PXD044081	20200802_AWC_CDPK1MyrIP_Exp15_B_Tir1_DIA_50	TIR1 untagged IP	TIR1 background	tachyzoite	untagged TIR1 control	auxin + compound 1; anti-HA IP, DIA		FAIMS CV -50 V	Exp15_B
+PXD044081	20200802_AWC_CDPK1MyrIP_Exp15_B_Tir1_DIA_65	TIR1 untagged IP	TIR1 background	tachyzoite	untagged TIR1 control	auxin + compound 1; anti-HA IP, DIA		FAIMS CV -65 V	Exp15_B
+PXD044081	20200802_AWC_CDPK1MyrIP_Exp15_B_WT_DIA_50	cWT IP	TIR1 background	tachyzoite	CDPK1 wild-type complement (cWT)	auxin + compound 1; anti-HA IP, DIA		FAIMS CV -50 V	Exp15_B
+PXD044081	20200802_AWC_CDPK1MyrIP_Exp15_B_WT_DIA_65	cWT IP	TIR1 background	tachyzoite	CDPK1 wild-type complement (cWT)	auxin + compound 1; anti-HA IP, DIA		FAIMS CV -65 V	Exp15_B
+PXD044081	20200802_AWC_CDPK1MyrIP_Exp16_MUT_DIA_50	cMut IP	TIR1 background	tachyzoite	CDPK1 mutant complement (cMut)	auxin + compound 1; anti-HA IP, DIA		FAIMS CV -50 V	Exp16
+PXD044081	20200802_AWC_CDPK1MyrIP_Exp16_MUT_DIA_65	cMut IP	TIR1 background	tachyzoite	CDPK1 mutant complement (cMut)	auxin + compound 1; anti-HA IP, DIA		FAIMS CV -65 V	Exp16
+PXD044081	20200802_AWC_CDPK1MyrIP_Exp16_Tir1_DIA_50	TIR1 untagged IP	TIR1 background	tachyzoite	untagged TIR1 control	auxin + compound 1; anti-HA IP, DIA		FAIMS CV -50 V	Exp16
+PXD044081	20200802_AWC_CDPK1MyrIP_Exp16_Tir1_DIA_65	TIR1 untagged IP	TIR1 background	tachyzoite	untagged TIR1 control	auxin + compound 1; anti-HA IP, DIA		FAIMS CV -65 V	Exp16
+PXD044081	20200802_AWC_CDPK1MyrIP_Exp16_WT_DIA_50	cWT IP	TIR1 background	tachyzoite	CDPK1 wild-type complement (cWT)	auxin + compound 1; anti-HA IP, DIA		FAIMS CV -50 V	Exp16
+PXD044081	20200802_AWC_CDPK1MyrIP_Exp16_WT_DIA_65	cWT IP	TIR1 background	tachyzoite	CDPK1 wild-type complement (cWT)	auxin + compound 1; anti-HA IP, DIA		FAIMS CV -65 V	Exp16
+PXD044091	20230407_DV_sample1_compIP_DV004HAIP_DDA	DV004HAIP							1
+PXD044091	20230407_DV_sample2_compIP_WT_HAIP_DDA	WT_HAIP							1
+PXD044091	20230407_DV_sample3_compIP_dPRD_HAIP_DDA	dPRD_HAIP							1
+PXD044091	20230407_DV_sample4_compIP_dAdPRD_HAIP_DDA	dAdPRD_HAIP							1
+PXD044091	20230422_DV_sample1_compIP_DV004HAIP_DDA_rep2	DV004HAIP							2
+PXD044091	20230422_DV_sample2_compIP_WT_HAIP_DDA_rep2	WT_HAIP							2
+PXD044091	20230422_DV_sample3_compIP_dPRD_HAIP_DDA_rep2	dPRD_HAIP							2
+PXD044091	20230422_DV_sample4_compIP_dAdPRD_HAIP_DDA_rep2	dAdPRD_HAIP							2
+PXD044588	P1218_Toxo_Annuli_Test1	TMT_multiplex_Test1		tachyzoite		mixed (TMT multiplex)			
+PXD044588	P1218_Toxo_Annuli_Test2	TMT_multiplex_Test2		tachyzoite		mixed (TMT multiplex)			
+PXD044592	20221007_LS_Crk4-IP-1	Crk4 IP			Crk4 IP				1
+PXD044592	20221007_LS_Crk4-IP-2	Crk4 IP			Crk4 IP				2
+PXD044592	20221007_LS_Crk4-IP-3	Crk4 IP			Crk4 IP				3
+PXD044592	20230302_RH-KU80-HA_control-1	RH-KU80-HA control	RH		KU80-HA control				1
+PXD044592	20230302_RH-KU80-HA_control-2	RH-KU80-HA control	RH		KU80-HA control				2
+PXD046083	DD039TPSnB1_Fr1	RH tachyzoite S-nitrosylation enrichment	RH	tachyzoite				Fr1	B1
+PXD046083	DD039TPSnB1_Fr2	RH tachyzoite S-nitrosylation enrichment	RH	tachyzoite				Fr2	B1
+PXD046083	DD039TPSnB1_Fr3	RH tachyzoite S-nitrosylation enrichment	RH	tachyzoite				Fr3	B1
+PXD046083	DD039TPSnB1_Fr4	RH tachyzoite S-nitrosylation enrichment	RH	tachyzoite				Fr4	B1
+PXD046083	DD039TPSnB1_Fr5	RH tachyzoite S-nitrosylation enrichment	RH	tachyzoite				Fr5	B1
+PXD046083	DD039TPSnB1_Fr6	RH tachyzoite S-nitrosylation enrichment	RH	tachyzoite				Fr6	B1
+PXD046583	FbxL2_Tati_5uL_28May21_1	FbxL2-HA	RH	tachyzoite	FbxL2-HA				1
+PXD046583	FbxL2_Tati_5uL_28May21_2	FbxL2-HA	RH	tachyzoite	FbxL2-HA				2
+PXD046583	FbxL2_Tati_5uL_28May21_3	FbxL2-HA	RH	tachyzoite	FbxL2-HA				3
+PXD046583	FbxL2_tati_Gustavo_6ul_1Mar23_3_1	FbxL2-HA	RH	tachyzoite	FbxL2-HA				1
+PXD046583	FbxL2_tati_Gustavo_6ul_27Feb23_1	FbxL2-HA	RH	tachyzoite	FbxL2-HA				1
+PXD046583	FbxL2_tati_Gustavo_6ul_27Feb23_2	FbxL2-HA	RH	tachyzoite	FbxL2-HA				2
+PXD046583	FbxL2_tati_Sarah_6ul_1Mar23_1	FbxL2-HA	RH	tachyzoite	FbxL2-HA				1
+PXD046583	FbxL2_tati_Sarah_6ul_1Mar23_2	FbxL2-HA	RH	tachyzoite	FbxL2-HA				2
+PXD046583	FbxL2_tati_Sarah_6ul_1Mar23_3	FbxL2-HA	RH	tachyzoite	FbxL2-HA				3
+PXD046583	RH_Tati_5uL_27May21	RH parental	RH	tachyzoite	RH parental				1
+PXD046583	RH_Tati_5uL_28May21_2	RH parental	RH	tachyzoite	RH parental				2
+PXD046583	RH_Tati_5uL_28May21_3	RH parental	RH	tachyzoite	RH parental				3
+PXD046583	RH_tati_Gustavo_6ul_27Feb23_1	RH parental	RH	tachyzoite	RH parental				1
+PXD046583	RH_tati_Gustavo_6ul_27Feb23_2	RH parental	RH	tachyzoite	RH parental				2
+PXD046583	RH_tati_Gustavo_6ul_27Feb23_3	RH parental	RH	tachyzoite	RH parental				3
+PXD046583	RH_tati_Sarah_6ul_1Mar23_1	RH parental	RH	tachyzoite	RH parental				1
+PXD046583	RH_tati_Sarah_6ul_1Mar23_2	RH parental	RH	tachyzoite	RH parental				2
+PXD046583	RH_tati_Sarah_6ul_1Mar23_3	RH parental	RH	tachyzoite	RH parental				3
+PXD047027	A1	A group							1
+PXD047027	A2	A group							2
+PXD047027	A3	A group							3
+PXD047027	A4	A group							4
+PXD047027	B1	B group							1
+PXD047027	B2	B group							2
+PXD047027	B3	B group							3
+PXD047027	B4	B group							4
+PXD047907	20220712_QEHF25CM265_pl22088_GL_03	pl22088_03		tachyzoite		anti-HA co-IP			
+PXD047907	20220712_QEHF25CM267_pl22088_GL_04	pl22088_04		tachyzoite		anti-HA co-IP			
+PXD047907	20220712_QEHF25CM270_pl22088_GL_01	pl22088_01		tachyzoite		anti-HA co-IP			
+PXD047907	20220712_QEHF25CM272_pl22088_GL_02	pl22088_02		tachyzoite		anti-HA co-IP			
+PXD047907	20221027_QEHF25CM289_pl22125_GL_03	pl22125_03		tachyzoite		anti-HA co-IP			
+PXD047907	20221027_QEHF25CM291_pl22125_GL_04	pl22125_04		tachyzoite		anti-HA co-IP			
+PXD047907	20221027_QEHF25CM293_pl22125_GL_07	pl22125_07		tachyzoite		anti-HA co-IP			
+PXD047907	20221027_QEHF25CM295_pl22125_GL_08	pl22125_08		tachyzoite		anti-HA co-IP			
+PXD047907	20221027_QEHF25CM298_pl22125_GL_01	pl22125_01		tachyzoite		anti-HA co-IP			
+PXD047907	20221027_QEHF25CM300_pl22125_GL_02	pl22125_02		tachyzoite		anti-HA co-IP			
+PXD047907	20221027_QEHF25CM302_pl22125_GL_05	pl22125_05		tachyzoite		anti-HA co-IP			
+PXD047907	20221027_QEHF25CM304_pl22125_GL_06	pl22125_06		tachyzoite		anti-HA co-IP			
+PXD047907	20231121_QEHF50CM28_pl23113_JBM_01	pl23113_01		tachyzoite		anti-HA co-IP			
+PXD047907	20231121_QEHF50CM30_pl23113_JBM_02	pl23113_02		tachyzoite		anti-HA co-IP			
+PXD049694	FbxO14_8uL_17May21_1	FbxO14-HA IP			FbxO14-HA	anti-HA IP	biological replicate 2 (May 2021)		1
+PXD049694	FbxO14_8uL_17May21_2	FbxO14-HA IP			FbxO14-HA	anti-HA IP	biological replicate 2 (May 2021)		2
+PXD049694	FbxO14_8uL_17May21_3	FbxO14-HA IP			FbxO14-HA	anti-HA IP	biological replicate 2 (May 2021)		3
+PXD049694	FbxO14_HA_12uL_09April21_1	FbxO14-HA IP			FbxO14-HA	anti-HA IP	biological replicate 1 (April 2021)		1
+PXD049694	FbxO14_HA_12uL_09April21_2	FbxO14-HA IP			FbxO14-HA	anti-HA IP	biological replicate 1 (April 2021)		2
+PXD049694	FbxO14_HA_12uL_09April21_3	FbxO14-HA IP			FbxO14-HA	anti-HA IP	biological replicate 1 (April 2021)		3
+PXD049694	RH_12_12uL_09April21_1	parental RH control IP			untagged parental	anti-HA IP	biological replicate 1 (April 2021)		1
+PXD049694	RH_12_12uL_09April21_2	parental RH control IP			untagged parental	anti-HA IP	biological replicate 1 (April 2021)		2
+PXD049694	RH_12_12uL_09April21_3	parental RH control IP			untagged parental	anti-HA IP	biological replicate 1 (April 2021)		3
+PXD049694	RH_12_8uL_15May21_1	parental RH control IP			untagged parental	anti-HA IP	biological replicate 2 (May 2021)		1
+PXD049694	RH_12_8uL_15May21_2	parental RH control IP			untagged parental	anti-HA IP	biological replicate 2 (May 2021)		2
+PXD049694	RH_12_8uL_15May21_3	parental RH control IP			untagged parental	anti-HA IP	biological replicate 2 (May 2021)		3
+PXD049975	FbxO13_HA_10uL_13May21_1	FbxO13-HA IP	FbxO13-HA tagged	tachyzoite	FbxO13-HA	anti-HA IP			13May21
+PXD049975	FbxO13_HA_10uL_13May21_2	FbxO13-HA IP	FbxO13-HA tagged	tachyzoite	FbxO13-HA	anti-HA IP			13May21
+PXD049975	FbxO13_HA_10uL_13May21_3	FbxO13-HA IP	FbxO13-HA tagged	tachyzoite	FbxO13-HA	anti-HA IP			13May21
+PXD049975	FbxO13_HA_12uL_08April21_1	FbxO13-HA IP	FbxO13-HA tagged	tachyzoite	FbxO13-HA	anti-HA IP			08April21
+PXD049975	FbxO13_HA_12uL_08April21_2	FbxO13-HA IP	FbxO13-HA tagged	tachyzoite	FbxO13-HA	anti-HA IP			08April21
+PXD049975	FbxO13_HA_12uL_08April21_3	FbxO13-HA IP	FbxO13-HA tagged	tachyzoite	FbxO13-HA	anti-HA IP			08April21
+PXD049975	RH_5_10uL_12May21_1	parental RH control IP	RH parental (non-tagged)	tachyzoite	parental	anti-HA IP			12May21
+PXD049975	RH_5_10uL_12May21_2	parental RH control IP	RH parental (non-tagged)	tachyzoite	parental	anti-HA IP			12May21
+PXD049975	RH_5_10uL_12May21_3	parental RH control IP	RH parental (non-tagged)	tachyzoite	parental	anti-HA IP			12May21
+PXD049975	RH_5_12uL_07April21_1	parental RH control IP	RH parental (non-tagged)	tachyzoite	parental	anti-HA IP			07April21
+PXD049975	RH_5_12uL_07April21_2	parental RH control IP	RH parental (non-tagged)	tachyzoite	parental	anti-HA IP			07April21
+PXD049975	RH_5_2uL_07April21	parental RH control IP	RH parental (non-tagged)	tachyzoite	parental	anti-HA IP			07April21
+PXD050011	FbxO1_0_2NP40_50_5uL	FbxO1-HA IP	RH	tachyzoite	FbxO1-HA				0_2NP40_50_5uL (unexplained)
+PXD050011	FbxO1_0_2_NP_75_5uL	FbxO1-HA IP	RH	tachyzoite	FbxO1-HA				0_2_NP_75_5uL (unexplained)
+PXD050011	FbxO1_1NP40_50_5uL	FbxO1-HA IP	RH	tachyzoite	FbxO1-HA				1NP40_50_5uL (unexplained)
+PXD050011	FbxO1_1NP40_75_5uL	FbxO1-HA IP	RH	tachyzoite	FbxO1-HA				1NP40_75_5uL (unexplained)
+PXD050011	FbxO1_1NP40_NaCl_75_8uL	FbxO1-HA IP	RH	tachyzoite	FbxO1-HA				1NP40_NaCl_75_8uL (unexplained)
+PXD050011	FbxO1_1NP40_NaCl_8uL	FbxO1-HA IP	RH	tachyzoite	FbxO1-HA				1NP40_NaCl_8uL (unexplained)
+PXD050011	FbxO1_1NP40_pre_8uL	FbxO1-HA IP	RH	tachyzoite	FbxO1-HA				1NP40_pre_8uL (unexplained)
+PXD050011	FbxO1_1NP40_pre_8uL_75	FbxO1-HA IP	RH	tachyzoite	FbxO1-HA				1NP40_pre_8uL_75 (unexplained)
+PXD050011	FbxO1_IC_50_8uL	FbxO1-HA IP	RH	tachyzoite	FbxO1-HA				IC_50_8uL (unexplained)
+PXD050011	FbxO1_IC_75_8uL	FbxO1-HA IP	RH	tachyzoite	FbxO1-HA				IC_75_8uL (unexplained)
+PXD050011	RH_02_NP40_75_5uL	RH parental IP	RH	tachyzoite	parental non-tagged				02_NP40_75_5uL (unexplained)
+PXD050011	RH_0_2NP40_50_5uL	RH parental IP	RH	tachyzoite	parental non-tagged				0_2NP40_50_5uL (unexplained)
+PXD050011	RH_1NP40_50_5uL	RH parental IP	RH	tachyzoite	parental non-tagged				1NP40_50_5uL (unexplained)
+PXD050011	RH_1NP40_75_5uL	RH parental IP	RH	tachyzoite	parental non-tagged				1NP40_75_5uL (unexplained)
+PXD050011	RH_1NP40_NaCl_75_8uL	RH parental IP	RH	tachyzoite	parental non-tagged				1NP40_NaCl_75_8uL (unexplained)
+PXD050011	RH_1NP40_NaCl_8uL	RH parental IP	RH	tachyzoite	parental non-tagged				1NP40_NaCl_8uL (unexplained)
+PXD050011	RH_1NP40_pre_8uL	RH parental IP	RH	tachyzoite	parental non-tagged				1NP40_pre_8uL (unexplained)
+PXD050011	RH_1NP40_pre_8uL_75	RH parental IP	RH	tachyzoite	parental non-tagged				1NP40_pre_8uL_75 (unexplained)
+PXD050011	RH_IC_50_8uL	RH parental IP	RH	tachyzoite	parental non-tagged				IC_50_8uL (unexplained)
+PXD050011	RH_IC_75_8uL	RH parental IP	RH	tachyzoite	parental non-tagged				IC_75_8uL (unexplained)
+PXD051495	20240118_QEHF25CM300_pll24017_JBM_02	20240118_QEHF25CM300_pll24017_JBM_02		tachyzoite					
+PXD051495	20240118_QEHF25CM302_pl24017_JBM_01	20240118_QEHF25CM302_pl24017_JBM_01		tachyzoite					
+PXD051495	20240318_QEHF25CM04_pl24017_JBM_G125_03	20240318_QEHF25CM04_pl24017_JBM_G125_03		tachyzoite					
+PXD051495	20240318_QEHF25CM135_pl24023_JBM_01	20240318_QEHF25CM135_pl24023_JBM_01		tachyzoite					
+PXD051551	PF_230213_ToxoHCF101_A-mATc	HCF101 cKD HA IP, -ATc			HCF101 conditional knock-down (HA-tagged)	no ATc			A
+PXD051551	PF_230213_ToxoHCF101_A-pATc	HCF101 cKD HA IP, +ATc			HCF101 conditional knock-down (HA-tagged)	anhydrotetracycline	3 days		A
+PXD051551	PF_230213_ToxoHCF101_B-mATc	HCF101 cKD HA IP, -ATc			HCF101 conditional knock-down (HA-tagged)	no ATc			B
+PXD051551	PF_230213_ToxoHCF101_B-pATc	HCF101 cKD HA IP, +ATc			HCF101 conditional knock-down (HA-tagged)	anhydrotetracycline	3 days		B
+PXD051551	PF_230213_ToxoHCF101_C-mATc_20230323125207	HCF101 cKD HA IP, -ATc			HCF101 conditional knock-down (HA-tagged)	no ATc			C
+PXD051551	PF_230213_ToxoHCF101_C-pATc_20230323181118	HCF101 cKD HA IP, +ATc			HCF101 conditional knock-down (HA-tagged)	anhydrotetracycline	3 days		C
+PXD053452	Ref7090_MS_EJ_10_20211210	Ref7090_MS_EJ_10_20211210		tachyzoite					
+PXD053452	Ref7090_MS_LW_01_20211210	Ref7090_MS_LW_01_20211210		tachyzoite					
+PXD053452	Ref7090_MS_LW_02_20211210	Ref7090_MS_LW_02_20211210		tachyzoite					
+PXD053452	Ref7090_MS_LW_03_20211210	Ref7090_MS_LW_03_20211210		tachyzoite					
+PXD053452	Ref7090_MS_LW_04_20211210	Ref7090_MS_LW_04_20211210		tachyzoite					
+PXD053452	Ref7090_MS_LW_05_20211210	Ref7090_MS_LW_05_20211210		tachyzoite					
+PXD053452	Ref7090_MS_LW_06_20211210	Ref7090_MS_LW_06_20211210		tachyzoite					
+PXD053452	Ref7090_MS_LW_07_20211210	Ref7090_MS_LW_07_20211210		tachyzoite					
+PXD053452	Ref7090_MS_LW_08_20211210	Ref7090_MS_LW_08_20211210		tachyzoite					
+PXD053452	Ref7090_MS_LW_09_20211210	Ref7090_MS_LW_09_20211210		tachyzoite					
+PXD053703	pgta_SF_5ul_in_nanotrap_10Nov22_1	high O2 (21%)			Skp1-SF-TAP in PGTaD- background	high O2 (21%)			1
+PXD053703	pgta_SF_5ul_in_nanotrap_10Nov22_2	high O2 (21%)			Skp1-SF-TAP in PGTaD- background	high O2 (21%)			2
+PXD053703	pgta_SF_5ul_in_nanotrap_10Nov22_3	high O2 (21%)			Skp1-SF-TAP in PGTaD- background	high O2 (21%)			3
+PXD053703	pgta_SF_high_Nov_5ul_9Dec2022_1	high O2 (21%)			Skp1-SF-TAP in PGTaD- background	high O2 (21%)			1
+PXD053703	pgta_SF_high_O2_IC_5ul_08Sep22_1	high O2 (21%)			Skp1-SF-TAP in PGTaD- background	high O2 (21%)			1
+PXD053703	pgta_SF_high_O2_IC_5ul_08Sep22_2	high O2 (21%)			Skp1-SF-TAP in PGTaD- background	high O2 (21%)			2
+PXD053703	pgta_SF_high_O2_IC_5ul_08Sep22_3	high O2 (21%)			Skp1-SF-TAP in PGTaD- background	high O2 (21%)			3
+PXD053703	pgta_SF_low_5ul_31Aug22	low O2 (0.5%)			Skp1-SF-TAP in PGTaD- background	low O2 (0.5%)			2
+PXD053703	pgta_SF_low_5ul_31Aug22_2	low O2 (0.5%)			Skp1-SF-TAP in PGTaD- background	low O2 (0.5%)			2
+PXD053703	pgta_SF_low_5ul_31Aug22_3	low O2 (0.5%)			Skp1-SF-TAP in PGTaD- background	low O2 (0.5%)			3
+PXD053703	pgta_SF_low_5ul_nanotrap_12Nov22_1	low O2 (0.5%)			Skp1-SF-TAP in PGTaD- background	low O2 (0.5%)			1
+PXD053703	pgta_SF_low_5ul_nanotrap_12Nov22_2	low O2 (0.5%)			Skp1-SF-TAP in PGTaD- background	low O2 (0.5%)			2
+PXD053703	pgta_SF_low_Nov_5ul_8Dec2022_1	low O2 (0.5%)			Skp1-SF-TAP in PGTaD- background	low O2 (0.5%)			1
+PXD053703	pgta_SF_low_Nov_5ul_8Dec2022_2	low O2 (0.5%)			Skp1-SF-TAP in PGTaD- background	low O2 (0.5%)			2
+PXD053932	A1	Group A Cox2a-HA IP			group A (parental vs ApiCox10 KO; mapping not stated)				1
+PXD053932	A2	Group A Cox2a-HA IP			group A (parental vs ApiCox10 KO; mapping not stated)				2
+PXD053932	A3	Group A Cox2a-HA IP			group A (parental vs ApiCox10 KO; mapping not stated)				3
+PXD053932	A4	Group A Cox2a-HA IP			group A (parental vs ApiCox10 KO; mapping not stated)				4
+PXD053932	B1	Group B Cox2a-HA IP			group B (parental vs ApiCox10 KO; mapping not stated)				1
+PXD053932	B2	Group B Cox2a-HA IP			group B (parental vs ApiCox10 KO; mapping not stated)				2
+PXD053932	B3	Group B Cox2a-HA IP			group B (parental vs ApiCox10 KO; mapping not stated)				3
+PXD053932	B4	Group B Cox2a-HA IP			group B (parental vs ApiCox10 KO; mapping not stated)				4
+PXD053944	bL12m_FLAG_IP	bL12m-FLAG IP			bL12m-FLAG				
+PXD054719	20230302_RH-KU80-HA_control-1	RH-KU80-HA control IP			RH-KU80-HA control IP	IP			1
+PXD054719	20230302_RH-KU80-HA_control-2	RH-KU80-HA control IP			RH-KU80-HA control IP	IP			2
+PXD054719	20240124_IP_PCNA-1	PCNA IP			PCNA IP	IP			1
+PXD054719	20240124_IP_PCNA-2	PCNA IP			PCNA IP	IP			2
+PXD054719	20240228_Clem_IP-RH_nuclear-ctrl-1	RH nuclear control IP			RH nuclear control IP	IP			1
+PXD054719	20240228_Clem_IP-RH_nuclear-ctrl-2	RH nuclear control IP			RH nuclear control IP	IP			2
+PXD054719	20240228_Clem_IP_RH_PCNA-Nuclear-1	PCNA nuclear IP			PCNA nuclear IP	IP			1
+PXD054719	20240228_Clem_IP_RH_PCNA-Nuclear-2	PCNA nuclear IP			PCNA nuclear IP	IP			2
+PXD056911	TgRFTS-global_R1	TgRFTS-HAFlag IP global	RHΔku80		TgRFTS-HAFlag	anti-FLAG IP		whole eluate	1
+PXD056911	TgRFTS-global_R2	TgRFTS-HAFlag IP global	RHΔku80		TgRFTS-HAFlag	anti-FLAG IP		whole eluate	2
+PXD056911	TgRFTS-global_R3	TgRFTS-HAFlag IP global	RHΔku80		TgRFTS-HAFlag	anti-FLAG IP		whole eluate	3
+PXD056911	TgRSF1d-global	TgRSF1d-HAFlag IP global	RHΔku80		TgRSF1d-HAFlag	anti-FLAG IP		whole eluate	1
+PXD056911	TgSNF2L-bands_1	TgSNF2L-HAFlag IP gel bands	RHΔku80		TgSNF2L-HAFlag	anti-FLAG IP + SEC		gel band 1	1
+PXD056911	TgSNF2L-bands_10	TgSNF2L-HAFlag IP gel bands	RHΔku80		TgSNF2L-HAFlag	anti-FLAG IP + SEC		gel band 10	1
+PXD056911	TgSNF2L-bands_11	TgSNF2L-HAFlag IP gel bands	RHΔku80		TgSNF2L-HAFlag	anti-FLAG IP + SEC		gel band 11	1
+PXD056911	TgSNF2L-bands_12	TgSNF2L-HAFlag IP gel bands	RHΔku80		TgSNF2L-HAFlag	anti-FLAG IP + SEC		gel band 12	1
+PXD056911	TgSNF2L-bands_13	TgSNF2L-HAFlag IP gel bands	RHΔku80		TgSNF2L-HAFlag	anti-FLAG IP + SEC		gel band 13	1
+PXD056911	TgSNF2L-bands_2	TgSNF2L-HAFlag IP gel bands	RHΔku80		TgSNF2L-HAFlag	anti-FLAG IP + SEC		gel band 2	1
+PXD056911	TgSNF2L-bands_3	TgSNF2L-HAFlag IP gel bands	RHΔku80		TgSNF2L-HAFlag	anti-FLAG IP + SEC		gel band 3	1
+PXD056911	TgSNF2L-bands_4	TgSNF2L-HAFlag IP gel bands	RHΔku80		TgSNF2L-HAFlag	anti-FLAG IP + SEC		gel band 4	1
+PXD056911	TgSNF2L-bands_5	TgSNF2L-HAFlag IP gel bands	RHΔku80		TgSNF2L-HAFlag	anti-FLAG IP + SEC		gel band 5	1
+PXD056911	TgSNF2L-bands_6a	TgSNF2L-HAFlag IP gel bands	RHΔku80		TgSNF2L-HAFlag	anti-FLAG IP + SEC		gel band 6a	1
+PXD056911	TgSNF2L-bands_6b	TgSNF2L-HAFlag IP gel bands	RHΔku80		TgSNF2L-HAFlag	anti-FLAG IP + SEC		gel band 6b	1
+PXD056911	TgSNF2L-bands_7	TgSNF2L-HAFlag IP gel bands	RHΔku80		TgSNF2L-HAFlag	anti-FLAG IP + SEC		gel band 7	1
+PXD056911	TgSNF2L-bands_8	TgSNF2L-HAFlag IP gel bands	RHΔku80		TgSNF2L-HAFlag	anti-FLAG IP + SEC		gel band 8	1
+PXD056911	TgSNF2L-bands_9	TgSNF2L-HAFlag IP gel bands	RHΔku80		TgSNF2L-HAFlag	anti-FLAG IP + SEC		gel band 9	1
+PXD056911	TgSNF2h-bands_1	TgSNF2h-HAFlag IP gel bands	RHΔku80		TgSNF2h-HAFlag	anti-FLAG IP + SEC		gel band 1	1
+PXD056911	TgSNF2h-bands_10	TgSNF2h-HAFlag IP gel bands	RHΔku80		TgSNF2h-HAFlag	anti-FLAG IP + SEC		gel band 10	1
+PXD056911	TgSNF2h-bands_11	TgSNF2h-HAFlag IP gel bands	RHΔku80		TgSNF2h-HAFlag	anti-FLAG IP + SEC		gel band 11	1
+PXD056911	TgSNF2h-bands_12	TgSNF2h-HAFlag IP gel bands	RHΔku80		TgSNF2h-HAFlag	anti-FLAG IP + SEC		gel band 12	1
+PXD056911	TgSNF2h-bands_13	TgSNF2h-HAFlag IP gel bands	RHΔku80		TgSNF2h-HAFlag	anti-FLAG IP + SEC		gel band 13	1
+PXD056911	TgSNF2h-bands_14	TgSNF2h-HAFlag IP gel bands	RHΔku80		TgSNF2h-HAFlag	anti-FLAG IP + SEC		gel band 14	1
+PXD056911	TgSNF2h-bands_15	TgSNF2h-HAFlag IP gel bands	RHΔku80		TgSNF2h-HAFlag	anti-FLAG IP + SEC		gel band 15	1
+PXD056911	TgSNF2h-bands_16	TgSNF2h-HAFlag IP gel bands	RHΔku80		TgSNF2h-HAFlag	anti-FLAG IP + SEC		gel band 16	1
+PXD056911	TgSNF2h-bands_17	TgSNF2h-HAFlag IP gel bands	RHΔku80		TgSNF2h-HAFlag	anti-FLAG IP + SEC		gel band 17	1
+PXD056911	TgSNF2h-bands_2	TgSNF2h-HAFlag IP gel bands	RHΔku80		TgSNF2h-HAFlag	anti-FLAG IP + SEC		gel band 2	1
+PXD056911	TgSNF2h-bands_4	TgSNF2h-HAFlag IP gel bands	RHΔku80		TgSNF2h-HAFlag	anti-FLAG IP + SEC		gel band 4	1
+PXD056911	TgSNF2h-bands_5	TgSNF2h-HAFlag IP gel bands	RHΔku80		TgSNF2h-HAFlag	anti-FLAG IP + SEC		gel band 5	1
+PXD056911	TgSNF2h-bands_7	TgSNF2h-HAFlag IP gel bands	RHΔku80		TgSNF2h-HAFlag	anti-FLAG IP + SEC		gel band 7	1
+PXD056911	TgSNF2h-bands_8	TgSNF2h-HAFlag IP gel bands	RHΔku80		TgSNF2h-HAFlag	anti-FLAG IP + SEC		gel band 8	1
+PXD056911	TgSNF2h-bands_9	TgSNF2h-HAFlag IP gel bands	RHΔku80		TgSNF2h-HAFlag	anti-FLAG IP + SEC		gel band 9	1
+PXD056911	TgSNF2h-global_R1	TgSNF2h-HAFlag IP global	RHΔku80		TgSNF2h-HAFlag	anti-FLAG IP		whole eluate	1
+PXD056911	TgSNF2h-global_R2	TgSNF2h-HAFlag IP global	RHΔku80		TgSNF2h-HAFlag	anti-FLAG IP		whole eluate	2
+PXD056911	TgSNF2h-global_R3	TgSNF2h-HAFlag IP global	RHΔku80		TgSNF2h-HAFlag	anti-FLAG IP		whole eluate	3
+PXD057662	Ref10102_EJR_01_20241025	Ref10102_2024							
+PXD057662	Ref10102_EJR_02_20241025	Ref10102_2024							
+PXD057662	Ref10102_EJR_03_20241025	Ref10102_2024							
+PXD057662	Ref10102_EJR_04_20241025	Ref10102_2024							
+PXD057662	Ref10102_EJR_05_20241025	Ref10102_2024							
+PXD057662	Ref10102_EJR_06_20241025	Ref10102_2024							
+PXD057662	Ref10102_EJR_07_20241025	Ref10102_2024							
+PXD057662	Ref10102_EJR_08_20241025	Ref10102_2024							
+PXD057662	Ref10102_EJR_09_20241025	Ref10102_2024							
+PXD057662	Ref7926_MS_01_20220811	Ref7926_2022							
+PXD057662	Ref7926_MS_02_20220811	Ref7926_2022							
+PXD057662	Ref7926_MS_03_20220811	Ref7926_2022							
+PXD057662	Ref7926_MS_04_20220811	Ref7926_2022							
+PXD057662	Ref7926_MS_05_20220811	Ref7926_2022							
+PXD057662	Ref7926_MS_06_20220811	Ref7926_2022							
+PXD057662	Ref7926_MS_07_20220811	Ref7926_2022							
+PXD057662	Ref7926_MS_08_20220811	Ref7926_2022							
+PXD057662	Ref7926_MS_09_20220811	Ref7926_2022							
+PXD057662	Ref7926_MS_10_20220811	Ref7926_2022							
+PXD057662	Ref7926_MS_11_20220811	Ref7926_2022							
+PXD057662	Ref7926_MS_12_20220811	Ref7926_2022							
+PXD058095	R1	MORC-depleted extract immunoreactive fraction	MORC-AID-HA			3-indoleacetic acid 500 uM		immunoreactive gel-filtration fraction	technical R1
+PXD058095	R2	MORC-depleted extract immunoreactive fraction	MORC-AID-HA			3-indoleacetic acid 500 uM		immunoreactive gel-filtration fraction	technical R2
+PXD059579	NegControl	negative control (parental RH ku80)	RHΔku80		untagged parental	biotin 150 uM			1
+PXD059579	TgGSK3-BioID2-HA_R1	TgGSK3-BioID2-HA	RH		TgGSK3-BioID2-HA	biotin 150 uM	24 h		1
+PXD059579	TgGSK3-BioID2-HA_R2	TgGSK3-BioID2-HA	RH		TgGSK3-BioID2-HA	biotin 150 uM	24 h		2
+PXD059833	5P21	TgCoq5-TurboID_P2			TgCoq5-TurboID			P2 mitochondria-enriched	1
+PXD059833	5P22	TgCoq5-TurboID_P2			TgCoq5-TurboID			P2 mitochondria-enriched	2
+PXD059833	5S41	TgCoq5-TurboID_S4			TgCoq5-TurboID			S4 cytosolic	1
+PXD059833	5S42	TgCoq5-TurboID_S4			TgCoq5-TurboID			S4 cytosolic	2
+PXD059833	Fbx14P21	FbxO14-TurboID_P2			FbxO14-TurboID			P2 mitochondria-enriched	1
+PXD059833	Fbx14P22	FbxO14-TurboID_P2			FbxO14-TurboID			P2 mitochondria-enriched	2
+PXD059833	Fbx14S41	FbxO14-TurboID_S4			FbxO14-TurboID			S4 cytosolic	1
+PXD059833	Fbx14S42	FbxO14-TurboID_S4			FbxO14-TurboID			S4 cytosolic	2
+PXD060424	QE45093HD	gel spot/sample QE45093HD	RH	tachyzoite					
+PXD060424	QE45094HD	gel spot/sample QE45094HD	RH	tachyzoite					
+PXD060424	QE45096HD	gel spot/sample QE45096HD	RH	tachyzoite					
+PXD060424	QE45097HD	gel spot/sample QE45097HD	RH	tachyzoite					
+PXD060424	QE45099HD	gel spot/sample QE45099HD	RH	tachyzoite					
+PXD060424	QE45100HD	gel spot/sample QE45100HD	RH	tachyzoite					
+PXD060424	QE45102HD	gel spot/sample QE45102HD	RH	tachyzoite					
+PXD060424	QE45103HD	gel spot/sample QE45103HD	RH	tachyzoite					
+PXD060424	QE45105HD	gel spot/sample QE45105HD	RH	tachyzoite					
+PXD060424	QE45106HD	gel spot/sample QE45106HD	RH	tachyzoite					
+PXD060424	QE45108HD	gel spot/sample QE45108HD	RH	tachyzoite					
+PXD060424	QE45109HD	gel spot/sample QE45109HD	RH	tachyzoite					
+PXD060424	QE45111HD	gel spot/sample QE45111HD	RH	tachyzoite					
+PXD060424	QE45112HD	gel spot/sample QE45112HD	RH	tachyzoite					
+PXD060424	QE45114HD	gel spot/sample QE45114HD	RH	tachyzoite					
+PXD060424	QE45115HD	gel spot/sample QE45115HD	RH	tachyzoite					
+PXD060424	QE45117HD	gel spot/sample QE45117HD	RH	tachyzoite					
+PXD060424	QE45118HD	gel spot/sample QE45118HD	RH	tachyzoite					
+PXD060424	QE45120HD	gel spot/sample QE45120HD	RH	tachyzoite					
+PXD060424	QE45121HD	gel spot/sample QE45121HD	RH	tachyzoite					
+PXD060424	QE45123HD	gel spot/sample QE45123HD	RH	tachyzoite					
+PXD060424	QE45124HD	gel spot/sample QE45124HD	RH	tachyzoite					
+PXD060424	QE45126HD	gel spot/sample QE45126HD	RH	tachyzoite					
+PXD060424	QE45127HD	gel spot/sample QE45127HD	RH	tachyzoite					
+PXD060424	QE45129HD	gel spot/sample QE45129HD	RH	tachyzoite					
+PXD060424	QE45130HD	gel spot/sample QE45130HD	RH	tachyzoite					
+PXD060424	QE45132HD	gel spot/sample QE45132HD	RH	tachyzoite					
+PXD060424	QE45133HD	gel spot/sample QE45133HD	RH	tachyzoite					
+PXD060424	QE45135HD	gel spot/sample QE45135HD	RH	tachyzoite					
+PXD060424	QE45136HD	gel spot/sample QE45136HD	RH	tachyzoite					
+PXD060424	QE45138HD	gel spot/sample QE45138HD	RH	tachyzoite					
+PXD060424	QE45139HD	gel spot/sample QE45139HD	RH	tachyzoite					
+PXD060424	QE45141HD	gel spot/sample QE45141HD	RH	tachyzoite					
+PXD060424	QE45142HD	gel spot/sample QE45142HD	RH	tachyzoite					
+PXD060424	QE45144HD	gel spot/sample QE45144HD	RH	tachyzoite					
+PXD060424	QE45145HD	gel spot/sample QE45145HD	RH	tachyzoite					
+PXD060424	QE45147HD	gel spot/sample QE45147HD	RH	tachyzoite					
+PXD060424	QE45148HD	gel spot/sample QE45148HD	RH	tachyzoite					
+PXD060424	QE45150HD	gel spot/sample QE45150HD	RH	tachyzoite					
+PXD060424	QE45151HD	gel spot/sample QE45151HD	RH	tachyzoite					
+PXD060424	QE45153HD	gel spot/sample QE45153HD	RH	tachyzoite					
+PXD060424	QE45154HD	gel spot/sample QE45154HD	RH	tachyzoite					
+PXD060424	QE45156HD	gel spot/sample QE45156HD	RH	tachyzoite					
+PXD060424	QE45157HD	gel spot/sample QE45157HD	RH	tachyzoite					
+PXD060424	QE45159HD	gel spot/sample QE45159HD	RH	tachyzoite					
+PXD060424	QE45160HD	gel spot/sample QE45160HD	RH	tachyzoite					
+PXD062403	XA03076LI_HA_Beads	HA bead IP (sample identity unresolved)				anti-HA IP			1
+PXD063615	20240315_KM1	KM1		tachyzoite					1
+PXD063615	20240315_KM2	KM2		tachyzoite					2
+PXD063615	20240315_KM3	KM3		tachyzoite					3
+PXD063615	20240315_KM4	KM4		tachyzoite					4
+PXD063615	20240315_KM5	KM5		tachyzoite					5
+PXD063615	20240315_KM6	KM6		tachyzoite					6
+PXD063619	20230715_KM_1	20230715_KM_1		tachyzoite		biotin 50 uM 1 h; streptavidin IP		S4 or ER gradient fractions (assignment per file not stated)	
+PXD063619	20230715_KM_10	20230715_KM_10		tachyzoite		biotin 50 uM 1 h; streptavidin IP		S4 or ER gradient fractions (assignment per file not stated)	
+PXD063619	20230715_KM_11	20230715_KM_11		tachyzoite		biotin 50 uM 1 h; streptavidin IP		S4 or ER gradient fractions (assignment per file not stated)	
+PXD063619	20230715_KM_12	20230715_KM_12		tachyzoite		biotin 50 uM 1 h; streptavidin IP		S4 or ER gradient fractions (assignment per file not stated)	
+PXD063619	20230715_KM_2	20230715_KM_2		tachyzoite		biotin 50 uM 1 h; streptavidin IP		S4 or ER gradient fractions (assignment per file not stated)	
+PXD063619	20230715_KM_5	20230715_KM_5		tachyzoite		biotin 50 uM 1 h; streptavidin IP		S4 or ER gradient fractions (assignment per file not stated)	
+PXD063619	20230715_KM_6	20230715_KM_6		tachyzoite		biotin 50 uM 1 h; streptavidin IP		S4 or ER gradient fractions (assignment per file not stated)	
+PXD063619	20230715_KM_9	20230715_KM_9		tachyzoite		biotin 50 uM 1 h; streptavidin IP		S4 or ER gradient fractions (assignment per file not stated)	
+PXD063659	20250212_KM1	20250212_KM1	SERCA-HA	tachyzoite	SERCA-HA	DVSF crosslinking; anti-HA IP		membrane-enriched	
+PXD063659	20250212_KM2	20250212_KM2	SERCA-HA	tachyzoite	SERCA-HA	DVSF crosslinking; anti-HA IP		membrane-enriched	
+PXD063659	20250212_KM3	20250212_KM3	SERCA-HA	tachyzoite	SERCA-HA	DVSF crosslinking; anti-HA IP		membrane-enriched	
+PXD063659	20250212_KM4	20250212_KM4	SERCA-HA	tachyzoite	SERCA-HA	DVSF crosslinking; anti-HA IP		membrane-enriched	
+PXD063659	20250212_KM5	20250212_KM5	SERCA-HA	tachyzoite	SERCA-HA	DVSF crosslinking; anti-HA IP		membrane-enriched	
+PXD063659	20250212_KM6	20250212_KM6	SERCA-HA	tachyzoite	SERCA-HA	DVSF crosslinking; anti-HA IP		membrane-enriched	
+PXD065585	AP2X-1-2Ty_Rep1	AP2X-1-2Ty	Pru	tachyzoite	AP2X-1-2Ty				1
+PXD065585	AP2X-1-2Ty_Rep2	AP2X-1-2Ty	Pru	tachyzoite	AP2X-1-2Ty				2
+PXD065585	AP2X-1-2Ty_Rep3	AP2X-1-2Ty	Pru	tachyzoite	AP2X-1-2Ty				3
+PXD065585	HDAC3-2Ty_Rep1	HDAC3-2Ty	Pru	tachyzoite	HDAC3-2Ty				1
+PXD065585	HDAC3-2Ty_Rep2	HDAC3-2Ty	Pru	tachyzoite	HDAC3-2Ty				2
+PXD065585	HDAC3-2Ty_Rep3	HDAC3-2Ty	Pru	tachyzoite	HDAC3-2Ty				3
+PXD065585	MORC-2Ty_Rep1	MORC-2Ty	Pru	tachyzoite	MORC-2Ty				1
+PXD065585	MORC-2Ty_Rep2	MORC-2Ty	Pru	tachyzoite	MORC-2Ty				2
+PXD065585	MORC-2Ty_Rep3	MORC-2Ty	Pru	tachyzoite	MORC-2Ty				3
+PXD065585	Pru_Rep1	Pru control	Pru	tachyzoite	parental (negative control)				1
+PXD065585	Pru_Rep2	Pru control	Pru	tachyzoite	parental (negative control)				2
+PXD065585	Pru_Rep3	Pru control	Pru	tachyzoite	parental (negative control)				3
+PXD066820	20230518_Exploris_ES902_LouridoLab_DS_RH-Tir1_mNG_IP	RH-Tir1 mNG IP control	RH		RH-Tir1 parental				20230518
+PXD066820	20230518_Exploris_ES902_LouridoLab_DS_tgDS006_mNG_IP	tgDS006 mNG IP	RH		tgDS006 (mNG-tagged SWI/SNF subunit; identity not stated)				20230518
+PXD066820	20230822_Exploris_ES902_LouridoLab_DS_RH-Tir1_mNG_IP	RH-Tir1 mNG IP control	RH		RH-Tir1 parental				20230822
+PXD066820	20230822_Exploris_ES902_LouridoLab_DS_tgDS006_mNG_IP	tgDS006 mNG IP	RH		tgDS006 (mNG-tagged SWI/SNF subunit; identity not stated)				20230822
+PXD068228	20250403_PQ_Bottom	FRM1 IP		tachyzoite	mAID-3HA-FRM1	anti-HA pull-down		bottom gel slice	
+PXD068228	20250403_PQ_Middle	FRM1 IP		tachyzoite	mAID-3HA-FRM1	anti-HA pull-down		middle gel slice	
+PXD068228	20250404_PQ_Top	FRM1 IP		tachyzoite	mAID-3HA-FRM1	anti-HA pull-down		top gel slice	
+PXD068413	20231118_JZ2_TOXCO_Bottom	conoid preparation		tachyzoite				Bottom gel section	
+PXD068413	20231118_JZ2_TOXCO_Middle	conoid preparation		tachyzoite				Middle gel section	
+PXD068413	20231118_JZ2_TOXCO_Top	conoid preparation		tachyzoite				Top gel section	
+PXD071065	Coq1-1	Coq1-3HA control IP			TgCoq1-3HA (control)	anti-HA IP		P2 mitochondria-enriched, digitonin-solubilised	1
+PXD071065	Coq1-2	Coq1-3HA control IP			TgCoq1-3HA (control)	anti-HA IP		P2 mitochondria-enriched, digitonin-solubilised	2
+PXD071065	FAD-1	TgCoqFMO-3HA IP			TgCoqFMO-3HA	anti-HA IP		P2 mitochondria-enriched, digitonin-solubilised	1
+PXD071065	FAD-2	TgCoqFMO-3HA IP			TgCoqFMO-3HA	anti-HA IP		P2 mitochondria-enriched, digitonin-solubilised	2
+PXD072342	GCN5b-R1	GCN5b HAFlag IP	RH dKu80		TgGCN5b-HAFlag				1
+PXD072342	GCN5b-R2	GCN5b HAFlag IP	RH dKu80		TgGCN5b-HAFlag				2
+PXD072342	GCN5b-R3	GCN5b HAFlag IP	RH dKu80		TgGCN5b-HAFlag				3
+PXD072342	GNAT1	GNAT1 HAFlag IP	RH dKu80		TgGNAT1-HAFlag				1
+PXD072342	GNAT2	GNAT2 HAFlag IP	RH dKu80		TgGNAT2-HAFlag				1
+PXD072342	Mock-R1	Mock FLAG IP	RH dKu80		none (mock)				1
+PXD072342	Mock-R2	Mock FLAG IP	RH dKu80		none (mock)				2
+PXD072342	Mock-R3	Mock FLAG IP	RH dKu80		none (mock)				3
+PXD072342	PHD1-R1	PHD1 HAFlag IP	RH dKu80		TgPHD1-HAFlag				1
+PXD072342	PHD1-R2	PHD1 HAFlag IP	RH dKu80		TgPHD1-HAFlag				2
+PXD072342	PHD1-R3	PHD1 HAFlag IP	RH dKu80		TgPHD1-HAFlag				3
+PXD072342	PZP1	PZP1 HAFlag IP	RH dKu80		TgPZP1-HAFlag				1
+PXD079431	FLAG	FLAG (GCN5b IP)	RH dKu80		TgGCN5b-HAFlag				1
+PXD079431	FLAG-HA	FLAG-HA (GCN5b IP)	RH dKu80		TgGCN5b-HAFlag				1
+PXD079431	GNAT2-R1	GNAT2 IP	RH dKu80		TgGNAT2-HAFlag				1
+PXD079431	GNAT2-R2	GNAT2 IP	RH dKu80		TgGNAT2-HAFlag				2
+PXD079431	GNAT2-R3	GNAT2 IP	RH dKu80		TgGNAT2-HAFlag				3
+PXD079431	IAA-24h	IAA-24h (GCN5b IP)	RH dKu80		TgGCN5b-HAFlag	IAA 24h	24 h		1
+PXD079431	IAA-48h	IAA-48h (GCN5b IP)	RH dKu80		TgGCN5b-HAFlag	IAA 48h	48 h		1
+PXD079431	Mock-R1	Mock IP	RH dKu80		mock				1
+PXD079431	Mock-R2	Mock IP	RH dKu80		mock				2
+PXD079431	Mock-R3	Mock IP	RH dKu80		mock				3
+PXD079431	Mock2-R1	Mock2 IP	RH dKu80		mock				1
+PXD079431	Mock2-R2	Mock2 IP	RH dKu80		mock				2
+PXD079431	Mock2-R3	Mock2 IP	RH dKu80		mock				3
+PXD079431	PHD1-R1	PHD1 IP	RH dKu80		GCN5b IP in PHD1 KD (per description; unconfirmed)				1
+PXD079431	PHD1-R2	PHD1 IP	RH dKu80		GCN5b IP in PHD1 KD (per description; unconfirmed)				2
+PXD079431	PHD1-R3	PHD1 IP	RH dKu80		GCN5b IP in PHD1 KD (per description; unconfirmed)				3
+PXD079431	UT	UT (GCN5b IP)	RH dKu80		TgGCN5b-HAFlag	untreated			1
+PXD079432	AcK_IAA-R1	acetylome, TgGCN5b depleted (IAA)			TgGCN5b-mAID-HA	auxin (IAA)		acetyl-lysine enriched peptides	1
+PXD079432	AcK_IAA-R2	acetylome, TgGCN5b depleted (IAA)			TgGCN5b-mAID-HA	auxin (IAA)		acetyl-lysine enriched peptides	2
+PXD079432	AcK_IAA-R3	acetylome, TgGCN5b depleted (IAA)			TgGCN5b-mAID-HA	auxin (IAA)		acetyl-lysine enriched peptides	3
+PXD079432	AcK_UT-R1	acetylome, untreated (UT)			TgGCN5b-mAID-HA	mock (ethanol)		acetyl-lysine enriched peptides	1
+PXD079432	AcK_UT-R2	acetylome, untreated (UT)			TgGCN5b-mAID-HA	mock (ethanol)		acetyl-lysine enriched peptides	2
+PXD079432	AcK_UT-R3	acetylome, untreated (UT)			TgGCN5b-mAID-HA	mock (ethanol)		acetyl-lysine enriched peptides	3
+PXD079432	Asc_008723_UT-R1	total proteome, untreated (UT)			TgGCN5b-mAID-HA	mock (ethanol)		total proteome	1
+PXD079432	Asc_008727_IAA-R2	total proteome, TgGCN5b depleted (IAA)			TgGCN5b-mAID-HA	auxin (IAA)		total proteome	2
+PXD079432	Asc_008737_UT-R2	total proteome, untreated (UT)			TgGCN5b-mAID-HA	mock (ethanol)		total proteome	2
+PXD079432	Asc_008739_IAA-R3	total proteome, TgGCN5b depleted (IAA)			TgGCN5b-mAID-HA	auxin (IAA)		total proteome	3
+PXD079432	Asc_008743_UT-R3	total proteome, untreated (UT)			TgGCN5b-mAID-HA	mock (ethanol)		total proteome	3
+PXD079432	Asc_008745_IAA-R1	total proteome, TgGCN5b depleted (IAA)			TgGCN5b-mAID-HA	auxin (IAA)		total proteome	1
+PXD079900	20241218_Exploris_TS25_LouridoLab_DV_Sample_1_DDA	Sample_1	RH dKu80 dHXGPRT dTomato	tachyzoite		glycan-agarose bead precipitation (mannose, galactose or lactose; assignment not stated)			
+PXD079900	20241218_Exploris_TS25_LouridoLab_DV_Sample_2_DDA	Sample_2	RH dKu80 dHXGPRT dTomato	tachyzoite		glycan-agarose bead precipitation (mannose, galactose or lactose; assignment not stated)			
+PXD079900	20241218_Exploris_TS25_LouridoLab_DV_Sample_3_DDA	Sample_3	RH dKu80 dHXGPRT dTomato	tachyzoite		glycan-agarose bead precipitation (mannose, galactose or lactose; assignment not stated)			
+PXD079900	20241218_Exploris_TS25_LouridoLab_DV_Sample_5_DDA	Sample_5	RH dKu80 dHXGPRT dTomato	tachyzoite		glycan-agarose bead precipitation (mannose, galactose or lactose; assignment not stated)			
+PXD079900	20241218_Exploris_TS25_LouridoLab_DV_Sample_6_DDA	Sample_6	RH dKu80 dHXGPRT dTomato	tachyzoite		glycan-agarose bead precipitation (mannose, galactose or lactose; assignment not stated)			
+PXD079900	20241218_Exploris_TS25_LouridoLab_DV_Sample_7_DDA	Sample_7	RH dKu80 dHXGPRT dTomato	tachyzoite		glycan-agarose bead precipitation (mannose, galactose or lactose; assignment not stated)			
+PXD083501	20260513_LU50HMC176_pl26050_RH_01	RH IP, 01	RH			IP			01
+PXD083501	20260513_LU50HMC177_pl26050_RH_02	RH IP, 02	RH			IP			02
+PXD083501	20260513_LU50HMC178_pl26050_RH_03	RH IP, 03	RH			IP			03
+PXD083501	20260513_LU50HMC181_pl26050_RH_06	RH IP, 06	RH			IP			06
+PXD083501	20260513_LU50HMC182_pl26050_RH_05	RH IP, 05	RH			IP			05
+PXD083501	20260513_LU50HMC183_pl26050_RH_04	RH IP, 04	RH			IP			04
