@@ -86,21 +86,21 @@ ENTRIES: dict = {
         made="Host-facing by a paper finding; 'not host-facing' only for genes some paper studied.",
         left_out="nothing (no feature is read from papers)"),
     "interaction module (STRING, measured in Toxoplasma)": dict(
-        evidence=OBSERVED, sources=("string_tgon_measured",), column="labels.parquet (interaction build)",
+        evidence=OBSERVED, sources=("string_tgon_measured",), column="node column (interaction_labels.COLUMNS)",
         made=("STRING v12.0 T. gondii VEG pairs with Toxoplasma's own experimental or curated-database "
               "evidence (channels `experiments`, `database`; nothing transferred), joined to ME49 by locus "
               "number; Louvain communities (resolution 1, seed 0); communities under 10 genes dropped; "
               "named by their best-connected gene."),
         left_out="nothing (no feature is built from STRING)"),
     "interaction module (STRING, copied by orthology)": dict(
-        evidence=COPIED, sources=("string_tgon_transferred",), column="labels.parquet (interaction build)",
+        evidence=COPIED, sources=("string_tgon_transferred",), column="node column (interaction_labels.COLUMNS)",
         made=("STRING v12.0 T. gondii VEG pairs whose `experiments_transferred` or `database_transferred` "
               "score is at least 700, i.e. evidence measured in other organisms; co-expression and text "
               "mining NOT used (co-expression is circular with the transcript view). Louvain communities "
               "as above."),
         left_out="nothing; families (orthogroups) keep paralogs in one fold"),
     "complex (CORUM human, copied by orthology)": dict(
-        evidence=COPIED, sources=("corum_human_by_orthology",), column="labels.parquet (interaction build)",
+        evidence=COPIED, sources=("corum_human_by_orthology",), column="node column (interaction_labels.COLUMNS)",
         made=("CORUM human complexes; subunit UniProt -> Ensembl gene (HGNC) -> OrthoMCL 6.21 orthogroup -> "
               "Toxoplasma genes of that orthogroup (orthogroups with more than 3 Toxoplasma genes not used); "
               "a complex needs 2 mapped orthogroups; each gene takes the most specific complex that keeps "
@@ -108,22 +108,9 @@ ENTRIES: dict = {
         left_out="nothing; families (orthogroups) keep paralogs in one fold"),
 }
 
-# Sources that are not (yet) datasets of the node table: described here until a release joins them.
-EXTRA_SOURCES = {
-    "string_tgon_measured": dict(name="STRING v12.0, T. gondii VEG, organism's own evidence",
-                                 citation="Szklarczyk D et al. Nucleic Acids Res 2023;51:D638-D646",
-                                 pmid="36370105",
-                                 url="https://stringdb-downloads.org/download/protein.links.full.v12.0/432359.protein.links.full.v12.0.txt.gz"),
-    "string_tgon_transferred": dict(name="STRING v12.0, T. gondii VEG, evidence transferred from orthologs",
-                                    citation="Szklarczyk D et al. Nucleic Acids Res 2023;51:D638-D646",
-                                    pmid="36370105",
-                                    url="https://stringdb-downloads.org/download/protein.links.full.v12.0/432359.protein.links.full.v12.0.txt.gz"),
-    "corum_human_by_orthology": dict(name="CORUM human complexes via OrthoMCL 6.21 orthogroups",
-                                     citation="Tsitsiridis G et al., CORUM: the comprehensive resource of mammalian protein complexes-2022. Nucleic Acids Res 2023;51:D539-D545; "
-                                              "OrthoMCL release 6.21",
-                                     pmid="36382402",
-                                     url="https://mips.helmholtz-muenchen.de/corum/"),
-}
+# Sources that are not datasets of the node table are described here (none at present: STRING and CORUM
+# joined the dataset registry for release 0.0.14.0).
+EXTRA_SOURCES: dict = {}
 
 
 def source_record(key: str) -> dict:

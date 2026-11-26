@@ -36,7 +36,13 @@ and generated and the labels it contains, etc."
 
 ## Still to do
 
-- [ ] Dataset registry entries for the three sources and the join at the next data release (0.0.14.0).
+- [x] Dataset registry entries for the three sources and the join at the next data release (0.0.14.0)
+      (2026-11-25 night): `datasets.py` entries `string_tgon_measured`, `string_tgon_transferred`,
+      `corum_human_by_orthology` (in `JOINED_AT_NEXT_RELEASE`); package table
+      `parascape/data/interaction_labels/` (+ `sources.json`); loader `parascape/interaction_labels.py`; joined in
+      `build_graph.load_nodes` as node columns `string_module_measured`, `string_module_orthology`,
+      `corum_complex_orthology`; `label_catalogue.EXTRA_SOURCES` emptied (the registry resolves them); E1 reads
+      the node columns when a release has them; per-dataset scripts generated.
 - [ ] Score the new labels in E1 (they are in E8 now) and use the pair tables in the binding-partner benchmark.
 - [ ] Older labels keep their names (frozen results use them); their evidence is in the catalogue. Rename
       only if Einar asks.

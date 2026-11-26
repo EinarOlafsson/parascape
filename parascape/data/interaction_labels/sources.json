@@ -1,0 +1,56 @@
+{
+ "files": {
+  "string_links": {
+   "file": "432359.protein.links.full.v12.0.txt.gz",
+   "url": "https://stringdb-downloads.org/download/protein.links.full.v12.0/432359.protein.links.full.v12.0.txt.gz",
+   "sha256": "3a27932757671d44c45b07c882f0a25ec36696db4877bd9a407cbcf676dd5c86"
+  },
+  "string_aliases": {
+   "file": "432359.protein.aliases.v12.0.txt.gz",
+   "url": "https://stringdb-downloads.org/download/protein.aliases.v12.0/432359.protein.aliases.v12.0.txt.gz",
+   "sha256": "d4dc1c698efd9a90c574c4daab1cce592c62a3f5172cc598d8b3197ad399be56"
+  },
+  "corum": {
+   "file": "corum_human.txt",
+   "url": "https://mips.helmholtz-muenchen.de/fastapi-corum/public/file/download_current_file?file_id=human&file_format=txt",
+   "sha256": "5e40556eb59bb767f3396ba8c080f64c777903ffca9102345fdc35662a2e0282"
+  },
+  "hgnc": {
+   "file": "hgnc_complete_set.txt",
+   "url": "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt",
+   "sha256": "46b83736ec351f15e22331575dce2f08416c5233765b26a08c65e6b42e56b651"
+  },
+  "orthomcl_groups": {
+   "file": "groups_OrthoMCL-6.21.txt.gz",
+   "url": "https://orthomcl.org/common/downloads/release-6.21/groups_OrthoMCL-6.21.txt.gz",
+   "sha256": "386d7917600664982b149c5219241a1c46f1fa5879a34f51e32b6fd2ae96924f"
+  }
+ },
+ "settings": {
+  "MIN_CLASS": 10,
+  "COPIED_MIN": 700,
+  "MAX_TOXO_PER_OG": 3,
+  "louvain_resolution": 1.0,
+  "seed": 0
+ },
+ "pairs": {
+  "string_measured": 2555,
+  "string_copied": 28651,
+  "corum_copied": 18477
+ },
+ "corum_complexes_mapped": 1023,
+ "labels": {
+  "interaction module (STRING, measured in Toxoplasma)": {
+   "genes": 199,
+   "classes": 8
+  },
+  "interaction module (STRING, copied by orthology)": {
+   "genes": 2469,
+   "classes": 14
+  },
+  "complex (CORUM human, copied by orthology)": {
+   "genes": 414,
+   "classes": 26
+  }
+ }
+}

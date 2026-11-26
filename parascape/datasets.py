@@ -201,7 +201,8 @@ OOCYST_ITRAQ_COLUMNS = (
 #: next data release. Rewriting `parascape/data/nodes.parquet` between releases broke the frozen
 #: functional benchmarks bound to its bytes and its column manifest (2026-11-25), so the table is
 #: rebuilt at a release and nowhere else. Key -> the release that ships the columns.
-JOINED_AT_NEXT_RELEASE = {"literature_affinage": "0.0.14.0"}
+JOINED_AT_NEXT_RELEASE = {"literature_affinage": "0.0.14.0", "string_tgon_measured": "0.0.14.0",
+                          "string_tgon_transferred": "0.0.14.0", "corum_human_by_orthology": "0.0.14.0"}
 
 REGISTRY = [
     Dataset("esm2_protein", "Frozen ESM-2 protein representations", "reference", "computed sequence features",
@@ -1379,6 +1380,40 @@ REGISTRY = [
                  "`vs_host` column is COMPUTED here, sample-centred so it compares proportion "
                  "rather than amount; the archive's own EV-minus-cell column is not used because "
                  "its transform could not be reproduced to better than 3 log units.", organism=organisms.TOXOPLASMA),
+    Dataset("string_tgon_measured", "STRING v12.0, T. gondii VEG, organism's own evidence",
+            "reference", "interaction",
+            "Modules (Louvain communities of 10 or more genes) of STRING pairs with Toxoplasma's own experimental "
+            "or curated-database evidence",
+            ("string_module_measured",), "199 genes, 8 modules",
+            pmid="36370105", citation="Szklarczyk D et al. Nucleic Acids Res 2023;51:D638-D646",
+            url="https://stringdb-downloads.org/download/protein.links.full.v12.0/432359.protein.links.full.v12.0.txt.gz",
+            path="parascape/data/interaction_labels/interaction_labels.parquet",
+            note="Observed evidence only (channels `experiments` and `database`, nothing transferred). VEG locus "
+                 "numbers equal ME49 ones. Built by scripts/labels/build_interaction_labels.py; source files "
+                 "and SHA-256 in parascape/data/interaction_labels/sources.json (instruction 103).",
+            organism=organisms.TOXOPLASMA),
+    Dataset("string_tgon_transferred", "STRING v12.0, T. gondii VEG, evidence transferred from orthologs",
+            "reference", "orthology",
+            "Modules of STRING pairs whose transferred experimental or database score is at least 700",
+            ("string_module_orthology",), "2,469 genes, 14 modules",
+            pmid="36370105", citation="Szklarczyk D et al. Nucleic Acids Res 2023;51:D638-D646",
+            url="https://stringdb-downloads.org/download/protein.links.full.v12.0/432359.protein.links.full.v12.0.txt.gz",
+            path="parascape/data/interaction_labels/interaction_labels.parquet",
+            note="COPIED from other organisms: a label, never a measurement of Toxoplasma. STRING co-expression "
+                 "and text mining are not used (co-expression is circular with the transcript features).",
+            organism=organisms.TOXOPLASMA),
+    Dataset("corum_human_by_orthology", "CORUM human complexes via OrthoMCL 6.21 orthogroups",
+            "reference", "orthology",
+            "The most specific human CORUM complex that keeps 10 Toxoplasma genes, mapped through orthogroups",
+            ("corum_complex_orthology",), "414 genes, 26 complexes",
+            pmid="36382402",
+            citation="Tsitsiridis G et al. Nucleic Acids Res 2023;51:D539-D545; OrthoMCL release 6.21",
+            url="https://mips.helmholtz-muenchen.de/corum/",
+            path="parascape/data/interaction_labels/interaction_labels.parquet",
+            note="COPIED by orthology: subunit UniProt -> Ensembl gene (HGNC) -> OrthoMCL 6.21 orthogroup -> "
+                 "Toxoplasma genes; orthogroups with more than 3 Toxoplasma genes are not used and a complex "
+                 "needs 2 mapped orthogroups.",
+            organism=organisms.TOXOPLASMA),
     Dataset("literature_affinage", "Experimental findings read from single-gene papers",
             "reference", "literature",
             "Per gene: the compartment shown by experiment, whether it is shown to act on the host, "

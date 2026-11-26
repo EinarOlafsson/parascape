@@ -71,10 +71,20 @@ INTERACTION_LABELS = os.environ.get(
 
 
 def interaction_labels(nodes: pd.DataFrame) -> dict:
-    """The STRING and CORUM labels (names say measured or copied), aligned to the node table."""
-    if not os.path.exists(INTERACTION_LABELS):
+    """The STRING and CORUM labels (names say measured or copied), aligned to the node table.
+
+    From the node columns once a release carries them; before that from the shipped package table
+    (`parascape.interaction_labels`), or the build output named by PARASCAPE_INTERACTION_LABELS."""
+    from parascape import interaction_labels as IL
+    if all(c in nodes for c in IL.COLUMNS):
+        return {label: (nodes[c].astype(object).where(nodes[c].notna()).to_numpy(object), "categorical", [])
+                for c, label in IL.COLUMNS.items()}
+    t = IL.table()
+    if t.empty and os.path.exists(INTERACTION_LABELS):
+        t = pd.read_parquet(INTERACTION_LABELS)
+    if t.empty:
         return {}
-    t = pd.read_parquet(INTERACTION_LABELS).set_index("gene_id").reindex(nodes["gene_id"].astype(str))
+    t = t.set_index("gene_id").reindex(nodes["gene_id"].astype(str))
     return {c: (t[c].astype(object).where(t[c].notna()).to_numpy(object), "categorical", [])
             for c in t.columns}
 
