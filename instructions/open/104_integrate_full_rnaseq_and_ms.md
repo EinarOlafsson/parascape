@@ -32,7 +32,10 @@
 
 ## To do
 
-- [ ] Verify the new snapshot validated and replaced `current`; release it to the app (release build).
+- [x] Snapshot 20261126T133001Z-2129 validated (snapshot_ready, 2026-11-26 ~09:54) and is `app_snapshots/current`:
+      2,129 runs, 146 studies, 632 matrices (was 2,002 runs, 135 studies). The timer builds the next batches as
+      the queue verifies the remaining quantified runs (2,498 quantified, 2,535 planned).
+- [ ] Release the new snapshot to users (data release 0.0.14.0, with the STRING/CORUM and MS columns).
 - [x] MS admission, per project (Einar 2026-11-26: "per-project now, designs later"): 93 of 158 folders admitted
       (>= 100 genes and Spearman >= 0.15 with the existing proteome; 57 too few genes, 8 enrichment-like), 5,422
       genes. `parascape/data/ms_uniform/` (table + per-folder reasons), registry entry `ms_uniform_research`
