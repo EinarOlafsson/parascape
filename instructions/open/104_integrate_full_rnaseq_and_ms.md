@@ -46,8 +46,17 @@
       confidence). Only 6 measure abundance (2 whole proteome, 3 secretome, 1 subcellular fraction); 54 IP, 16
       proximity labelling, 10 PTM enrichment, 2 crosslinking, 3 other. The abundance filter (Spearman >= 0.15) let
       enrichment projects through, so admission now also requires the curated type: 6 folders, 2,626 genes.
-- [ ] The 80 enrichment projects as INTERACTION evidence: bait (from the curated design) x prey enrichment over the
+- [x] (2026-11-28) Enrichment projects as interaction evidence (`scripts/ms/build_ms_enrichment_pairs.py`; output
+      mnt2/parascape/ms_enrichment/): 67 projects with >= 2 curated conditions, 352 conditions, per-condition
+      log2 enrichment and z against the project's other files; top gene = putative bait, z >= 2 = prey: 7,438
+      pairs, 283 baits. Pairs are 9.3x enriched for STRING-measured pairs and 3.9x for StarPath crosslinks over the
+      same baits with random prey (crosslinks are the independent check; STRING's Toxoplasma evidence may include
+      some of these IPs). Next: join as an edge layer / partner feature.
+- [ ] (old item, superseded above) The 80 enrichment projects as INTERACTION evidence: bait (from the curated design) x prey enrichment over the
       project's controls, into the binding-partner benchmark (E12) and the network layers.
 - [ ] Per-condition values for the 31 usable projects with an SDRF design
       (processing_audit/pride_sample_designs), then curated designs for the other 68 (Sonnet agents).
 - [ ] Retry PXD000297 at 48 GB; re-download the corrupt PXD052656 file.
+- [x] (2026-11-28) MS queue stalled on the largest projects: Sage OOM-killed at the unit's 16 GB (twice) and one
+      truncated zip download. Unit MemoryMax raised to 32 GB (drop-in 70-memory-32g.conf; lease line in
+      mnt3/claude/ram_leases.md; revert when the queue completes).
