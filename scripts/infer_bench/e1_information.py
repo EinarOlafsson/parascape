@@ -89,9 +89,29 @@ def interaction_labels(nodes: pd.DataFrame) -> dict:
             for c in t.columns}
 
 
+def pathway_labels(nodes: pd.DataFrame) -> dict:
+    """KEGG pathway (copied by orthology) and the ortholog-transferred hyperLOPIT niche (Einar 2026-11-28: more labels).
+
+    KEGG: each gene's most specific T. gondii ME49 pathway (tgo, NCBI gene ids mapped to TGME49 through E-utilities)
+    that holds >= 10 genes, global and overview maps left out (`parascape/data/interaction_labels/
+    kegg_pathway_label.tsv`). ortholopit: the niche of the gene's orthologs in other species' hyperLOPIT
+    (`localization.py`), so the place view is left out as for the other location labels."""
+    out = {}
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+                        "parascape", "data", "interaction_labels", "kegg_pathway_label.tsv")
+    if os.path.exists(path):
+        t = pd.read_csv(path, sep="\t").set_index("gene_id")["label"].reindex(nodes["gene_id"].astype(str))
+        out["KEGG pathway (copied by orthology)"] = (t.astype(object).where(t.notna()).to_numpy(object),
+                                                     "categorical", [])
+    if "ortholopit_label" in nodes:
+        v = nodes["ortholopit_label"].astype(object).where(nodes["ortholopit_label"].notna())
+        out["hyperLOPIT niche (copied by orthology)"] = (v.to_numpy(object), "categorical", ["__place__"])
+    return out
+
+
 def added_labels(nodes: pd.DataFrame) -> dict:
-    """Every label outside figure 6: the literature labels and the STRING / CORUM labels."""
-    return {**literature_labels(nodes), **interaction_labels(nodes)}
+    """Every label outside figure 6: literature, STRING / CORUM, KEGG pathway and ortholog niche labels."""
+    return {**literature_labels(nodes), **interaction_labels(nodes), **pathway_labels(nodes)}
 
 
 def bh(p: np.ndarray) -> np.ndarray:

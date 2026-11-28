@@ -41,7 +41,8 @@ import e11_optimize as E11  # noqa: E402
 
 LABELS = ("host-facing (papers)", "effect on host", "hyperLOPIT niche", "compartment (papers)",
           "enzymatic function (EC class)", "cell-cycle phase", "interaction module (STRING, measured in Toxoplasma)",
-          "interaction module (STRING, copied by orthology)", "complex (CORUM human, copied by orthology)")
+          "interaction module (STRING, copied by orthology)", "complex (CORUM human, copied by orthology)",
+          "KEGG pathway (copied by orthology)", "hyperLOPIT niche (copied by orthology)")
 
 
 def setup(shuffled: bool):
@@ -59,10 +60,19 @@ def setup(shuffled: bool):
             y = y.copy()
             y[m] = np.random.default_rng(4242 + i).permutation(y[m])
         labels[name] = (y, kind)
-    D = E11.Data(nodes, views, extra, set())
+    # One strategy for every label, so every column that is circular for ANY label is left out (the union of the
+    # per-label exclusions E8/E11 apply): the place view, the cell-cycle columns, ... A strategy may not win a label
+    # by weighting that label's own measurement.
+    drop = set()
+    for name in LABELS:
+        drop |= set(H.IM.exclusions(L[name][2], views))
+    views = {v: [c for c in cols if c not in drop] for v, cols in views.items()}
+    views = {v: cols for v, cols in views.items() if cols}
+    D = E11.Data(nodes, views, extra, drop)
     inner = H.family_folds(fam, 3, 7)
     folds = [(dev & (inner != f), dev & (inner == f)) for f in range(3)]
     view_names = list(views) + list(extra)
+    print(f"{len(drop)} circular columns left out; views: {', '.join(views)}", flush=True)
     return nodes, views, extra, labels, D, dev, fin, folds, view_names
 
 

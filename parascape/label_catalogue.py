@@ -76,6 +76,16 @@ ENTRIES: dict = {
               "imaging screen, scored by eye; 320 genes screened, 99 with a defect; unscreened genes "
               "unlabelled, not 'normal'."),
         left_out="screen_any_phenotype"),
+    "KEGG pathway (copied by orthology)": dict(
+        evidence=COPIED, sources=("kegg_tgo",), column="parascape/data/interaction_labels/kegg_pathway_label.tsv",
+        made=("KEGG T. gondii ME49 (tgo) gene-pathway links, NCBI gene ids mapped to TGME49 through NCBI E-utilities "
+              "(857 of 881 genes); global and overview maps (tgo011xx/012xx) left out; each gene takes its most "
+              "specific pathway with >= 10 genes (763 genes, 35 pathways)."),
+        left_out="nothing (no feature is built from KEGG)"),
+    "hyperLOPIT niche (copied by orthology)": dict(
+        evidence=COPIED, sources=("ortholopit",), column="ortholopit_label",
+        made="The hyperLOPIT niche of the gene's orthologs in other apicomplexan hyperLOPIT maps (localization.py).",
+        left_out="the whole place view and every lopit column"),
     "compartment (papers)": dict(
         evidence=PAPERS, sources=("literature_affinage",), column="lit_compartment",
         made=("Compartment found experimentally in single-gene papers (place findings only); genes with "
@@ -110,7 +120,12 @@ ENTRIES: dict = {
 
 # Sources that are not datasets of the node table are described here (none at present: STRING and CORUM
 # joined the dataset registry for release 0.0.14.0).
-EXTRA_SOURCES: dict = {}
+EXTRA_SOURCES: dict = {
+    "kegg_tgo": dict(name="KEGG PATHWAY, Toxoplasma gondii ME49 (tgo)", citation="Kanehisa M et al. Nucleic Acids Res "
+                     "2023;51:D587-D592", pmid="36300620", url="https://rest.kegg.jp/link/pathway/tgo"),
+    "ortholopit": dict(name="hyperLOPIT niches transferred from orthologs (ParaScape localization.py)",
+                       citation="", pmid="", url=""),
+}
 
 
 def source_record(key: str) -> dict:
